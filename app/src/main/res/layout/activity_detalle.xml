@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ii.is.aplicacion.aplicacionmovil.DetalleActivity">
+
+    <RelativeLayout
+        android:id="@+id/RL"
+        android:layout_width="372dp"
+        android:layout_height="499dp"
+        android:layout_marginRight="17dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="2dp">
+
+        <EditText
+            android:id="@+id/Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp"
+            android:editable="false"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/Comuna"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/Titulo"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="11dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/Direccion"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_alignBaseline="@+id/Comuna"
+            android:layout_alignBottom="@+id/Comuna"
+            android:layout_alignStart="@+id/Disponibilidad"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/Telefono"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/Comuna"
+            android:layout_below="@+id/Comuna"
+            android:layout_marginTop="14dp"
+            android:editable="true"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/Disponibilidad"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_alignBaseline="@+id/Telefono"
+            android:layout_alignBottom="@+id/Telefono"
+            android:layout_marginStart="22dp"
+            android:layout_toEndOf="@+id/Telefono"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/Telefono"
+            android:layout_below="@+id/Telefono"
+            android:layout_marginTop="26dp"
+            app:srcCompat="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/Descripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignEnd="@+id/Disponibilidad"
+            android:layout_alignStart="@+id/Disponibilidad"
+            android:layout_alignTop="@+id/imageView2"
+            android:text="TextView" />
+
+        <RatingBar
+            android:id="@+id/Rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/imageView2"
+            android:layout_below="@+id/imageView2"
+            android:layout_marginTop="23dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/Rating"
+            android:layout_below="@+id/Rating"
+            android:layout_marginTop="18dp" />
+
+        <Button
+            android:id="@+id/Guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:layout_alignTop="@+id/Rating"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

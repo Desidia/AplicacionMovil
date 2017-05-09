@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ii.is.aplicacion.aplicacionmovil.CrearPropiedad">
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/Nombre"
+            android:layout_width="340dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp"
+            android:text="Nombre" />
+
+        <Spinner
+            android:id="@+id/TipoActividad"
+            android:layout_width="240dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/Nombre"
+            android:layout_alignEnd="@+id/Nombre" />
+
+        <TextView
+            android:id="@+id/tipo"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="Tipo"
+            android:layout_alignTop="@+id/TipoActividad"
+            android:layout_alignStart="@+id/Nombre" />
+
+        <TextView
+            android:id="@+id/Direccion"
+            android:layout_width="300dp"
+            android:layout_height="31dp"
+            android:layout_alignStart="@+id/tipo"
+            android:layout_below="@+id/TipoActividad"
+            android:layout_marginTop="25dp"
+            android:text="Direccion" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignStart="@+id/Direccion"
+            android:layout_below="@+id/Direccion"
+            android:layout_marginTop="26dp"
+            android:text="Comuna" />
+
+        <Spinner
+            android:id="@+id/Comuna"
+            android:layout_width="240dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/textView6"
+            android:layout_alignStart="@+id/TipoActividad" />
+
+        <EditText
+            android:id="@+id/Contacto"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/Comuna" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Contacto"
+            android:layout_alignTop="@+id/Contacto"
+            android:layout_alignEnd="@+id/tipo" />
+
+        <TextView
+            android:id="@+id/Disponibilidad"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:text="Disponibilidad"
+            android:layout_below="@+id/Contacto"
+            android:layout_alignStart="@+id/textView7"
+            android:layout_marginTop="35dp" />
+
+        <Button
+            android:id="@+id/Crea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:text="Agregar dependencia"
+            android:layout_below="@+id/Disponibilidad"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

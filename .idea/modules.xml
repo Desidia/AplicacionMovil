@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AplicacionMovil.iml" filepath="$PROJECT_DIR$/AplicacionMovil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libreria/libreria.iml" filepath="$PROJECT_DIR$/libreria/libreria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libreria/postgresql-9.2-1002.jdbc4/postgresql-9.2-1002.jdbc4.iml" filepath="$PROJECT_DIR$/libreria/postgresql-9.2-1002.jdbc4/postgresql-9.2-1002.jdbc4.iml" />
+    </modules>
+  </component>
+</project>
