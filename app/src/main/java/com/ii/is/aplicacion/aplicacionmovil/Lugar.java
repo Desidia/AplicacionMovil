@@ -6,11 +6,13 @@ package com.ii.is.aplicacion.aplicacionmovil;
 
 public class Lugar {
 
-    private String nombre,contacto,ubicacion,disponibilidad,tipo,rutpropietario,comuna;
+    private String nombre,contacto,ubicacion,disponibilidad,tipo,rutpropietario,comuna,Detalle;
     private int promedio_lugar;
     public Lugar(){
 
     }
+    public void setDetalle(String s){Detalle = s;}
+    public String getDetalle(){return Detalle;}
     public void setNombre(String s){
         nombre = s;
     }

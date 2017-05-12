@@ -30,7 +30,9 @@
         <activity android:name=".Principal" />
         <activity android:name=".DetalleActivity" />
         <activity android:name=".Empresario_vista" />
-        <activity android:name=".CrearPropiedad"></activity>
+        <activity android:name=".CrearPropiedad" />
+        <activity android:name=".DetalleItinerario" />
+        <activity android:name=".CrearItinerario"></activity>
     </application>
 
 </manifest>

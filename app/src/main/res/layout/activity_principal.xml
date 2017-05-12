@@ -23,63 +23,89 @@
             android:id="@+id/Buscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Spinner"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="22dp"
-            android:text="Buscar" />
+            android:text="Buscar"
+            android:layout_below="@+id/Propiedades"
+            android:layout_toStartOf="@+id/Marcadores" />
 
         <Button
             android:id="@+id/Lugares"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/Itinerarios"
+            android:text="Lugares"
+            android:layout_below="@+id/Spinner"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/Buscar"
-            android:text="Lugares" />
+            android:layout_marginStart="12dp" />
 
         <Button
             android:id="@+id/Itinerarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/Servicios"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/Lugares"
-            android:text="Itinerarios" />
+            android:text="Itinerarios"
+            android:layout_below="@+id/Spinner"
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:id="@+id/Servicios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/Marcadores"
-            android:layout_alignParentStart="true"
+            android:text="Servicios"
             android:layout_below="@+id/Itinerarios"
-            android:text="Servicios" />
+            android:layout_toEndOf="@+id/Propiedades"
+            android:layout_marginStart="47dp" />
 
         <Button
             android:id="@+id/Marcadores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/Servicios"
-            android:text="Marcadores" />
+            android:text="Marcadores"
+            android:layout_marginStart="24dp"
+            android:layout_below="@+id/Spinner"
+            android:layout_toEndOf="@+id/Lugares" />
 
         <Button
             android:id="@+id/Propiedades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/Marcadores"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/Marcadores"
-            android:text="Mis Lugares" />
+            android:text="Mis Lugares"
+            android:layout_alignBaseline="@+id/Servicios"
+            android:layout_alignBottom="@+id/Servicios"
+            android:layout_alignStart="@+id/Lugares"
+            android:layout_marginStart="32dp" />
 
-        <ListView
-            android:id="@+id/Lista"
+        <ViewSwitcher
+            android:id="@+id/Switch"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/Buscar"
+            android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:layout_toEndOf="@+id/Lugares" />
+            android:layout_below="@+id/Buscar"
+            android:layout_alignStart="@+id/Buscar">
+
+            <ListView
+                android:id="@+id/Lista"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/Spinner"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="17dp"
+                android:layout_toEndOf="@+id/Lugares" />
+
+            <ListView
+                android:id="@+id/ListIter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/Buscar"
+                android:layout_marginTop="18dp"
+                android:layout_toEndOf="@+id/Lugares" />
+        </ViewSwitcher>
+
+        <Button
+            android:id="@+id/crearitinerario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/Switch"
+            android:layout_alignStart="@+id/Servicios"
+            android:text="Crear Itinerario" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

@@ -22,7 +22,7 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
     private ListView lista;
     private Lugares lista_lugares[];
     private Vector<Lugar> services;
-    private String user,buscar;
+    private String user,buscar,nombre;
     private Boolean entro;
     protected void onCreate(Bundle savedInstanceState) {               Log.e("redirect","cree");
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
         Bundle bundle = intent.getExtras();
         user = (String) bundle.get("USER");
         buscar = (String) bundle.get("TIPO");
+        nombre = (String) bundle.get("NOMBRE");
         lista = (ListView) findViewById(R.id.Lista);
         entro = false;
         services = new Vector<Lugar>();
@@ -43,7 +44,7 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewById(R.id.Titulo);
                 Intent button_uno = new Intent (Empresario_vista.this, DetalleActivity.class);
-                button_uno.putExtra("TIPO",buscar);
+                button_uno.putExtra("TIPO",user);
                 button_uno.putExtra("editable",0);
                 button_uno.putExtra("nombre",(String)v.getText());
                 startActivity(button_uno);
@@ -92,6 +93,7 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
             case R.id.Crear:
                 Intent button_uno = new Intent (Empresario_vista.this, CrearPropiedad.class);
                 button_uno.putExtra("RUT",user);
+                button_uno.putExtra("NOMBRE",nombre);
                 startActivity(button_uno);
                 break;
             default:

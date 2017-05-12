@@ -92,6 +92,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             Intent button_uno = new Intent (Login.this, Principal.class);
             button_uno.putExtra("TIPO",turista);
             button_uno.putExtra("USER",User.getrut());
+            button_uno.putExtra("NOMBRE",User.getnombre());
             startActivity(button_uno);
             Toast.makeText(getApplicationContext(),"Conecte de manera correcta", Toast.LENGTH_SHORT).show();
         }

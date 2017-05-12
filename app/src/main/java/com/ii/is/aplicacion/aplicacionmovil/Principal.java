@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,41 +21,65 @@ import java.util.Vector;
 
 public class Principal extends AppCompatActivity implements OnClickListener{
 
-    private String user,buscar;
+    private String user,buscar,nombre;
     private int tipo = 0,turista;
     private Button Buscar;
     private Button lugares;
     private Button itinerarios;
     private Button servicios;
-    private Button marcadores;
+    private Button marcadores,crear;
     private Button propios;
     private Spinner opcion;
     private ControlBase CB;
     private List busqueda = new ArrayList();
-    private ListView lista;
+    private ListView lista,listaItiner;
     private Lugares lista_lugares[];
+    private Itinerario lista_itinerarios[];
     private Vector<Lugar> services;
+    private Vector<Itinerario>vector_itiner;
+    private ViewSwitcher VS;
     private boolean entro;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         CB = new ControlBase(this);
+        vector_itiner = new Vector<Itinerario>();
         services = new Vector<Lugar>();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        VS = (ViewSwitcher)findViewById(R.id.Switch);
         user = (String) bundle.get("USER");
         turista = (int) bundle.get("TIPO");
+        nombre = (String) bundle.get("NOMBRE");
         Buscar = (Button) findViewById(R.id.Buscar);
         lugares = (Button) findViewById(R.id.Lugares);
         itinerarios = (Button) findViewById(R.id.Itinerarios);
         servicios = (Button) findViewById(R.id.Servicios);
         marcadores = (Button) findViewById(R.id.Marcadores);
+        crear = (Button) findViewById(R.id.crearitinerario);
         propios = (Button) findViewById(R.id.Propiedades);
         opcion = (Spinner) findViewById(R.id.Spinner);
+        listaItiner = (ListView)findViewById(R.id.ListIter);
         Buscar.setOnClickListener(this);
+        itinerarios.setOnClickListener(this);
         propios.setOnClickListener(this);
+        crear.setOnClickListener(this);
+        lugares.setOnClickListener(this);
         if (turista == 1) propios.setVisibility(View.INVISIBLE);
         lista = (ListView) findViewById(R.id.Lista);
+        crear.setVisibility(View.INVISIBLE);
+
+        listaItiner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("redirect","detecte el MALDITO CLICK");
+                TextView v = (TextView)view.findViewById(R.id.NombreAct);
+                Intent button_uno = new Intent (Principal.this, DetalleItinerario.class);
+                button_uno.putExtra("NOMBRE",v.getText());
+                button_uno.putExtra("CREADOR",vector_itiner.elementAt(position).getPoseedor());
+                button_uno.putExtra("TEMPORADA",vector_itiner.elementAt(position).getTemporada());
+                startActivity(button_uno);
+            }
+        });
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewById(R.id.Titulo);
@@ -92,6 +117,9 @@ public class Principal extends AppCompatActivity implements OnClickListener{
     public void agregarServicio(Lugar s){
         services.add(s);
     }
+    public void agregarItinerario(Itinerario s){
+        vector_itiner.add(s);
+    }
     public void desplegar(){
         lista_lugares = new Lugares[services.size()];
         Toast.makeText(getApplicationContext(),"tamaño: " + services.size(), Toast.LENGTH_SHORT).show();
@@ -104,6 +132,20 @@ public class Principal extends AppCompatActivity implements OnClickListener{
         lista.setAdapter(adapter);
         entro = true;
     }
+
+    public void desplegar2(){
+        lista_itinerarios = new Itinerario[vector_itiner.size()];
+        Toast.makeText(getApplicationContext(),"tamaño: " + vector_itiner.size(), Toast.LENGTH_SHORT).show();
+        for(int i = 0; i < vector_itiner.size();i++){
+            lista_itinerarios[i] = vector_itiner.elementAt(i);
+        }
+        ItinerarioAdapter adapter = new ItinerarioAdapter(this,R.layout.listaitinerarios,lista_itinerarios);
+       // View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
+       // if(!entro)lista.addHeaderView(header);
+        listaItiner.setAdapter(adapter);
+   //     entro = true;
+    }
+
     public void actualizar(){
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,busqueda);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -133,11 +175,18 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 CB.ejecutar();
                 break;
             case R.id.Lugares:
-                lista.setVisibility(View.VISIBLE);
+                crear.setVisibility(View.INVISIBLE);
                 break;
             case R.id.Servicios:
                 break;
             case R.id.Itinerarios:
+                Log.e("redirect","detecte el botoncillo");
+                VS.showNext();
+                vector_itiner.clear();
+                crear.setVisibility(View.VISIBLE);
+                CB = new ControlBase(this);
+                CB.setTipo(11);
+                CB.ejecutar();
                 break;
             case R.id.Marcadores:
                 break;
@@ -146,7 +195,13 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 Intent button_uno = new Intent (Principal.this, Empresario_vista.class);
                 button_uno.putExtra("USER",user);
                 button_uno.putExtra("TIPO",buscar);
+                button_uno.putExtra("NOMBRE",nombre);
                 startActivity(button_uno);
+                break;
+            case R.id.crearitinerario:
+                Intent uno = new Intent (Principal.this, CrearItinerario.class);
+                uno.putExtra("NOBMRE",nombre);
+                startActivity(uno);
                 break;
 
         }
