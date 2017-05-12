@@ -144,7 +144,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                 switch (tipo) {
                     case 1:
                          nombre = login.getNombreUser(); contraseña = login.getContrasenaUser();
-                         query = "SELECT U.usuario as usuario,U.contraseña as contraseña FROM gratificante.turista as U"
+                         query = "SELECT U.usuario as usuario,U.contraseña as contraseña FROM gratificante2.turista as U"
                                 + " WHERE U.usuario  = '" + nombre + "' AND U.contraseña = '" + contraseña + "';";
                         c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc", "UbdIc", "udb2016c");
                         c.setAutoCommit(false);
@@ -161,7 +161,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 2:
                         nombre =login.getNombreUser() ;contraseña = login.getContrasenaUser();rut = login.getturismorut();
-                        query = "SELECT U.nombre as nombre,U.contraseña as contraseña,U.rut as rut FROM gratificante.empresario as U"
+                        query = "SELECT U.nombre as nombre,U.contraseña as contraseña,U.rut as rut FROM gratificante2.empresario as U"
                                 + " WHERE U.rut  = '" + nombre  +"' AND U.contraseña = '" + contraseña + "';";
                         c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc", "UbdIc", "udb2016c");
                         c.setAutoCommit(false);
@@ -180,7 +180,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 3:
                         Log.e("redirect", "Entre caso 3");
-                        query = "SELECT DISTINCT U.tipo as tipo  FROM gratificante.lugar as U;";
+                        query = "SELECT DISTINCT U.tipo as tipo  FROM gratificante2.lugar as U;";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -199,7 +199,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                     case 4:
                         //Log.e("redirect",categoria);
                         query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar"
-                            + "  FROM gratificante.lugar as U"
+                            + "  FROM gratificante2.lugar as U"
                             + " WHERE U.tipo = '" +categoria  +"';" ;
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
@@ -229,7 +229,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                     case 5:
                         Log.e("redirect","consultare?????");
                         query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar"
-                                + "  FROM gratificante.lugar as U"
+                                + "  FROM gratificante2.lugar as U"
                                 + " WHERE U.nombre = '"+ titulo+"';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
@@ -261,7 +261,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 6:
                         query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar"
-                                + "  FROM gratificante.lugar as U"
+                                + "  FROM gratificante2.lugar as U"
                                 + " WHERE U.rutpropietario = '" +usuario  +"';" ;
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
@@ -290,7 +290,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         Log.e("redirect","termine");
                         break;
                     case 7:
-                        query = "SELECT DISTINCT U.tipo as tipo  FROM gratificante.lugar as U;";
+                        query = "SELECT DISTINCT U.tipo as tipo  FROM gratificante2.lugar as U;";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -307,7 +307,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 8:
-                        query = "SELECT DISTINCT U.comuna as comuna  FROM gratificante.lugar as U;";
+                        query = "SELECT DISTINCT U.comuna as comuna  FROM gratificante2.lugar as U;";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -329,7 +329,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         Log.e("Redirect",actividad);
                         Log.e("redirect",nombrelugar);
 
-                        query = "insert into gratificante.lugar(nombre,contacto,ubicacion,disponibilidad,tipo,rutpropietario,comuna,comentario) values('"+nombrelugar+"','"
+                        query = "insert into gratificante2.lugar(nombre,contacto,ubicacion,disponibilidad,tipo,rutpropietario,comuna,comentario) values('"+nombrelugar+"','"
                                 +contacto+"','"+ubicacion+"','"+disponibilidad+"','"+actividad+"','"+rut+"','"+comuna+"','"+comentario+"');";
 
                         c = DriverManager
@@ -351,8 +351,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         Log.e("redirect",nombrelugar);
                         Log.e("redirect",disponibilidad);
                         Log.e("redirect",titulo);
-                        query = "UPDATE gratificante.lugar SET contacto = '"+contacto+"', ubicacion = '"+ubicacion+"', disponibilidad = '"+disponibilidad+
-                                "'  where nombre = '"+ titulo+ "';";
+                        query = "UPDATE gratificante2.lugar SET contacto = '"+contacto+"', ubicacion = '"+ubicacion+"', disponibilidad = '"+disponibilidad+
+                                "', nombre = '" +nombrelugar +"'  where nombre = '"+ titulo+ "';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -360,13 +360,14 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         System.out.println("Opened database successfully");
                         stmt = c.createStatement();
                         stmt.executeUpdate(query);
+                        Log.e("redirect",titulo);
                         stmt.close();
                         c.commit();
                         c.close();
                         break;
                     case 11:
                        query = "SELECT U.temporada as temporada,U.puntaje as puntaje, U.id_itinerario as id_itinerario, U.poseedor as poseedor"
-                                + "  FROM gratificante.itinerario as U;";
+                                + "  FROM gratificante2.itinerario as U;";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -387,7 +388,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 12:
                         query = "SELECT U.posicion as posicion,U.nombre_actividad as nombre_actividad, U.tipo_actividad as tipo_actividad, U.lugar_actividad as lugar_actividad,U.ubicacion_actividad as ubicacion_actividad, U.comuna_actividad as comuna_actividad,U.itinerario as itinerario"
-                                + "  FROM gratificante.lista as U WHERE itinerario = '"+Nombre_Itinerario +"';";
+                                + "  FROM gratificante2.lista as U WHERE itinerario = '"+Nombre_Itinerario +"';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -408,7 +409,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 13:
                         Log.e("redirect", "Entre caso 13");
-                        query = "SELECT DISTINCT U.nombre as nombre  FROM gratificante.actividad as U;";
+                        query = "SELECT DISTINCT U.nombre as nombre  FROM gratificante2.actividad as U;";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -426,7 +427,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 14:
                         Log.e("redirect", "Entre caso 13");
-                        query = "SELECT DISTINCT U.nombre_lugar as nombre_lugar,U.nombre as nombre  FROM gratificante.actividad as U WHERE nombre = '"+ Nombre_Actividad+"';";
+                        query = "SELECT DISTINCT U.nombre_lugar as nombre_lugar,U.nombre as nombre  FROM gratificante2.actividad as U WHERE nombre = '"+ Nombre_Actividad+"';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -444,7 +445,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 15:
                         query = "SELECT U.nombre as nombre,U.tipo as tipo, U.comuna as comuna, U.direccion as direccion,U.nombre_lugar as nombre_lugar"
-                                + "  FROM gratificante.actividad as U WHERE nombre = '"+Nombre_Actividad +"' AND comuna = '" + comuna+ "' AND nombre_lugar = '"+ ubicacion+ "';";
+                                + "  FROM gratificante2.actividad as U WHERE nombre = '"+Nombre_Actividad +"' AND comuna = '" + comuna+ "' AND nombre_lugar = '"+ ubicacion+ "';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -464,7 +465,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 16:
                         Log.e("redirect","ejecutare query 16");
-                        query = "SELECT U.comuna as comuna FROM gratificante.actividad as U WHERE nombre = '"+Nombre_Actividad + "' AND nombre_lugar = '"+ ubicacion+ "';";
+                        query = "SELECT U.comuna as comuna FROM gratificante2.actividad as U WHERE nombre = '"+Nombre_Actividad + "' AND nombre_lugar = '"+ ubicacion+ "';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -480,6 +481,25 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         }
                         stmt.close();
                         rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 17:
+                        Log.e("Redirect",rut);
+                        Log.e("Redirect",comuna);
+                        Log.e("Redirect",actividad);
+                        Log.e("redirect",nombrelugar);
+                //        query = "insert into gratificante2.itinerario(temporada,puntaje,id_itinerario,poseedor) values('"+temporada+"','"
+                  //              +0+"','"+id+"','"+poseedor+"');";
+
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        stmt.close();
                         c.commit();
                         c.close();
                         break;
