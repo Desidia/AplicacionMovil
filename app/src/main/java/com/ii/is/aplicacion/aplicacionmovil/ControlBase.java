@@ -7,14 +7,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 
 
 public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Connection c;
     private Statement stmt;
-    private String nombre,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad;
+    private String nombre,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
     private Login login;
-    private int tipo;
+    private int tipo,posicion;
     private int estado;
     private String ejemplo,categoria,titulo,usuario;
     private boolean conectado = false,entro = false;
@@ -26,6 +27,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private DetalleItinerario detalleItinerario;
     private CrearItinerario crearItinerario;
     ResultSet rs;
+    private Vector <Lista> mylista;
     public ControlBase(DetalleItinerario detalle){
         c = null;
         stmt = null;
@@ -75,6 +77,9 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         estado = -1;
         ejemplo = "";
     }
+    public void setTemporada(String c){temporada = c;}
+    public  void setId(String c){id = c;}
+    public void setPoseedor(String c){poseedor = c;}
     public void setNombre_Actividad(String c){
         Nombre_Actividad = c;
     }
@@ -109,6 +114,276 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     public void setUsuario(String c){this.usuario = c; }
     public void setRut(String c){this.rut = c; }
 
+    public Vector<Lista> getMylista() {
+        return mylista;
+    }
+
+    public void setMylista(Vector<Lista> mylista) {
+        this.mylista = mylista;
+    }
+    public Connection getC() {
+        return c;
+    }
+
+    public Statement getStmt() {
+        return stmt;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public String getComuna() {
+        return comuna;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public String getNombre_Actividad() {
+        return Nombre_Actividad;
+    }
+
+    public String getNombrelugar() {
+        return nombrelugar;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setC(Connection c) {
+        this.c = c;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getNombre_Itinerario() {
+        return Nombre_Itinerario;
+    }
+
+    public String getTemporada() {
+        return temporada;
+    }
+
+    public String getNombre_actividad() {
+        return nombre_actividad;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    public void setStmt(Statement stmt) {
+        this.stmt = stmt;
+    }
+
+    public boolean isConectado() {
+        return conectado;
+    }
+
+    public boolean isEntro() {
+        return entro;
+    }
+
+    public CrearItinerario getCrearItinerario() {
+        return crearItinerario;
+    }
+
+    public CrearPropiedad getCrearPro() {
+        return CrearPro;
+    }
+
+    public String getPoseedor() {
+        return poseedor;
+    }
+
+    public DetalleActivity getDetalle() {
+        return Detalle;
+    }
+
+    public DetalleItinerario getDetalleItinerario() {
+        return detalleItinerario;
+    }
+
+    public Empresario_vista getEmpresario() {
+        return Empresario;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setCrearItinerario(CrearItinerario crearItinerario) {
+        this.crearItinerario = crearItinerario;
+    }
+
+    public Lugar getAgregar() {
+        return agregar;
+    }
+
+    public String getTipo_actividad() {
+        return tipo_actividad;
+    }
+
+    public Principal getPrincipal() {
+        return principal;
+    }
+
+    public ResultSet getRs() {
+        return rs;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getComuna_actividad() {
+        return comuna_actividad;
+    }
+
+    public String getEjemplo() {
+        return ejemplo;
+    }
+
+    public String getItinerario() {
+        return itinerario;
+    }
+
+    public String getLugar_actividad() {
+        return lugar_actividad;
+    }
+
+    public void setLugar_actividad(String lugar_actividad) {
+        this.lugar_actividad = lugar_actividad;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setNombre_actividad(String nombre_actividad) {
+        this.nombre_actividad = nombre_actividad;
+    }
+
+    public String getUbicacion_actividad() {
+        return ubicacion_actividad;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setAgregar(Lugar agregar) {
+        this.agregar = agregar;
+    }
+
+    public void setComuna_actividad(String comuna_actividad) {
+        this.comuna_actividad = comuna_actividad;
+    }
+
+    public void setConectado(boolean conectado) {
+        this.conectado = conectado;
+    }
+
+    public void setCrearPro(CrearPropiedad crearPro) {
+        CrearPro = crearPro;
+    }
+
+    public void setDetalle(DetalleActivity detalle) {
+        Detalle = detalle;
+    }
+
+    public void setDetalleItinerario(DetalleItinerario detalleItinerario) {
+        this.detalleItinerario = detalleItinerario;
+    }
+
+    public void setEjemplo(String ejemplo) {
+        this.ejemplo = ejemplo;
+    }
+
+    public void setEmpresario(Empresario_vista empresario) {
+        Empresario = empresario;
+    }
+
+    public void setEntro(boolean entro) {
+        this.entro = entro;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public void setItinerario(String itinerario) {
+        this.itinerario = itinerario;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+
+    public void setRs(ResultSet rs) {
+        this.rs = rs;
+    }
+
+    public void setTipo_actividad(String tipo_actividad) {
+        this.tipo_actividad = tipo_actividad;
+    }
+
+    public void setPrincipal(Principal principal) {
+        this.principal = principal;
+    }
+
+    public void setUbicacion_actividad(String ubicacion_actividad) {
+        this.ubicacion_actividad = ubicacion_actividad;
+    }
     public void setNombre_Itinerario(String nombre_Itinerario) {
         Nombre_Itinerario = nombre_Itinerario;
     }
@@ -228,7 +503,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         break;
                     case 5:
                         Log.e("redirect","consultare?????");
-                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar"
+                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.comentario as comentario"
                                 + "  FROM gratificante2.lugar as U"
                                 + " WHERE U.nombre = '"+ titulo+"';";
                         c = DriverManager
@@ -244,7 +519,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                             agregar = new Lugar();
                             agregar.setNombre(rs.getString("nombre"));
                             agregar.setContacto(rs.getString("contacto"));
-                            Log.e("redirect",rs.getString("nombre"));
+                            if(comentario != null)Log.e("redirect",rs.getString("comentario"));
+                            else comentario = "";
                             agregar.setUbicacion(rs.getString("ubicacion"));
                             agregar.setDisponibilidad(rs.getString("disponibilidad"));
                             agregar.setTipo(rs.getString("tipo"));
@@ -352,7 +628,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         Log.e("redirect",disponibilidad);
                         Log.e("redirect",titulo);
                         query = "UPDATE gratificante2.lugar SET contacto = '"+contacto+"', ubicacion = '"+ubicacion+"', disponibilidad = '"+disponibilidad+
-                                "', nombre = '" +nombrelugar +"'  where nombre = '"+ titulo+ "';";
+                                "', nombre = '" +nombrelugar +"', comentario = '"+comentario+"'  where nombre = '"+ titulo+ "';";
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -485,12 +761,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 17:
-                        Log.e("Redirect",rut);
-                        Log.e("Redirect",comuna);
-                        Log.e("Redirect",actividad);
-                        Log.e("redirect",nombrelugar);
-                //        query = "insert into gratificante2.itinerario(temporada,puntaje,id_itinerario,poseedor) values('"+temporada+"','"
-                  //              +0+"','"+id+"','"+poseedor+"');";
+                        query = "insert into gratificante2.itinerario(temporada,puntaje,id_itinerario,poseedor) values('"+temporada+"','"
+                                +0+"','"+id+"','"+poseedor+"');";
 
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
@@ -502,6 +774,22 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         stmt.close();
                         c.commit();
                         c.close();
+                        break;
+                    case 18:
+                        for(int i = 0; i < mylista.size(); i++) {
+                        query = "insert into gratificante2.lista(posicion,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario) values('" + mylista.elementAt(i).getPos() + "','"
+                                + mylista.elementAt(i).getLugar_actividad() + "','" + mylista.elementAt(i).getTipo_actividad() + "','" + mylista.elementAt(i).getNombre_actividad() + "','" + mylista.elementAt(i).getUbicacion_actividad() + "','" + mylista.elementAt(i).getComuna_actividad() + "','" + mylista.elementAt(i).getItinerario() + "');";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                    }
                         break;
                     default:
                         Log.e("redirect","llegue al default");
@@ -567,6 +855,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             crearItinerario.setComuna(comuna);
             crearItinerario.ejecutarllenado();
             break;
+        case 17:
+            crearItinerario.creaactividades();
         default:
             break;
     }

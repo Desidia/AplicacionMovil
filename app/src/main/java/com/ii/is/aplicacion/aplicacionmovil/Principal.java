@@ -38,7 +38,7 @@ public class Principal extends AppCompatActivity implements OnClickListener{
     private Vector<Lugar> services;
     private Vector<Itinerario>vector_itiner;
     private ViewSwitcher VS;
-    private boolean entro;
+    private boolean entro,cambio = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
@@ -175,18 +175,25 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 CB.ejecutar();
                 break;
             case R.id.Lugares:
-                crear.setVisibility(View.INVISIBLE);
+                if(cambio) {
+                    VS.showNext();
+                    crear.setVisibility(View.INVISIBLE);
+                    cambio = false;
+                }
                 break;
             case R.id.Servicios:
                 break;
             case R.id.Itinerarios:
                 Log.e("redirect","detecte el botoncillo");
-                VS.showNext();
-                vector_itiner.clear();
-                crear.setVisibility(View.VISIBLE);
-                CB = new ControlBase(this);
-                CB.setTipo(11);
-                CB.ejecutar();
+                if(!cambio) {
+                    VS.showNext();
+                    vector_itiner.clear();
+                    crear.setVisibility(View.VISIBLE);
+                    CB = new ControlBase(this);
+                    CB.setTipo(11);
+                    CB.ejecutar();
+                    cambio = true;
+                }
                 break;
             case R.id.Marcadores:
                 break;
@@ -200,6 +207,8 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 break;
             case R.id.crearitinerario:
                 Intent uno = new Intent (Principal.this, CrearItinerario.class);
+                Log.e("redirect","El nombre que le pasare");
+                Log.e("redirect",nombre);
                 uno.putExtra("NOBMRE",nombre);
                 startActivity(uno);
                 break;

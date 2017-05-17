@@ -22,7 +22,7 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
     private String nombre_user;
     private EditText Nombre,Disponibilidad;
     private Spinner actividad,lugar;
-    private Button agregar;
+    private Button agregar,Crear;
     private ListView visualiza;
     private List actividades = new ArrayList();
     private List lugares = new ArrayList();
@@ -35,11 +35,13 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_itinerario);
-        Intent intent = getIntent();
         posicion = 1;
         vector_lista = new Vector<Lista>();
+        Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        nombre_user = (String) bundle.get("NOMBRE");
+        nombre_user = (String) bundle.get("NOBMRE");
+        Log.e("redirect",nombre_user);
+        Crear = (Button)findViewById(R.id.Agregar);
         Nombre = (EditText)findViewById(R.id.NombreActividad);
         Disponibilidad = (EditText)findViewById(R.id.disponibilidadactividad);
         actividad = (Spinner)findViewById(R.id.actividad);
@@ -47,6 +49,7 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         agregar = (Button)findViewById(R.id.AgregarActividad);
         visualiza = (ListView)findViewById(R.id.visualizaactividad);
         agregar.setOnClickListener(this);
+        Crear.setOnClickListener(this);
         this.rellenar();
     }
     public void rellenar(){
@@ -132,7 +135,13 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         visualiza.setAdapter(adapter);
         //     entro = true;
     }
-    @Override
+    public void creaactividades(){
+        CB = new ControlBase(this);
+        CB.setTipo(18);
+        CB.setMylista(vector_lista);
+        Log.e("redirect","Rellenare con actividades");
+        CB.ejecutar();
+    }
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.AgregarActividad:
@@ -144,6 +153,16 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
                 Log.e("redirect",LugarAgregar);
                 CB.ejecutar();
             break;
+            case R.id.Agregar:
+                CB = new ControlBase(this);
+                CB.setTipo(17);
+                CB.setTemporada(Disponibilidad.getText().toString());
+                CB.setId(Nombre.getText().toString());
+                CB.setPoseedor(nombre_user);
+                Log.e("redirect",nombre_user);
+                Log.e("redirect","Creare el itinerario");
+                CB.ejecutar();
+                break;
             default:
                 break;
 

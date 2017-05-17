@@ -97,10 +97,18 @@
             android:id="@+id/AgregarActividad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Agregar Actividad"
             android:layout_below="@+id/actividad"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@+id/textView3"
-            android:text="Agregar Actividad" />
+            android:layout_alignEnd="@+id/actividad" />
+
+        <Button
+            android:id="@+id/Agregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/visualizaactividad"
+            android:layout_alignStart="@+id/textView8"
+            android:text="Agregar" />
 
     </RelativeLayout>
 

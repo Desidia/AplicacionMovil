@@ -72,6 +72,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
                 CB.setContacto(Telefono.getText().toString());
                 CB.setUbicacion(Direccion.getText().toString());
                 CB.setDisponibilidad(Disponibilidad.getText().toString());
+                CB.setComentario(Detalle.getText().toString());
                 CB.ejecutar();
                 break;
             default:
