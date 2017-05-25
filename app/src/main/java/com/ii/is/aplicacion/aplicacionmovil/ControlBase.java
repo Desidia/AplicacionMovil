@@ -13,9 +13,9 @@ import java.util.Vector;
 public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Connection c;
     private Statement stmt;
-    private String nombre,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
+    private String nombre,direccion,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
     private Login login;
-    private int tipo,posicion;
+    private int tipo,posicion,nota;
     private int estado;
     private String ejemplo,categoria,titulo,usuario;
     private boolean conectado = false,entro = false;
@@ -26,6 +26,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private CrearPropiedad CrearPro;
     private DetalleItinerario detalleItinerario;
     private CrearItinerario crearItinerario;
+    private  ModificarDetalle modificardetalle;
     ResultSet rs;
     private Vector <Lista> mylista;
     public ControlBase(DetalleItinerario detalle){
@@ -56,6 +57,13 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         estado = -1;
         ejemplo = "";
     }
+    public ControlBase(ModificarDetalle md){
+        c = null;
+        stmt = null;
+        this.modificardetalle  = md;
+        estado = -1;
+        ejemplo = "";
+    }
     public ControlBase(Login log){
         c = null;
         stmt = null;
@@ -77,6 +85,23 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         estado = -1;
         ejemplo = "";
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
     public void setTemporada(String c){temporada = c;}
     public  void setId(String c){id = c;}
     public void setPoseedor(String c){poseedor = c;}
@@ -791,6 +816,133 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                     }
                         break;
+                    case 19:
+                        Log.e("redirect","ejecutare query 19");
+                        Log.e("redirect",titulo);
+                        query = "SELECT U.tipo as tipo FROM gratificante2.servicio as U WHERE lugar = '"+titulo+ "';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            Log.e("redirect",rs.getString("tipo"));
+                            Detalle.agregarSN(rs.getString("tipo"));
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 20:
+                        Log.e("redirect","ejecutare query 20");
+                        query = "SELECT *  FROM gratificante2.evaluacion as U WHERE U.lugar = '"+titulo+ "';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            evaluacion eval = new evaluacion((double)rs.getInt("nota"),rs.getString("comentario"),rs.getString("tipo_servicio"),rs.getString("lugar"),rs.getString("comuna"),rs.getString("usuario"),rs.getString("direccion"));
+                            Detalle.agregarEval(eval);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 21:
+                        Log.e("redirect","ejecutare query 21");
+                        query = "SELECT *  FROM gratificante2.opinion as U WHERE U.lugar = '"+titulo+ "';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            Opinion eval = new Opinion((float)rs.getInt("nota"),rs.getString("comentario"),rs.getString("usuario"),rs.getString("lugar"),rs.getString("comuna"),rs.getString("direccion"));
+                            Detalle.agregaOpinion(eval);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 22:
+                        query = "insert into gratificante2.opinion(nota,comentario,usuario,lugar,comuna,direccion) values('" + nota+ "','"
+                                + comentario+ "','" + usuario + "','" + lugar_actividad+ "','" + comuna + "','" + direccion+ "');";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 23:
+                        Log.e("redirect","consultare?????");
+                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.comentario as comentario"
+                                + "  FROM gratificante2.lugar as U"
+                                + " WHERE U.nombre = '"+ titulo+"';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        Log.e("redirect","entrare?????");
+                        while (rs.next()) {
+                            Log.e("redirect","entreeeeeeeeeeeeeeeeee");
+                            agregar = new Lugar();
+                            agregar.setNombre(rs.getString("nombre"));
+                            agregar.setContacto(rs.getString("contacto"));
+                            if(comentario != null)Log.e("redirect",rs.getString("comentario"));
+                            else comentario = "";
+                            agregar.setUbicacion(rs.getString("ubicacion"));
+                            agregar.setDisponibilidad(rs.getString("disponibilidad"));
+                            agregar.setTipo(rs.getString("tipo"));
+                            agregar.setrutpropietario(rs.getString("rutpropietario"));
+                            agregar.setcomuna(rs.getString("comuna"));
+                            agregar.setpromediolugar(rs.getInt("promedio_lugar"));
+                            agregar.setDetalle(rs.getString("comentario"));
+                        }
+                        Log.e("redirect","termine");
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 24:
+                        Log.e("Redirect",titulo);
+                        Log.e("Redirect",contacto);
+                        Log.e("Redirect",ubicacion);
+                        Log.e("redirect",nombrelugar);
+                        Log.e("redirect",disponibilidad);
+                        Log.e("redirect",titulo);
+                        query = "UPDATE gratificante2.lugar SET contacto = '"+contacto+"', ubicacion = '"+ubicacion+"', disponibilidad = '"+disponibilidad+
+                                "', nombre = '" +nombrelugar +"', comentario = '"+comentario+"'  where nombre = '"+ titulo+ "';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        Log.e("redirect",titulo);
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -857,6 +1009,22 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 17:
             crearItinerario.creaactividades();
+            break;
+        case 19:
+            Detalle.evaluaciones();
+            break;
+        case 20:
+            Detalle.crearServicio_Nota();
+        break;
+        case 21:
+            Detalle.generarOpiniones();
+            break;
+        case 22:
+            Detalle.iniciarComentarios();
+            break;
+        case 23:
+            modificardetalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle());
+break;
         default:
             break;
     }

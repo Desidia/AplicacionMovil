@@ -43,7 +43,7 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewById(R.id.Titulo);
-                Intent button_uno = new Intent (Empresario_vista.this, DetalleActivity.class);
+                Intent button_uno = new Intent (Empresario_vista.this, ModificarDetalle.class);
                 button_uno.putExtra("TIPO",user);
                 button_uno.putExtra("editable",0);
                 button_uno.putExtra("nombre",(String)v.getText());

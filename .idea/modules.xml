@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AplicacionMovil.iml" filepath="$PROJECT_DIR$/AplicacionMovil.iml" />
       <module fileurl="file://$PROJECT_DIR$/AplicacionMovil2.iml" filepath="$PROJECT_DIR$/AplicacionMovil2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AplicacionMovilFinal.iml" filepath="$PROJECT_DIR$/AplicacionMovilFinal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/libreria/libreria.iml" filepath="$PROJECT_DIR$/libreria/libreria.iml" />
       <module fileurl="file://$PROJECT_DIR$/libreria/postgresql-9.2-1002.jdbc4/postgresql-9.2-1002.jdbc4.iml" filepath="$PROJECT_DIR$/libreria/postgresql-9.2-1002.jdbc4/postgresql-9.2-1002.jdbc4.iml" />

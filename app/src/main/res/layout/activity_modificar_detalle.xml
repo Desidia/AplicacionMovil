@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ii.is.aplicacion.aplicacionmovil.DetalleActivity">
+    tools:context="com.ii.is.aplicacion.aplicacionmovil.ModificarDetalle">
 
     <RelativeLayout
         android:id="@+id/RL"
         android:layout_width="380dp"
-        android:layout_height="900dp"
+        android:layout_height="510dp"
         android:layout_marginRight="-4dp"
         android:nestedScrollingEnabled="true"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
@@ -101,9 +101,9 @@
             android:id="@+id/Guardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guardar"
+            android:layout_alignEnd="@+id/Comuna"
             android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/Comuna" />
+            android:text="Guardar" />
 
         <EditText
             android:id="@+id/Tipo"
@@ -115,56 +115,15 @@
             android:hint="Tipo"
             android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/Comentar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/Telefono"
-            android:text="Comentar" />
-
         <RatingBar
             android:id="@+id/NotaGeneral"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/Tipo"
-            android:layout_alignStart="@+id/Comentar"
             android:numStars="5"
             android:scaleX="0.7"
-            android:scaleY="0.7" />
-
-        <ListView
-            android:id="@+id/ListNotas"
-            android:layout_width="335dp"
-            android:layout_height="70dp"
-            android:layout_alignStart="@+id/imageView2"
-            android:layout_below="@+id/imageView2"
-            android:layout_marginTop="20dp" />
-
-        <ListView
-            android:id="@+id/ListComentarios"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginTop="19dp"
-            android:layout_below="@+id/ListNotas"
-            android:layout_alignParentStart="true" />
-
-        <ListView
-            android:id="@+id/ListEvaluar"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/ListComentarios"
-            android:layout_marginTop="35dp" />
-
-        <EditText
-            android:id="@+id/Comentario_Agregar"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/ListEvaluar"
-            android:layout_marginTop="5dp"
-            android:text="TextView" />
+            android:scaleY="0.7"
+            android:layout_alignBottom="@+id/Tipo"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </ScrollView>

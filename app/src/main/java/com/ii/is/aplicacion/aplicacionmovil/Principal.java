@@ -51,6 +51,7 @@ public class Principal extends AppCompatActivity implements OnClickListener{
         user = (String) bundle.get("USER");
         turista = (int) bundle.get("TIPO");
         nombre = (String) bundle.get("NOMBRE");
+        Log.e("redirect",nombre);
         Buscar = (Button) findViewById(R.id.Buscar);
         lugares = (Button) findViewById(R.id.Lugares);
         itinerarios = (Button) findViewById(R.id.Itinerarios);
@@ -77,6 +78,7 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 button_uno.putExtra("NOMBRE",v.getText());
                 button_uno.putExtra("CREADOR",vector_itiner.elementAt(position).getPoseedor());
                 button_uno.putExtra("TEMPORADA",vector_itiner.elementAt(position).getTemporada());
+                button_uno.putExtra("USUARIO",nombre);
                 startActivity(button_uno);
             }
         });
@@ -87,6 +89,7 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 button_uno.putExtra("TIPO",buscar);
                 button_uno.putExtra("editable",1);
                 button_uno.putExtra("nombre",v.getText());
+                button_uno.putExtra("USUARIO",nombre);
                 startActivity(button_uno);
             }
         });

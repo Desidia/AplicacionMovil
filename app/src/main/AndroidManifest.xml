@@ -32,7 +32,8 @@
         <activity android:name=".Empresario_vista" />
         <activity android:name=".CrearPropiedad" />
         <activity android:name=".DetalleItinerario" />
-        <activity android:name=".CrearItinerario"></activity>
+        <activity android:name=".CrearItinerario" />
+        <activity android:name=".ModificarDetalle"></activity>
     </application>
 
 </manifest>
