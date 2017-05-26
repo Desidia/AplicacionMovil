@@ -61,7 +61,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         Detalle = (TextView)findViewById(R.id.Descripcion);
         NuevoComentario = (EditText) findViewById(R.id.Comentario_Agregar);
         Guardar = (Button)findViewById(R.id.Guardar);
-        RB = (RatingBar)findViewById(R.id.Nota);
+        RB = (RatingBar)findViewById(R.id.NotaGeneral);
         Tipo = (EditText)findViewById(R.id.Tipo);
         Comentar = (Button) findViewById(R.id.Comentar);
         Comentar.setOnClickListener(this);
@@ -131,12 +131,14 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     public void agregarSN(String s){
         Servicios.add(s);
     }
-    public void setDatos(String disponibilidad,String comuna, String direccion, String telefono,String Comentario){
+    public void setDatos(String disponibilidad,String comuna, String direccion, String telefono,String Comentario,int datos){
         Disponibilidad.setText(disponibilidad);
         Comuna.setText(comuna);
         Direccion.setText(direccion);
         Telefono.setText(telefono);
         Detalle.setText(Comentario);
+        RB.setIsIndicator(true);
+        RB.setRating(datos);
         iniciarComentarios();
     }
     public void iniciarComentarios(){
@@ -178,19 +180,22 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         SerNota = new Servicio_Nota[Servicios.size()];
         Servicio_Nota SerNota2[] = new Servicio_Nota[Servicios.size()];
         for(int j = 0; j < Servicios.size();j++) {
-            double sum = 0.0;
-            double cant = 0.0;
+            int sum = 0;
+            int cant = 0;
             for (int i = 0; i < Evaluaciones.size(); i++) {
-                if(Evaluaciones.elementAt(i).getLugar().equalsIgnoreCase(Servicios.elementAt(j))){
+                Log.e("redirect",Evaluaciones.elementAt(i).getLugar().toString());
+                Log.e("redirect",Servicios.elementAt(j).toString());
+                if(Evaluaciones.elementAt(i).getTipo_servicio().toString().equalsIgnoreCase(Servicios.elementAt(j).toString())){
                     sum+=Evaluaciones.elementAt(i).getNota();
                     cant++;
                 }
             }
             SerNota[j] = new Servicio_Nota();
             SerNota2[j] = new Servicio_Nota();
-            SerNota[j].setNota(sum/cant);
+            if(cant != 0)SerNota[j].setNota(sum/cant);
             SerNota[j].setServicio(Servicios.elementAt(j));
             SerNota2[j].setServicio(Servicios.elementAt(j));
+            Toast.makeText(getApplicationContext(), "Nota servicio : " + Servicios.elementAt(j) + "  : "+ sum, Toast.LENGTH_SHORT).show();
         }
 
          adapter = new Servicio_NotaAdapter(this,R.layout.notaservicio,SerNota);

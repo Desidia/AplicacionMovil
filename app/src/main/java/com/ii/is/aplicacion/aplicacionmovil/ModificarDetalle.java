@@ -42,7 +42,7 @@ public class ModificarDetalle extends AppCompatActivity implements View.OnClickL
         Detalle = (TextView)findViewById(R.id.Descripcion);
         NuevoComentario = (EditText) findViewById(R.id.Comentario_Agregar);
         Guardar = (Button)findViewById(R.id.Guardar);
-        RB = (RatingBar)findViewById(R.id.Nota);
+        RB = (RatingBar)findViewById(R.id.NotaGeneral);
         Tipo = (EditText)findViewById(R.id.Tipo);
         Comentar = (Button) findViewById(R.id.Comentar);
         Guardar.setOnClickListener(this);
@@ -63,12 +63,14 @@ public class ModificarDetalle extends AppCompatActivity implements View.OnClickL
         CB.setCategoria(tipo);
         CB.ejecutar();
     }
-    public void setDatos(String disponibilidad,String comuna, String direccion, String telefono,String Comentario){
+    public void setDatos(String disponibilidad,String comuna, String direccion, String telefono,String Comentario,int datos){
         Disponibilidad.setText(disponibilidad);
         Comuna.setText(comuna);
         Direccion.setText(direccion);
         Telefono.setText(telefono);
         Detalle.setText(Comentario);
+        RB.setIsIndicator(true);
+        RB.setRating(datos);
     }
     public void onClick(View v) {
         switch(v.getId()){

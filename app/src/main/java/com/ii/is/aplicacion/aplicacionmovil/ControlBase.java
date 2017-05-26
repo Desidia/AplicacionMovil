@@ -996,7 +996,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             principal.desplegar();
             break;
         case 5:
-            Detalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle());
+            Detalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle(),agregar.getpromediolugar());
             break;
         case 6:
             Empresario.ordenar();
@@ -1042,13 +1042,13 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             Detalle.generarOpiniones();
             break;
         case 22:
-            Detalle.iniciarComentarios();
+            Detalle.crearEvaluacion();
             break;
         case 23:
-            modificardetalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle());
+            modificardetalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle(),agregar.getpromediolugar());
 break;
         case 25:
-            Detalle.crearOpinion();
+            Detalle.iniciarComentarios();
             break;
         default:
             break;
