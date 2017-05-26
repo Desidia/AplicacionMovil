@@ -13,7 +13,7 @@ import java.util.Vector;
 public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Connection c;
     private Statement stmt;
-    private String nombre,direccion,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
+    private String  lugar,nombre,direccion,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
     private Login login;
     private int tipo,posicion,nota;
     private int estado;
@@ -98,6 +98,14 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
 
     public int getNota() {
         return nota;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
     public void setNota(int nota) {
@@ -965,6 +973,37 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                             c.close();
                         }
                         break;
+                    case 26:
+                        query = "SELECT DISTINCT U.tipo as tipo  FROM gratificante2.servicio as U;";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            CrearPro.agregarS(rs.getString("tipo"));
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 27:
+                        query = "insert into gratificante2.servicio(tipo,acceso,lugar,direccion,comuna) values('"+tipo_actividad+"','Privado','"+lugar+"','"+direccion + "','"+comuna+"');";
+
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -1050,6 +1089,8 @@ break;
         case 25:
             Detalle.iniciarComentarios();
             break;
+        case 26:
+            CrearPro.actualizarS();
         default:
             break;
     }

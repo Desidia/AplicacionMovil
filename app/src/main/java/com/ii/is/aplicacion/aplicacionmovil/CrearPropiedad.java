@@ -3,7 +3,6 @@ package com.ii.is.aplicacion.aplicacionmovil;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +18,13 @@ import java.util.Vector;
 
 public class CrearPropiedad extends AppCompatActivity implements View.OnClickListener {
 
-    private String Rut,Tipo,Comuna,nombre;
+    private String Rut,Tipo,Comuna,nombre,Ser;
     private Button Crear,añadir;
-    private Spinner tipo,comuna;
+    private Spinner tipo,comuna,services;
     private EditText Nombre,Contacto,Disponibilidad,comentario,Direccion;
     private List busqueda = new ArrayList();
     private List ciudad = new ArrayList();
+    private List Serv = new ArrayList();
     private ListView servicios;
     private ControlBase CB;
     private String[] elementos;
@@ -40,7 +39,7 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         nombre = (String) bundle.get("NOMBRE");
         Crear = (Button)findViewById(R.id.Crea);
         añadir = (Button)findViewById(R.id.Añade);
-        tipo = (Spinner)findViewById(R.id.TipoActividad);
+        tipo = (Spinner)findViewById(R.id.TipoActivida);
         comuna = (Spinner)findViewById(R.id.Comuna);
         Nombre = (EditText)findViewById(R.id.Nombre);
         Contacto = (EditText)findViewById(R.id.Contacto);
@@ -48,6 +47,7 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         Disponibilidad = (EditText)findViewById(R.id.Disponibilidad);
         comentario = (EditText)findViewById(R.id.Comentario);
         servicios = (ListView)findViewById(R.id.ListServicios);
+        services = (Spinner)findViewById(R.id.Servicios);
         elements = new Vector<String>();
         CB = new ControlBase(this);
         busqueda.clear();
@@ -55,6 +55,9 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         CB.ejecutar();
         CB = new ControlBase(this);
         CB.setTipo(8);
+        CB.ejecutar();
+        CB = new ControlBase(this);
+        CB.setTipo(26);
         CB.ejecutar();
         Crear.setOnClickListener(this);
         añadir.setOnClickListener(this);
@@ -78,11 +81,30 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
+    public void agregarS(String agregar){
+    Serv.add(agregar);
+    }
     public void AgregarSet(String agregar){
         busqueda.add(agregar);
     }
     public void AgregarC(String agregar){
         ciudad.add(agregar);
+    }
+    public  void actualizarS(){
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,Serv);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        services.setAdapter(arrayAdapter);
+        services.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Ser =  services.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
     public void actualizar(){
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,busqueda);
@@ -118,8 +140,8 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         });
     }
     public void comprobar(){
-        if(!elements.contains(Tipo)){
-            elements.add(Tipo);
+        if(!elements.contains(Ser)){
+            elements.add(Ser);
             elementos = new String[elements.size()];
             for(int i = 0; i < elements.size();i++)elementos[i] = elements.elementAt(i);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,elementos);
@@ -130,17 +152,24 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.Crea:
-                for(int i = 0; i < elements.size(); i++) {
                     CB = new ControlBase(this);
                     CB.setTipo(9);
                     CB.setRut(Rut);
                     CB.setNombrelugar(Nombre.getText().toString());
-                    CB.setActividad(elements.elementAt(i));
+                    CB.setActividad(Tipo);
                     CB.setComentario(comentario.getText().toString());
                     CB.setComuna(comuna.getSelectedItem().toString());
                     CB.setContacto(Contacto.getText().toString());
                     CB.setDisponibilidad(Disponibilidad.getText().toString());
                     CB.setUbicacion(Direccion.getText().toString());
+                    CB.ejecutar();
+                for(int i = 0; i < elements.size(); i++) {
+                    CB = new ControlBase(this);
+                    CB.setTipo(27);
+                    CB.setTipo_actividad(elements.elementAt(i));
+                    CB.setLugar(Nombre.getText().toString());
+                    CB.setDireccion(Direccion.getText().toString());
+                    CB.setComuna(comuna.getSelectedItem().toString());
                     CB.ejecutar();
                 }
                 break;
