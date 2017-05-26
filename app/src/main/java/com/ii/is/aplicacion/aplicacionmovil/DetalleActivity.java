@@ -215,6 +215,8 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             CB.setComuna(Comuna.getText().toString());
             CB.setDireccion(Direccion.getText().toString());
             CB.setTipo(25);
+            int basura = 0;
+            for(int i = 0; i < 1000000000;i++)basura++;
             System.out.println("Ejecutare caso 25 ");
             for (int i = 0; i < adapter2.getCount(); i++) {
                 CB.addNotita((int) adapter2.getNota2(i));
