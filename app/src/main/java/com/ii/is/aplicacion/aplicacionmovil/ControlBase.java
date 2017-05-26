@@ -29,6 +29,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private  ModificarDetalle modificardetalle;
     ResultSet rs;
     private Vector <Lista> mylista;
+    private Vector <String> tipos = new Vector<String>();
+    private  Vector notitas = new Vector();
     public ControlBase(DetalleItinerario detalle){
         c = null;
         stmt = null;
@@ -101,7 +103,10 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     public void setNota(int nota) {
         this.nota = nota;
     }
-
+    public  void addNotita(int t){notitas.add(t);}
+    public void addTipos(String s){
+        tipos.add(s);
+    }
     public void setTemporada(String c){temporada = c;}
     public  void setId(String c){id = c;}
     public void setPoseedor(String c){poseedor = c;}
@@ -943,6 +948,23 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 25:
+                        for(int i = 0; i < notitas.size();i++) {
+                            int agregarputanota= (int) notitas.elementAt(i);
+                            query = "insert into gratificante2.evaluacion(nota,comentario,usuario,lugar,comuna,direccion,tipo_servicio) values('" + agregarputanota + "','"
+                                    + comentario + "','" + usuario + "','" + lugar_actividad + "','" + comuna + "','" + direccion + "','" + tipos.elementAt(i) + "');";
+                            c = DriverManager
+                                    .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                            "UbdIc", "udb2016c");
+                            c.setAutoCommit(false);
+                            System.out.println("Opened database successfully");
+                            stmt = c.createStatement();
+                            stmt.executeUpdate(query);
+                            stmt.close();
+                            c.commit();
+                            c.close();
+                        }
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -1025,6 +1047,9 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         case 23:
             modificardetalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle());
 break;
+        case 25:
+            Detalle.crearOpinion();
+            break;
         default:
             break;
     }

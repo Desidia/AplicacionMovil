@@ -32,6 +32,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private Servicio_NotaAdapter adapter;
     private Servicio_NotaAdapter2 adapter2;
     private OpinionAdapter adapter3;
+    private Boolean creeunaOp = false,romper = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
@@ -171,6 +172,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         Evaluaciones.clear();
         Opiniones.clear();
         Servicios.clear();
+        if(creeunaOp)crearEvaluacion();
     }
     public void crearServicio_Nota(){
         SerNota = new Servicio_Nota[Servicios.size()];
@@ -198,6 +200,46 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         AgregarNota.setAdapter(adapter2);
         ListaOpiniones();
     }
+    public void crearEvaluacion(){
+        if(!romper) {
+            CB = new ControlBase(this);
+            Log.e("redirect", usuario);
+            CB.setUsuario(usuario);
+            CB.setComentario(NuevoComentario.getText().toString());
+            CB.setLugar_actividad(Titulo.getText().toString());
+            CB.setComuna(Comuna.getText().toString());
+            CB.setDireccion(Direccion.getText().toString());
+            CB.setTipo(25);
+            System.out.println("Ejecutare caso 25 ");
+            for (int i = 0; i < adapter2.getCount(); i++) {
+                CB.addNotita((int) adapter2.getNota2(i));
+                CB.addTipos(SerNota[i].getServicio());
+            }
+            romper = true;
+            CB.ejecutar();
+        }
+    }
+    public  void crearOpinion(){
+        if(!romper) {
+            CB = new ControlBase(this);
+            Log.e("redirect", usuario);
+            CB.setUsuario(usuario);
+            CB.setComentario(NuevoComentario.getText().toString());
+            CB.setLugar_actividad(Titulo.getText().toString());
+            CB.setComuna(Comuna.getText().toString());
+            CB.setDireccion(Direccion.getText().toString());
+            CB.setTipo(22);
+            System.out.println("Ejecutare caso 22 ");
+            float suma = 0;
+            for (int i = 0; i < adapter2.getCount(); i++) {
+                suma += adapter2.getNota2(i);
+            }
+            Toast.makeText(getApplicationContext(), "suma: " + (int)suma, Toast.LENGTH_SHORT).show();
+            if (adapter2.getCount() != 0) suma /= adapter2.getCount();
+            CB.setNota((int) suma);
+            CB.ejecutar();
+        }
+    }
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -213,23 +255,10 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
                 CB.ejecutar();
                 break;
             case R.id.Comentar:
-                CB = new ControlBase(this);
-                Log.e("redirect",usuario);
-                CB.setUsuario(usuario);
-                CB.setComentario(NuevoComentario.getText().toString());
-                CB.setLugar_actividad(Titulo.getText().toString());
-                CB.setComuna(Comuna.getText().toString());
-                CB.setDireccion(Direccion.getText().toString());
-                CB.setTipo(22);
-                System.out.println("Ejecutare caso 22 ");
-                float suma = 0;
-                for(int i = 0; i < adapter2.getCount();i++ ){
-                    suma+=adapter2.getNota2(i);
+                if(!creeunaOp) {
+                    creeunaOp = true;
+                    crearOpinion();
                 }
-                Toast.makeText(getApplicationContext(),"suma: " + suma, Toast.LENGTH_SHORT).show();
-                if(adapter2.getCount() != 0)suma/=adapter2.getCount();
-                CB.setNota((int)suma);
-                CB.ejecutar();
                 break;
             default:
                 break;
