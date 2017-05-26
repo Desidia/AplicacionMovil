@@ -72,6 +72,9 @@ public class ModificarDetalle extends AppCompatActivity implements View.OnClickL
         RB.setIsIndicator(true);
         RB.setRating(datos);
     }
+    public void confirmar(){
+        Toast.makeText(getApplicationContext(),"Modificacion guardada", Toast.LENGTH_LONG).show();
+    }
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.Guardar:

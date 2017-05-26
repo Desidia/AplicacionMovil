@@ -1071,12 +1071,14 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         case 17:
             crearItinerario.creaactividades();
             break;
+        case 18:
+            crearItinerario.confirmar();
         case 19:
             Detalle.evaluaciones();
             break;
         case 20:
             Detalle.crearServicio_Nota();
-        break;
+             break;
         case 21:
             Detalle.generarOpiniones();
             break;
@@ -1085,12 +1087,19 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 23:
             modificardetalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle(),agregar.getpromediolugar());
-break;
+            break;
+        case 24:
+            modificardetalle.confirmar();
+            break;
         case 25:
             Detalle.iniciarComentarios();
             break;
         case 26:
             CrearPro.actualizarS();
+            break;
+        case 27:
+            CrearPro.confirmar();
+            break;
         default:
             break;
     }

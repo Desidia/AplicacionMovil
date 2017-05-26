@@ -142,6 +142,9 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         Log.e("redirect","Rellenare con actividades");
         CB.ejecutar();
     }
+    public void confirmar(){
+        Toast.makeText(getApplicationContext(),"Itinerario Creado", Toast.LENGTH_LONG).show();
+    }
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.AgregarActividad:

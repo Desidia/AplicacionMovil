@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.Vector;
 public class DetalleActivity extends AppCompatActivity implements View.OnClickListener{
     private ControlBase CB;
@@ -33,6 +37,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private Servicio_NotaAdapter2 adapter2;
     private OpinionAdapter adapter3;
     private Boolean creeunaOp = false,romper = false;
+    private ImageView imagen;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
@@ -68,6 +73,12 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         Guardar.setOnClickListener(this);
         Titulo.setText(nombre);
         Tipo.setText(tipo);
+
+        String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
+        ImageView ivBasicImage = (ImageView) findViewById(R.id.ivBasicImage);
+        Picasso.with(this).load(imageUri).resize(145, 145).
+                centerCrop().into(ivBasicImage);
+
         Notas.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -215,8 +226,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             CB.setComuna(Comuna.getText().toString());
             CB.setDireccion(Direccion.getText().toString());
             CB.setTipo(25);
-            int basura = 0;
-            for(int i = 0; i < 1000000000;i++)basura++;
             System.out.println("Ejecutare caso 25 ");
             for (int i = 0; i < adapter2.getCount(); i++) {
                 CB.addNotita((int) adapter2.getNota2(i));
@@ -241,10 +250,12 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             for (int i = 0; i < adapter2.getCount(); i++) {
                 suma += adapter2.getNota2(i);
             }
-            Toast.makeText(getApplicationContext(), "suma: " + (int)suma, Toast.LENGTH_SHORT).show();
             if (adapter2.getCount() != 0) suma /= adapter2.getCount();
             CB.setNota((int) suma);
             CB.ejecutar();
+        }
+        else{
+                Toast.makeText(getApplicationContext(),"Comentario agregado con exito", Toast.LENGTH_LONG).show();
         }
     }
     @Override

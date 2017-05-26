@@ -70,16 +70,16 @@
             android:id="@+id/Disponibilidad"
             android:layout_width="160dp"
             android:layout_height="36dp"
-            android:layout_above="@+id/imageView2"
+            android:layout_above="@+id/ivBasicImage"
             android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/ivBasicImage"
             android:ems="10"
             android:hint="Disponibilidad"
             android:inputType="textPersonName"
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivBasicImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/Telefono"
@@ -91,10 +91,10 @@
             android:id="@+id/Descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignBottom="@+id/ivBasicImage"
             android:layout_alignEnd="@+id/Disponibilidad"
             android:layout_alignStart="@+id/Disponibilidad"
-            android:layout_alignTop="@+id/imageView2"
+            android:layout_alignTop="@+id/ivBasicImage"
             android:text="TextView" />
 
         <Button
@@ -110,7 +110,7 @@
             android:layout_width="135dp"
             android:layout_height="36dp"
             android:layout_above="@+id/Descripcion"
-            android:layout_alignStart="@+id/imageView2"
+            android:layout_alignStart="@+id/ivBasicImage"
             android:layout_marginBottom="14dp"
             android:hint="Tipo"
             android:textSize="14sp" />

@@ -94,10 +94,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             button_uno.putExtra("USER",User.getrut());
             button_uno.putExtra("NOMBRE",User.getnombre());
             startActivity(button_uno);
-            Toast.makeText(getApplicationContext(),"Conecte de manera correcta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Conecte de manera correcta", Toast.LENGTH_LONG).show();
         }
         else {
-            Toast.makeText(getApplicationContext(),"Error en usuario o contraseña", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Error en usuario o contraseña", Toast.LENGTH_LONG).show();
         }
     }
 }

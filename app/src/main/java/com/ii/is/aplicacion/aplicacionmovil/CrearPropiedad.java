@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,6 +148,9 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,elementos);
             servicios.setAdapter(adapter);
         }
+    }
+    public void confirmar(){
+        Toast.makeText(getApplicationContext(),"Propiedad creada", Toast.LENGTH_LONG).show();
     }
     @Override
     public void onClick(View v) {

@@ -138,7 +138,6 @@ public class Principal extends AppCompatActivity implements OnClickListener{
 
     public void desplegar2(){
         lista_itinerarios = new Itinerario[vector_itiner.size()];
-        Toast.makeText(getApplicationContext(),"tamaño: " + vector_itiner.size(), Toast.LENGTH_SHORT).show();
         for(int i = 0; i < vector_itiner.size();i++){
             lista_itinerarios[i] = vector_itiner.elementAt(i);
         }
