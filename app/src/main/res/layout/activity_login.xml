@@ -1,94 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ii.is.aplicacion.aplicacionmovil.Login"
+    android:background="@color/backGroundApp"
     tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="389dp"
-        android:layout_height="538dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_weight="0.55">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/araucaria"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="5dp">
+        tools:layout_editor_absoluteY="5dp"
+        android:layout_weight="0.45">
 
         <EditText
             android:id="@+id/User"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="39dp"
-            android:editable="true"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/white"
             android:ems="10"
+            android:gravity="center"
             android:hint="Usuario"
             android:inputType="textPersonName"
             app:layout_constraintTop_toBottomOf="@+id/Pass"
-            tools:layout_editor_absoluteX="85dp"
-            android:layout_above="@+id/Pass"
-            android:layout_alignStart="@+id/Pass" />
+            tools:layout_editor_absoluteX="85dp" />
 
         <EditText
             android:id="@+id/Pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
-            android:editable="true"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/User"
+            android:layout_below="@+id/User"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
             android:ems="10"
+            android:gravity="center"
             android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_above="@+id/radioGroup"
-            android:layout_centerHorizontal="true" />
+            android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/Entrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_weight="1"
-            android:contextClickable="true"
-            android:cursorVisible="true"
-            android:text="Entrar"
-            tools:layout_editor_absoluteX="143dp"
-            tools:layout_editor_absoluteY="566dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="103dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
             android:layout_centerInParent="false"
             android:clickable="true"
             android:contextClickable="true"
             android:keepScreenOn="false"
             tools:layout_editor_absoluteX="118dp"
             tools:layout_editor_absoluteY="276dp"
-            android:layout_marginBottom="38dp"
-            android:layout_above="@+id/Entrar"
-            android:layout_alignEnd="@+id/Entrar">
+            android:layout_alignStart="@+id/Pass"
+            android:layout_below="@+id/Pass"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
-            <RadioButton
-                android:id="@+id/Turista"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
-                android:layout_above="@+id/Entrar"
-                android:layout_alignStart="@+id/Pass"
-                android:checked="false"
-                android:contextClickable="true"
-                android:cursorVisible="true"
-                android:text="Turista" />
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.5"
+                android:gravity="center|center_vertical">
 
-            <RadioButton
-                android:id="@+id/Empresario"
-                android:layout_width="124dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/Entrar"
-                android:layout_alignStart="@+id/radioGroup"
-                android:contextClickable="true"
-                android:cursorVisible="true"
-                android:text="Empresario" />
+                <RadioButton
+                    android:id="@+id/RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:checked="true"
+                    android:contextClickable="true"
+                    android:cursorVisible="true"
+                    android:text="Turista" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.35"
+                android:gravity="center|center_vertical">
+
+                <RadioButton
+                    android:id="@+id/Empresario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contextClickable="true"
+                    android:cursorVisible="true"
+                    android:text="Empresario" />
+            </RelativeLayout>
+
         </RadioGroup>
+
+
+        <Button
+            android:id="@+id/Entrar"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_alignStart="@+id/radioGroup"
+            android:layout_below="@+id/radioGroup"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:contextClickable="true"
+            android:cursorVisible="true"
+            android:background="@color/BlueButtonLogin"
+            android:text="Entrar"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="143dp"
+            tools:layout_editor_absoluteY="566dp"/>
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout >
