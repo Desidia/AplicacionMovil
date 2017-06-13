@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/backGroundApp"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bMisLugares"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/DarkBlueMiLugar"
+                android:drawableLeft="@drawable/mislugaresButton"
+                android:text="MIS LUGARES"
+                android:textColor="@color/LightBlueMiLugar"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bLugares"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/DarkBlueLugar"
+                android:drawableLeft="@drawable/lugaresButton"
+                android:text="LUGARES"
+                android:textColor="@color/LightBlueLugar"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bServicios"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/DarkRedServicio"
+                android:drawableLeft="@drawable/serviciosButton"
+                android:text="SERVICIOS"
+                android:textColor="@color/LightRedServicio"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bItinerarios"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/DarkGreenItinerario"
+                android:drawableLeft="@drawable/itinerariosButton"
+                android:text="ITINERARIOS"
+                android:textColor="@color/LightGreenItinerario"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bMarcadores"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/LightYellowMarcador"
+                android:drawableLeft="@drawable/marcadoresButton"
+                android:text="MARCADORES"
+                android:textColor="@color/DarkYellowMarcador"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bPromociones"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/DarkPurplePromocion"
+                android:drawableLeft="@drawable/promocionesButton"
+                android:text="PROMOCIONES"
+                android:textColor="@color/LightPurplePromocion"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
