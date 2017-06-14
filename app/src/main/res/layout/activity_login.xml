@@ -87,7 +87,7 @@
                 android:gravity="center|center_vertical">
 
                 <RadioButton
-                    android:id="@+id/RadioButton"
+                    android:id="@+id/Turista"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:checked="true"
