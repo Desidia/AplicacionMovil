@@ -23,7 +23,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/DarkBlueMiLugar"
-                android:drawableLeft="@drawable/mislugaresButton"
+                android:drawableLeft="@drawable/mislugares_button"
                 android:text="MIS LUGARES"
                 android:textColor="@color/LightBlueMiLugar"
                 android:textSize="24sp" />
@@ -36,7 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/DarkBlueLugar"
-                android:drawableLeft="@drawable/lugaresButton"
+                android:drawableLeft="@drawable/lugares_button"
                 android:text="LUGARES"
                 android:textColor="@color/LightBlueLugar"
                 android:textSize="24sp" />
@@ -49,7 +49,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/DarkRedServicio"
-                android:drawableLeft="@drawable/serviciosButton"
+                android:drawableLeft="@drawable/servicios_button"
                 android:text="SERVICIOS"
                 android:textColor="@color/LightRedServicio"
                 android:textSize="24sp" />
@@ -62,7 +62,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/DarkGreenItinerario"
-                android:drawableLeft="@drawable/itinerariosButton"
+                android:drawableLeft="@drawable/itinerarios_button"
                 android:text="ITINERARIOS"
                 android:textColor="@color/LightGreenItinerario"
                 android:textSize="24sp" />
@@ -75,7 +75,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@color/LightYellowMarcador"
-                android:drawableLeft="@drawable/marcadoresButton"
+                android:drawableLeft="@drawable/marcadores_button"
                 android:text="MARCADORES"
                 android:textColor="@color/DarkYellowMarcador"
                 android:textSize="24sp" />
@@ -89,7 +89,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@color/DarkPurplePromocion"
-                android:drawableLeft="@drawable/promocionesButton"
+                android:drawableLeft="@drawable/promociones_button"
                 android:text="PROMOCIONES"
                 android:textColor="@color/LightPurplePromocion"
                 android:textSize="24sp" />
