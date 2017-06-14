@@ -30,7 +30,7 @@ public class ItinerarioAdapter extends ArrayAdapter<Itinerario>{
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(LayoutId,parent,false);
             holder = new ItinerarioAdapter.ItinerHolder();
-          //  holder.RT = (RatingBar) row.findViewById(R.id.RBAct);
+            //  holder.RT = (RatingBar) row.findViewById(R.id.RBAct);
             holder.Descripcion = (TextView)row.findViewById(R.id.NombreAct);
             row.setTag(holder);
         }
@@ -45,6 +45,6 @@ public class ItinerarioAdapter extends ArrayAdapter<Itinerario>{
 
     static class ItinerHolder{
         TextView Descripcion;
-      //  RatingBar RT;
+        //  RatingBar RT;
     }
 }
