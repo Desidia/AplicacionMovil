@@ -8,33 +8,44 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.7"
+        android:layout_height="150dp"
+        android:orientation="vertical"
         android:gravity="center_horizontal">
 
         <RelativeLayout
+            android:id="@+id/titleLayout"
             android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/relativeLayout">
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="44dp"
-                android:text="LUGARES"
-                android:textColor="@color/DarkBlueLugar"
-                android:textSize="24sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true" />
+            android:layout_height="80dp">
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/lugares_button" />
+                app:srcCompat="@drawable/lugares_button_dark" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="34dp"
+                android:text="LUGARES"
+                android:textColor="@color/DarkBlueLugar"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
         </RelativeLayout>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/titleLayout"
+            android:layout_marginTop="6dp"
+            android:dropDownSelector="@color/LightBlueLugar"
+            android:textAlignment="center" />
 
     </RelativeLayout>
 
@@ -43,5 +54,78 @@
         android:layout_height="match_parent"
         android:layout_weight="0.3">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:background="@color/DarkBlueLugar">
+
+                    <ImageView
+                        android:id="@+id/imgLugar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/white"
+                        app:srcCompat="@drawable/place" />
+
+                    <RelativeLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignTop="@+id/imgLugar"
+                        android:layout_toEndOf="@+id/imgLugar"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="NOMBRE"
+                            android:textColor="@color/LightBlueLugar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Localidad"
+                            android:textColor="@color/LightBlueLugar"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginBottom="42dp" />
+
+                        <TextView
+                            android:id="@+id/season"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Temporada"
+                            android:textColor="@color/LightBlueLugar"
+                            android:layout_alignTop="@+id/location"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="17dp" />
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </LinearLayout>
