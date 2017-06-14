@@ -23,21 +23,22 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="\nITINERARIOS"
+        android:text="ITINERARIOS"
         android:textAppearance="@android:style/TextAppearance.Large"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#4CB944"
         android:textIsSelectable="false"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_above="@+id/button2"
+        android:layout_toEndOf="@+id/imageView4"
+        android:layout_marginBottom="33dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cear Itinerario   +"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:textColor="@color/colorPrimary"
 
@@ -56,7 +57,7 @@
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:scrollHorizontally="false"
-        android:text="TextView"
+        android:text="Imagen de rutas"
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:visibility="visible"
