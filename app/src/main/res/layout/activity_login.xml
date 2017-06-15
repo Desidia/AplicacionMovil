@@ -79,39 +79,23 @@
             android:orientation="horizontal"
             android:layout_marginTop="12dp">
 
-            <RelativeLayout
+            <RadioButton
+                android:id="@+id/Turista"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="left"
                 android:layout_weight="0.5"
-                android:gravity="center|center_vertical">
+                android:checked="true"
+                android:contextClickable="true"
+                android:cursorVisible="true"
+                android:text="Turista" />
 
-                <RadioButton
-                    android:id="@+id/Turista"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checked="true"
-                    android:contextClickable="true"
-                    android:cursorVisible="true"
-                    android:text="Turista" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/Empresario"
+                android:layout_width="105dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:layout_weight="0.35"
-                android:gravity="center|center_vertical">
-
-                <RadioButton
-                    android:id="@+id/Empresario"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contextClickable="true"
-                    android:cursorVisible="true"
-                    android:text="Empresario" />
-            </RelativeLayout>
+                android:contextClickable="true"
+                android:cursorVisible="true"
+                android:text="Empresario" />
 
         </RadioGroup>
 
