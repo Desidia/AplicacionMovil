@@ -115,7 +115,7 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
             }
         });
 
-    entro = false;
+        entro = false;
         this.rellenar();
     }
     public void rellenar(){
@@ -131,7 +131,7 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
                     auxiliar = services.elementAt(j);
                     services.set(j,services.elementAt(i));
                     services.set(i,auxiliar);
-            }
+                }
             }
         }
     }
@@ -148,7 +148,7 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
         lista_lugares = new Lugares[services.size()];
         Toast.makeText(getApplicationContext(),"tamaño: " + services.size(), Toast.LENGTH_SHORT).show();
         for(int i = 0; i < services.size();i++){
-           lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad());
+            lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad());
         }
         LugaresAdapter adapter = new LugaresAdapter(this,R.layout.list,lista_lugares);
         View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
@@ -163,10 +163,10 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
             lista_itinerarios[i] = vector_itiner.elementAt(i);
         }
         ItinerarioAdapter adapter = new ItinerarioAdapter(this,R.layout.listaitinerarios,lista_itinerarios);
-       // View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
-       // if(!entro)lista.addHeaderView(header);
+        // View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
+        // if(!entro)lista.addHeaderView(header);
         listaItiner.setAdapter(adapter);
-   //     entro = true;
+        //     entro = true;
     }
 
     public void actualizar(){

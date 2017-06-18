@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#4cb944</color>
+    <color name="colorPrimaryDark">#addfaa</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="backGroundApp">#f3f3f3</color>
+    <color name="BlueButtonLogin">#0079f3</color>
+
+    <color name="DarkBlueMiLugar">#42cafd</color>
+    <color name="LightBlueMiLugar">#cbf0fe</color>
+
+    <color name="DarkBlueLugar">#246eb9</color>
+    <color name="LightBlueLugar">#afcae5</color>
+
+    <color name="DarkRedServicio">#d45113</color>
+    <color name="LightRedServicio">#efbfa9</color>
+
+    <color name="DarkGreenItinerario">#4cb944</color>
+    <color name="LightGreenItinerario">#addfaa</color>
+
+    <color name="DarkYellowMarcador">#8c7e2a</color>
+    <color name="LightYellowMarcador">#ffe74c</color>
+
+    <color name="DarkPurplePromocion">#6e2594</color>
+    <color name="LightPurplePromocion">#caafd8</color>
 </resources>

@@ -9,45 +9,74 @@
     tools:layout_editor_absoluteX="0dp">
 
     <RelativeLayout
-        android:layout_width="371dp"
-        android:layout_height="499dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="4dp">
+        android:layout_width="385dp"
+        android:layout_height="511dp"
+        android:background="#F3F3F3"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="-4dp">
 
         <ListView
             android:id="@+id/Lista"
             android:layout_width="301dp"
             android:layout_height="346dp"
-            tools:layout_editor_absoluteX="-768dp"
-            tools:layout_editor_absoluteY="209dp"
-            android:layout_below="@+id/Lugares"
+            android:layout_below="@+id/Crear"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="22dp" />
+            android:layout_marginTop="22dp"
+            android:background="#42CAFD"
+            android:divider="@drawable/divider"
+            tools:layout_editor_absoluteX="-768dp"
+            tools:layout_editor_absoluteY="209dp" />
 
         <Button
             android:id="@+id/Lugares"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/imageView2"
+            android:layout_below="@+id/textView7"
+            android:backgroundTint="#CBF0FE"
             android:text="Mis lugares"
+            android:textColor="#42CAFD"
+            android:textSize="20dp"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="16dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="48dp" />
+            android:layout_alignEnd="@+id/Lista" />
 
         <Button
             android:id="@+id/Crear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/Lugares"
+            android:layout_below="@+id/Lugares"
+            android:backgroundTint="#CBF0FE"
             android:elevation="1dp"
-            android:text="Crear lugar"
+            android:text="AÑADIR LUGAR             +"
+            android:textColor="#42CAFD"
+            android:textSize="20dp"
             tools:layout_editor_absoluteX="198dp"
             tools:layout_editor_absoluteY="16dp"
-            android:layout_alignBaseline="@+id/Lugares"
-            android:layout_alignBottom="@+id/Lugares"
-            android:layout_toEndOf="@+id/Lugares"
-            android:layout_marginStart="33dp" />
+            android:layout_alignEnd="@+id/Lugares" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="21dp"
+            android:text="MIS LUGARES"
+            android:textColor="#42CAFD"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2"
+            android:layout_marginStart="23dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/Lista"
+            android:visibility="visible"
+            app:srcCompat="@drawable/imagen_mis_lugares" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
