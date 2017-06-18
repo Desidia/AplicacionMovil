@@ -1,9 +1,11 @@
 package com.ii.is.aplicacion.aplicacionmovil;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class Principal extends AppCompatActivity implements OnClickListener{
+public class Principal extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener{
 
     private String user,buscar,nombre;
     private int tipo = 0,turista;
@@ -32,19 +34,23 @@ public class Principal extends AppCompatActivity implements OnClickListener{
     private Spinner opcion;
     private ControlBase CB;
     private List busqueda = new ArrayList();
-    private ListView lista,listaItiner;
+    private ListView lista,listaItiner,lateral;
     private Lugares lista_lugares[];
     private Itinerario lista_itinerarios[];
     private Vector<Lugar> services;
+    private Vector<String> prueba;
     private Vector<Itinerario>vector_itiner;
     private ViewSwitcher VS;
+    private DrawerLayout mDrawer;
     private boolean entro,cambio = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         CB = new ControlBase(this);
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_principal);
         vector_itiner = new Vector<Itinerario>();
         services = new Vector<Lugar>();
+        prueba = new Vector<String>();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         VS = (ViewSwitcher)findViewById(R.id.Switch);
@@ -69,7 +75,20 @@ public class Principal extends AppCompatActivity implements OnClickListener{
         if (turista == 1) propios.setVisibility(View.INVISIBLE);
         lista = (ListView) findViewById(R.id.Lista);
         crear.setVisibility(View.INVISIBLE);
-
+        lateral = (ListView)findViewById(R.id.left_drawer);
+        ArrayList<DrawerItemPrincipal> items = new ArrayList<DrawerItemPrincipal>();
+        if(turista != 1){
+            items.add(new DrawerItemPrincipal("0",R.drawable.propios));
+            prueba.add("Mis Propiedades");
+        }
+        items.add(new DrawerItemPrincipal("A",R.drawable.lugares));
+        items.add(new DrawerItemPrincipal("B",R.drawable.servicios));
+        items.add(new DrawerItemPrincipal("C",R.drawable.itinerarios));
+        items.add(new DrawerItemPrincipal("D",R.drawable.marcadores));
+        prueba.add("Lugares");
+        prueba.add("Servicios");
+        prueba.add("Itinerarios");
+        prueba.add("Marcadores");
         listaItiner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("redirect","detecte el MALDITO CLICK");
@@ -82,6 +101,8 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 startActivity(button_uno);
             }
         });
+        lateral.setAdapter(new DrawerItemPrincipalAdapter(this, items));
+        lateral.setOnItemClickListener(this);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewById(R.id.Titulo);
@@ -168,7 +189,7 @@ public class Principal extends AppCompatActivity implements OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.Buscar:
                 services.clear();
                 CB = new ControlBase(this);
@@ -177,7 +198,7 @@ public class Principal extends AppCompatActivity implements OnClickListener{
                 CB.ejecutar();
                 break;
             case R.id.Lugares:
-                if(cambio) {
+                if (cambio) {
                     VS.showNext();
                     crear.setVisibility(View.INVISIBLE);
                     cambio = false;
@@ -186,8 +207,8 @@ public class Principal extends AppCompatActivity implements OnClickListener{
             case R.id.Servicios:
                 break;
             case R.id.Itinerarios:
-                Log.e("redirect","detecte el botoncillo");
-                if(!cambio) {
+                Log.e("redirect", "detecte el botoncillo");
+                if (!cambio) {
                     VS.showNext();
                     vector_itiner.clear();
                     crear.setVisibility(View.VISIBLE);
@@ -200,21 +221,41 @@ public class Principal extends AppCompatActivity implements OnClickListener{
             case R.id.Marcadores:
                 break;
             case R.id.Propiedades:
-                Log.e("redirect","abrire basura");
-                Intent button_uno = new Intent (Principal.this, Empresario_vista.class);
-                button_uno.putExtra("USER",user);
-                button_uno.putExtra("TIPO",buscar);
-                button_uno.putExtra("NOMBRE",nombre);
+                Log.e("redirect", "abrire basura");
+                Intent button_uno = new Intent(Principal.this, Empresario_vista.class);
+                button_uno.putExtra("USER", user);
+                button_uno.putExtra("TIPO", buscar);
+                button_uno.putExtra("NOMBRE", nombre);
                 startActivity(button_uno);
                 break;
             case R.id.crearitinerario:
-                Intent uno = new Intent (Principal.this, CrearItinerario.class);
-                Log.e("redirect","El nombre que le pasare");
-                Log.e("redirect",nombre);
-                uno.putExtra("NOBMRE",nombre);
+                Intent uno = new Intent(Principal.this, CrearItinerario.class);
+                Log.e("redirect", "El nombre que le pasare");
+                Log.e("redirect", nombre);
+                uno.putExtra("NOBMRE", nombre);
                 startActivity(uno);
                 break;
 
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText(this, "Pulsado "+ prueba.elementAt(i), Toast.LENGTH_SHORT).show();
+        mDrawer.closeDrawers();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if (mDrawer.isDrawerOpen(lateral)){
+                    mDrawer.closeDrawers();
+                }else{
+                    mDrawer.openDrawer(lateral);
+                }
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
