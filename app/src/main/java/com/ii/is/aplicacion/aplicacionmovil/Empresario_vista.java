@@ -24,7 +24,8 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
     private Vector<Lugar> services;
     private String user,buscar,nombre;
     private Boolean entro;
-    protected void onCreate(Bundle savedInstanceState) {               Log.e("redirect","cree");
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.e("redirect","cree");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empresario_vista);
         Propiedades = (Button)findViewById(R.id.Lugares);
