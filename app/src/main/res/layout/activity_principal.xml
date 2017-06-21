@@ -23,68 +23,69 @@
             android:id="@+id/Buscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buscar"
             android:layout_below="@+id/Propiedades"
-            android:layout_toStartOf="@+id/Marcadores" />
+            android:layout_toStartOf="@+id/Marcadores"
+            android:text="Buscar" />
 
         <Button
             android:id="@+id/Lugares"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lugares"
-            android:layout_below="@+id/Spinner"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="12dp" />
+            android:layout_below="@+id/Spinner"
+            android:layout_marginStart="12dp"
+            android:text="Lugares" />
 
         <Button
             android:id="@+id/Itinerarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Itinerarios"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/Spinner"
-            android:layout_alignParentEnd="true" />
+            android:text="Itinerarios" />
 
         <Button
             android:id="@+id/Servicios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Servicios"
             android:layout_below="@+id/Itinerarios"
+            android:layout_marginStart="47dp"
             android:layout_toEndOf="@+id/Propiedades"
-            android:layout_marginStart="47dp" />
+            android:text="Servicios" />
 
         <Button
             android:id="@+id/Marcadores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Marcadores"
-            android:layout_marginStart="24dp"
             android:layout_below="@+id/Spinner"
-            android:layout_toEndOf="@+id/Lugares" />
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@+id/Lugares"
+            android:text="Marcadores" />
 
         <Button
             android:id="@+id/Propiedades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mis Lugares"
             android:layout_alignBaseline="@+id/Servicios"
             android:layout_alignBottom="@+id/Servicios"
             android:layout_alignStart="@+id/Lugares"
-            android:layout_marginStart="32dp" />
+            android:layout_marginStart="32dp"
+            android:text="Mis Lugares" />
 
         <ViewSwitcher
             android:id="@+id/Switch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_alignStart="@+id/Buscar"
             android:layout_below="@+id/Buscar"
-            android:layout_alignStart="@+id/Buscar">
+            android:layout_marginTop="18dp">
 
             <ListView
                 android:id="@+id/Lista"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/Spinner"
+                android:divider="@android:drawable/divider_horizontal_textfield"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="17dp"
                 android:layout_toEndOf="@+id/Lugares" />

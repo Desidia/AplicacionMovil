@@ -61,7 +61,7 @@
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:visibility="visible"
-        app:srcCompat="@drawable/itinerario_ruta_2" />
+        app:srcCompat="@drawable/itinerarios_button" />
 
 
 </RelativeLayout>
