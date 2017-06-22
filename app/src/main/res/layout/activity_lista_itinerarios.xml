@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F3F3F3"
-    android:weightSum="100"
-    >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F3F3F3"
+        android:weightSum="100"
+        >
 
-    <ListView
-        android:id="@+id/ListaDeItinierario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#4CB944"
-        android:divider="@drawable/divider"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignEnd="@+id/button2"
-        />
+        <ListView
+            android:id="@+id/ListaDeItinierario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#4CB944"
+            android:divider="@drawable/divider"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/CrearItiner"
+            android:layout_alignStart="@+id/CrearItiner"
+            android:layout_alignEnd="@+id/CrearItiner"
+            />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ITINERARIOS"
-        android:textAppearance="@android:style/TextAppearance.Large"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#4CB944"
-        android:textIsSelectable="false"
-        android:layout_above="@+id/button2"
-        android:layout_toEndOf="@+id/imageView4"
-        android:layout_marginBottom="33dp" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ITINERARIOS"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#4CB944"
+            android:textIsSelectable="false"
+            android:layout_above="@+id/CrearItiner"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_marginBottom="33dp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cear Itinerario   +"
-        android:textSize="20sp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:textColor="@color/colorPrimary"
+        <Button
+            android:id="@+id/CrearItiner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear Itinerario   +"
+            android:textSize="20sp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
 
-        android:layout_below="@+id/imageView4"
-        android:layout_alignEnd="@+id/textView9" />
-
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="45pt"
-        android:layout_height="45pt"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:scrollHorizontally="false"
-        android:text="Imagen de rutas"
-        android:textAlignment="viewStart"
-        android:textAppearance="@android:style/TextAppearance.Material.Title"
-        android:visibility="visible"
-        app:srcCompat="@drawable/itinerarios_button" />
+            android:layout_below="@+id/imageView4"
+            android:layout_alignEnd="@+id/textView9" />
 
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="45pt"
+            android:layout_height="45pt"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scrollHorizontally="false"
+            android:text="Imagen de rutas"
+            android:textAlignment="viewStart"
+            android:textAppearance="@android:style/TextAppearance.Material.Title"
+            android:visibility="visible"
+            app:srcCompat="@drawable/itinerarios_button_dark" />
+
+
+    </RelativeLayout>

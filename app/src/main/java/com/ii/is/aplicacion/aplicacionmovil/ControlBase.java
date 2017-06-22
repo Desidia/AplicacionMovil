@@ -31,6 +31,32 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Vector <Lista> mylista;
     private Vector <String> tipos = new Vector<String>();
     private  Vector notitas = new Vector();
+    private Servicios servicio;
+    private Itinerarios itinerariosFragment;
+    private ServiciosFragment Sf;
+
+    public ControlBase(ServiciosFragment detalle){
+        c = null;
+        stmt = null;
+        Sf  = detalle;
+        estado = -1;
+        ejemplo = "";
+    }
+
+    public ControlBase(Itinerarios detalle){
+        c = null;
+        stmt = null;
+        itinerariosFragment  = detalle;
+        estado = -1;
+        ejemplo = "";
+    }
+    public ControlBase(Servicios detalle){
+        c = null;
+        stmt = null;
+        servicio  = detalle;
+        estado = -1;
+        ejemplo = "";
+    }
     public ControlBase(DetalleItinerario detalle){
         c = null;
         stmt = null;
@@ -502,7 +528,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         stmt = c.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
                         while (rs.next()) {
-                            principal.AgregarSet(rs.getString("tipo"));
+                            servicio.AgregarSet(rs.getString("tipo"));
                         }
                         stmt.close();
                         rs.close();
@@ -532,7 +558,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                             agregar.setrutpropietario(rs.getString("rutpropietario"));
                             agregar.setcomuna(rs.getString("comuna"));
                             agregar.setpromediolugar(rs.getInt("promedio_lugar"));
-                            principal.agregarServicio(agregar);
+                       //     principal.agregarServicio(agregar);
                         }
                         stmt.close();
                         rs.close();
@@ -595,7 +621,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                             agregar.setrutpropietario(rs.getString("rutpropietario"));
                             agregar.setcomuna(rs.getString("comuna"));
                             agregar.setpromediolugar(rs.getInt("promedio_lugar"));
-                            Empresario.agregarServicio(agregar);
+                            Sf.agregarServicio(agregar);
                         }
                         stmt.close();
                         rs.close();
@@ -693,7 +719,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         while (rs.next()) {
                             Itinerario agregar = new Itinerario(rs.getString("poseedor"),rs.getString("temporada"),rs.getString("id_itinerario"),rs.getInt("puntaje"));
                             Log.e("redirect",agregar.getNombre());
-                            principal.agregarItinerario(agregar);
+                            itinerariosFragment.agregarItinerario(agregar);
                         }
                         stmt.close();
                         rs.close();
@@ -814,6 +840,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 18:
+                        Log.e("redirect","ejecutare query 18");
                         for(int i = 0; i < mylista.size(); i++) {
                         query = "insert into gratificante2.lista(posicion,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario) values('" + mylista.elementAt(i).getPos() + "','"
                                 + mylista.elementAt(i).getLugar_actividad() + "','" + mylista.elementAt(i).getTipo_actividad() + "','" + mylista.elementAt(i).getNombre_actividad() + "','" + mylista.elementAt(i).getUbicacion_actividad() + "','" + mylista.elementAt(i).getComuna_actividad() + "','" + mylista.elementAt(i).getItinerario() + "');";
@@ -823,11 +850,14 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.setAutoCommit(false);
                         System.out.println("Opened database successfully");
                         stmt = c.createStatement();
+                            Log.e("redirect","tratare de insertar");
                         stmt.executeUpdate(query);
+                            Log.e("redirect","inserte");
                         stmt.close();
                         c.commit();
                         c.close();
                     }
+                        Log.e("redirect","terminer ejecutar query 18");
                         break;
                     case 19:
                         Log.e("redirect","ejecutare query 19");
@@ -1028,19 +1058,19 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             login.comprobarConexion();
             break;
         case 3:
-            principal.actualizar();
+            servicio.actualizar();
             break;
         case 4:
-            principal.ordenar();
-            principal.desplegar();
+        //    principal.ordenar();
+        //    principal.desplegar();
             break;
         case 5:
             Detalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle(),agregar.getpromediolugar());
             break;
         case 6:
-            Empresario.ordenar();
+            Sf.ordenar();
             Log.e("redirect","desplegare");
-            Empresario.desplegar();
+            Sf.desplegar();
             break;
         case 7:
             CrearPro.actualizar();
@@ -1049,7 +1079,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             CrearPro.actualizarC();
             break;
         case 11:
-            principal.desplegar2();
+            itinerariosFragment.desplegar2();
             break;
         case  12:
             detalleItinerario.desplegar();
@@ -1072,8 +1102,11 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             crearItinerario.creaactividades();
             break;
         case 18:
+            Log.e("redirect","ejecutare confirmar");
             crearItinerario.confirmar();
+            break;
         case 19:
+            Log.e("redirect","ejecutare evaluaciones");
             Detalle.evaluaciones();
             break;
         case 20:
