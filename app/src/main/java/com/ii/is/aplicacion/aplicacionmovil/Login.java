@@ -26,7 +26,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private Statement stmt;
     private ControlBase CB;
     private RadioGroup Group;
-    private int turista = 0;
+    private int turista = 1;
     private boolean conectado = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

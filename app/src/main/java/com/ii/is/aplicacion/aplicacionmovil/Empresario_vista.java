@@ -72,7 +72,7 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
         lista_lugares = new Lugares[services.size()];
         Toast.makeText(getApplicationContext(),"tamaño: " + services.size(), Toast.LENGTH_SHORT).show();
         for(int i = 0; i < services.size();i++){
-            lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad());
+            lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad(),services.elementAt(i).getImagen1());
         }
         LugaresAdapter adapter = new LugaresAdapter(this,R.layout.list,lista_lugares);
         View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);

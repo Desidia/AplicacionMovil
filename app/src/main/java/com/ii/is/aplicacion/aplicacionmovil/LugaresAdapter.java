@@ -2,12 +2,15 @@ package com.ii.is.aplicacion.aplicacionmovil;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by diego on 25-04-2017.
@@ -45,7 +48,12 @@ public class LugaresAdapter extends ArrayAdapter<Lugares> {
         holder.Titulo.setText(lugares.title);
         holder.Direccion.setText(lugares.direccion);
         holder.Descripcion.setText(lugares.descripcion);
-        holder.imagen.setImageResource(lugares.icon);
+
+        String imageUri = lugares.imagen;
+        Log.e("redirect","imprimire imagen nombre");
+        Log.e("redirect",lugares.imagen);
+        Picasso.with(context).load(imageUri).resize(350, 350).
+                centerCrop().into(holder.imagen);
         return row;
     }
     static class LugaresHolder{

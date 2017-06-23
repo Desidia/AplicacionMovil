@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.Vector;
+
+import static java.sql.Types.NULL;
+
 public class DetalleActivity extends AppCompatActivity implements View.OnClickListener{
     private ControlBase CB;
     private int mod;
@@ -24,7 +27,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private EditText Titulo,Comuna,Direccion,Telefono,Disponibilidad,original,Tipo,NuevoComentario;
     private TextView Detalle;
     private Button Guardar,Comentar;
-    private String Rut;
+    private String Rut,Imagen1,Imagen2,Imagen3;
     private RatingBar RB;
     private Vector <String> Servicios;
     private Vector <Integer> SS,CS,Apariciones;
@@ -73,12 +76,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         Guardar.setOnClickListener(this);
         Titulo.setText(nombre);
         Tipo.setText(tipo);
-
-        String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
-        ImageView ivBasicImage = (ImageView) findViewById(R.id.ivBasicImage);
-        Picasso.with(this).load(imageUri).resize(145, 145).
-                centerCrop().into(ivBasicImage);
-
         Notas.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -142,7 +139,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     public void agregarSN(String s){
         Servicios.add(s);
     }
-    public void setDatos(String disponibilidad,String comuna, String direccion, String telefono,String Comentario,int datos){
+    public void setDatos(String disponibilidad,String comuna, String direccion, String telefono,String Comentario,int datos,String i1, String i2, String i3){
         Disponibilidad.setText(disponibilidad);
         Comuna.setText(comuna);
         Direccion.setText(direccion);
@@ -150,6 +147,16 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         Detalle.setText(Comentario);
         RB.setIsIndicator(true);
         RB.setRating(datos);
+        Imagen1 = i1;
+        Imagen2 = i2;
+        Imagen3 = i3;
+        if(i1 == ""){
+
+        }
+        String imageUri = Imagen1;
+        ImageView ivBasicImage = (ImageView) findViewById(R.id.ivBasicImage);
+        Picasso.with(this).load(imageUri).resize(145, 145).
+                centerCrop().into(ivBasicImage);
         iniciarComentarios();
     }
     public void iniciarComentarios(){
