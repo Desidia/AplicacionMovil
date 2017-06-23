@@ -27,7 +27,7 @@ import java.util.Vector;
 
 public class Principal extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener,Servicios.OnFragmentInteractionListener,Itinerarios.OnFragmentInteractionListener,ServiciosFragment.OnFragmentInteractionListener{
 
-    private String user,buscar,nombre;
+    private String user,buscar,nombre = "";
     private int tipo = 0,turista;
 
     private ControlBase CB;
@@ -78,6 +78,11 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
         switch (prueba.elementAt(i)){
             case "Lugares":
                 fragment = new Servicios();
+                Bundle data3 = new Bundle();
+                Log.e("redirect","Imprimire el nombre");
+                Log.e("redirect",nombre);
+                data3.putString("Nombre", nombre);
+                fragment.setArguments(data3);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.contenedor, fragment)
                         .commit();

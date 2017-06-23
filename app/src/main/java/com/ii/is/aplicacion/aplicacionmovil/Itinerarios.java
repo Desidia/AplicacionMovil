@@ -46,6 +46,7 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragmen
         vista = inflater.inflate(R.layout.fragment_itinerarios, container, false);
         nombre = getArguments().getString("Nombre");
+        Log.e("redirect","Imprimire el nombre que le pase aqui en itinerarios");
         Log.e("redirect",nombre);
         listaItiner = (ListView)vista.findViewById(R.id.ListaDeItinierario);
         crear = (Button)vista.findViewById(R.id.CrearItiner);
