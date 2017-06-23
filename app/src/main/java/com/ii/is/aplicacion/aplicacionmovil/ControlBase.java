@@ -558,7 +558,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                             agregar.setrutpropietario(rs.getString("rutpropietario"));
                             agregar.setcomuna(rs.getString("comuna"));
                             agregar.setpromediolugar(rs.getInt("promedio_lugar"));
-                       //     principal.agregarServicio(agregar);
+                            servicio.agregarServicio(agregar);
                         }
                         stmt.close();
                         rs.close();
@@ -1061,8 +1061,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             servicio.actualizar();
             break;
         case 4:
-        //    principal.ordenar();
-        //    principal.desplegar();
+            servicio.ordenar();
+            servicio.desplegar();
             break;
         case 5:
             Detalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle(),agregar.getpromediolugar());

@@ -4,19 +4,24 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.ii.is.aplicacion.aplicacionmovil.Servicios">
+    tools:context="com.ii.is.aplicacion.aplicacionmovil.Servicios"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.36"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/titleLayout"
             android:layout_width="300dp"
-            android:layout_height="80dp">
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -42,92 +47,33 @@
             android:id="@+id/Categorias"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/titleLayout"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="27dp"
             android:dropDownSelector="@color/LightBlueLugar"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_below="@+id/titleLayout"
+            android:layout_alignStart="@+id/titleLayout" />
+
+        <Button
+            android:id="@+id/buscarlugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar Lugar"
+            android:layout_below="@+id/Categorias"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3">
+        android:layout_height="260dp">
 
-        <ScrollView
+        <ListView
+            android:id="@+id/ListaLugares"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <RelativeLayout
-                    android:layout_width="300dp"
-                    android:layout_height="150dp"
-                    android:background="@color/DarkBlueLugar">
-
-                    <ImageView
-                        android:id="@+id/imgLugar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:background="@android:color/white"
-                        app:srcCompat="@drawable/lugares" />
-
-                    <RelativeLayout
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_alignTop="@+id/imgLugar"
-                        android:layout_toEndOf="@+id/imgLugar"
-                        android:layout_marginStart="16dp">
-
-                        <TextView
-                            android:id="@+id/name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:text="NOMBRE"
-                            android:textColor="@color/LightBlueLugar"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Localidad"
-                            android:textColor="@color/LightBlueLugar"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginBottom="42dp" />
-
-                        <TextView
-                            android:id="@+id/season"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Temporada"
-                            android:textColor="@color/LightBlueLugar"
-                            android:layout_alignTop="@+id/location"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginTop="17dp" />
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-            </LinearLayout>
-        </ScrollView>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
     </RelativeLayout>
 
 </LinearLayout>
