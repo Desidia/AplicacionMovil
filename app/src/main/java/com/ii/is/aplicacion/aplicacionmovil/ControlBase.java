@@ -612,7 +612,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 6:
-                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar"
+                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.imagen_frontal as imagen_frontal, U.imagen_interior as imagen_interior, U.imagen_extra as imagen_extra"
                                 + "  FROM gratificante2.lugar as U"
                                 + " WHERE U.rutpropietario = '" +usuario  +"';" ;
                         c = DriverManager
@@ -633,6 +633,12 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                             agregar.setrutpropietario(rs.getString("rutpropietario"));
                             agregar.setcomuna(rs.getString("comuna"));
                             agregar.setpromediolugar(rs.getInt("promedio_lugar"));
+                            agregar.setImagen1(rs.getString("imagen_frontal"));
+                            if(rs.wasNull()) agregar.setImagen1("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            agregar.setImagen2(rs.getString("imagen_interior"));
+                            if(rs.wasNull()) agregar.setImagen2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            agregar.setImagen3(rs.getString("imagen_extra"));
+                            if(rs.wasNull()) agregar.setImagen3("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
                             Sf.agregarServicio(agregar);
                         }
                         stmt.close();
