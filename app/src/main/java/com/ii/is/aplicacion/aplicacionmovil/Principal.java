@@ -1,9 +1,15 @@
 package com.ii.is.aplicacion.aplicacionmovil;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -19,202 +25,110 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class Principal extends AppCompatActivity implements OnClickListener{
+public class Principal extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener,Servicios.OnFragmentInteractionListener,Itinerarios.OnFragmentInteractionListener,ServiciosFragment.OnFragmentInteractionListener{
 
     private String user,buscar,nombre;
     private int tipo = 0,turista;
-    private Button Buscar;
-    private Button lugares;
-    private Button itinerarios;
-    private Button servicios;
-    private Button marcadores,crear;
-    private Button propios;
-    private Spinner opcion;
+
     private ControlBase CB;
-    private List busqueda = new ArrayList();
-    private ListView lista,listaItiner;
-    private Lugares lista_lugares[];
-    private Itinerario lista_itinerarios[];
-    private Vector<Lugar> services;
-    private Vector<Itinerario>vector_itiner;
-    private ViewSwitcher VS;
+    private ListView lateral;
+    private Vector<String> prueba;
+    private DrawerLayout mDrawer;
     private boolean entro,cambio = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        CB = new ControlBase(this);
-        vector_itiner = new Vector<Itinerario>();
-        services = new Vector<Lugar>();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        VS = (ViewSwitcher)findViewById(R.id.Switch);
         user = (String) bundle.get("USER");
         turista = (int) bundle.get("TIPO");
         nombre = (String) bundle.get("NOMBRE");
-        Log.e("redirect",nombre);
-        Buscar = (Button) findViewById(R.id.Buscar);
-        lugares = (Button) findViewById(R.id.Lugares);
-        itinerarios = (Button) findViewById(R.id.Itinerarios);
-        servicios = (Button) findViewById(R.id.Servicios);
-        marcadores = (Button) findViewById(R.id.Marcadores);
-        crear = (Button) findViewById(R.id.crearitinerario);
-        propios = (Button) findViewById(R.id.Propiedades);
-        opcion = (Spinner) findViewById(R.id.Spinner);
-        listaItiner = (ListView)findViewById(R.id.ListIter);
-        Buscar.setOnClickListener(this);
-        itinerarios.setOnClickListener(this);
-        propios.setOnClickListener(this);
-        crear.setOnClickListener(this);
-        lugares.setOnClickListener(this);
-        if (turista == 1) propios.setVisibility(View.INVISIBLE);
-        lista = (ListView) findViewById(R.id.Lista);
-        crear.setVisibility(View.INVISIBLE);
-
-        listaItiner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("redirect","detecte el MALDITO CLICK");
-                TextView v = (TextView)view.findViewById(R.id.NombreAct);
-                Intent button_uno = new Intent (Principal.this, DetalleItinerario.class);
-                button_uno.putExtra("NOMBRE",v.getText());
-                button_uno.putExtra("CREADOR",vector_itiner.elementAt(position).getPoseedor());
-                button_uno.putExtra("TEMPORADA",vector_itiner.elementAt(position).getTemporada());
-                button_uno.putExtra("USUARIO",nombre);
-                startActivity(button_uno);
-            }
-        });
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView v = (TextView)view.findViewById(R.id.Titulo);
-                Intent button_uno = new Intent (Principal.this, DetalleActivity.class);
-                button_uno.putExtra("TIPO",buscar);
-                button_uno.putExtra("editable",1);
-                button_uno.putExtra("nombre",v.getText());
-                button_uno.putExtra("USUARIO",nombre);
-                startActivity(button_uno);
-            }
-        });
-
+        CB = new ControlBase(this);
+        prueba =  new Vector<String>();
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_principal);
+        lateral = (ListView)findViewById(R.id.left_drawer);
+        ArrayList<DrawerItemPrincipal> items = new ArrayList<DrawerItemPrincipal>();
+        if(turista != 1){
+            items.add(new DrawerItemPrincipal("0",R.drawable.propios));
+            prueba.add("Mis Propiedades");
+        }
+        items.add(new DrawerItemPrincipal("A",R.drawable.lugares));
+        items.add(new DrawerItemPrincipal("B",R.drawable.servicios));
+        items.add(new DrawerItemPrincipal("C",R.drawable.itinerarios));
+        items.add(new DrawerItemPrincipal("D",R.drawable.marcadores));
+        prueba.add("Lugares");
+        prueba.add("Servicios");
+        prueba.add("Itinerarios");
+        prueba.add("Marcadores");
+        lateral.setAdapter(new DrawerItemPrincipalAdapter(this, items));
+        lateral.setOnItemClickListener(this);
         entro = false;
-        this.rellenar();
+
     }
-    public void rellenar(){
-        busqueda.clear();
-        CB.setTipo(3+tipo);
-        CB.ejecutar();
-    }
-    public void ordenar(){
-        Lugar auxiliar;
-        for(int i = 0; i < services.size();i++){
-            for(int j = i+1; j < services.size();j++){
-                if(services.elementAt(i).getpromediolugar() < services.elementAt(j).getpromediolugar()){
-                    auxiliar = services.elementAt(j);
-                    services.set(j,services.elementAt(i));
-                    services.set(i,auxiliar);
-                }
-            }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
         }
-    }
-    public void AgregarSet(String agregar){
-        busqueda.add(agregar);
-    }
-    public void agregarServicio(Lugar s){
-        services.add(s);
-    }
-    public void agregarItinerario(Itinerario s){
-        vector_itiner.add(s);
-    }
-    public void desplegar(){
-        lista_lugares = new Lugares[services.size()];
-        Toast.makeText(getApplicationContext(),"tamaño: " + services.size(), Toast.LENGTH_SHORT).show();
-        for(int i = 0; i < services.size();i++){
-            lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad());
-        }
-        LugaresAdapter adapter = new LugaresAdapter(this,R.layout.list,lista_lugares);
-        View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
-        if(!entro)lista.addHeaderView(header);
-        lista.setAdapter(adapter);
-        entro = true;
-    }
-
-    public void desplegar2(){
-        lista_itinerarios = new Itinerario[vector_itiner.size()];
-        for(int i = 0; i < vector_itiner.size();i++){
-            lista_itinerarios[i] = vector_itiner.elementAt(i);
-        }
-        ItinerarioAdapter adapter = new ItinerarioAdapter(this,R.layout.listaitinerarios,lista_itinerarios);
-        // View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
-        // if(!entro)lista.addHeaderView(header);
-        listaItiner.setAdapter(adapter);
-        //     entro = true;
-    }
-
-    public void actualizar(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,busqueda);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        opcion.setAdapter(arrayAdapter);
-
-        opcion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                buscar =  opcion.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.Buscar:
-                services.clear();
-                CB = new ControlBase(this);
-                CB.setCategoria(buscar);
-                CB.setTipo(4);
-                CB.ejecutar();
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Fragment fragment = null;
+        switch (prueba.elementAt(i)){
+            case "Lugares":
+                fragment = new Servicios();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contenedor, fragment)
+                        .commit();
                 break;
-            case R.id.Lugares:
-                if(cambio) {
-                    VS.showNext();
-                    crear.setVisibility(View.INVISIBLE);
-                    cambio = false;
-                }
+            case "Servicios":
                 break;
-            case R.id.Servicios:
+            case "Itinerarios":
+                fragment = new Itinerarios();
+                Bundle data = new Bundle();
+                data.putString("Nombre", nombre);
+                fragment.setArguments(data);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contenedor, fragment)
+                        .commit();
                 break;
-            case R.id.Itinerarios:
-                Log.e("redirect","detecte el botoncillo");
-                if(!cambio) {
-                    VS.showNext();
-                    vector_itiner.clear();
-                    crear.setVisibility(View.VISIBLE);
-                    CB = new ControlBase(this);
-                    CB.setTipo(11);
-                    CB.ejecutar();
-                    cambio = true;
-                }
+            case "Marcadores":
                 break;
-            case R.id.Marcadores:
+            case "Mis Propiedades":
+                fragment = new ServiciosFragment();
+                Bundle data2 = new Bundle();
+                data2.putString("USER", user);
+                data2.putString("TIPO", buscar);
+                data2.putString("NOMBRE", nombre);
+                fragment.setArguments(data2);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contenedor, fragment)
+                        .commit();
                 break;
-            case R.id.Propiedades:
-                Log.e("redirect","abrire basura");
-                Intent button_uno = new Intent (Principal.this, Empresario_vista.class);
-                button_uno.putExtra("USER",user);
-                button_uno.putExtra("TIPO",buscar);
-                button_uno.putExtra("NOMBRE",nombre);
-                startActivity(button_uno);
+            default:
                 break;
-            case R.id.crearitinerario:
-                Intent uno = new Intent (Principal.this, CrearItinerario.class);
-                Log.e("redirect","El nombre que le pasare");
-                Log.e("redirect",nombre);
-                uno.putExtra("NOBMRE",nombre);
-                startActivity(uno);
-                break;
-
         }
+
+        mDrawer.closeDrawers();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if (mDrawer.isDrawerOpen(lateral)){
+                    mDrawer.closeDrawers();
+                }else{
+                    mDrawer.openDrawer(lateral);
+                }
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

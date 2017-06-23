@@ -30,17 +30,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="0.45"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="5dp"
-        android:layout_weight="0.45">
+        tools:layout_editor_absoluteY="5dp">
 
         <EditText
             android:id="@+id/User"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginTop="15dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:background="@android:color/white"
             android:ems="10"
             android:gravity="center"
@@ -63,21 +63,20 @@
             android:inputType="textPassword" />
 
 
-
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="200dp"
             android:layout_height="40dp"
+            android:layout_alignStart="@+id/Pass"
+            android:layout_below="@+id/Pass"
             android:layout_centerInParent="false"
+            android:layout_marginTop="12dp"
             android:clickable="true"
             android:contextClickable="true"
             android:keepScreenOn="false"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="276dp"
-            android:layout_alignStart="@+id/Pass"
-            android:layout_below="@+id/Pass"
             android:orientation="horizontal"
-            android:layout_marginTop="12dp">
+            tools:layout_editor_absoluteX="118dp"
+            tools:layout_editor_absoluteY="276dp">
 
             <RadioButton
                 android:id="@+id/Turista"
@@ -108,14 +107,14 @@
             android:layout_below="@+id/radioGroup"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:background="@color/BlueButtonLogin"
             android:contextClickable="true"
             android:cursorVisible="true"
-            android:background="@color/BlueButtonLogin"
             android:text="Entrar"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="143dp"
-            tools:layout_editor_absoluteY="566dp"/>
+            tools:layout_editor_absoluteY="566dp" />
     </RelativeLayout>
 
 </LinearLayout >

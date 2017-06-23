@@ -70,6 +70,18 @@
             android:layout_alignStart="@+id/TipoActivida" />
 
         <TextView
+            android:id="@+id/Tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:textColor="#CBF0FE"
+            android:layout_marginLeft="10dp"
+            android:text="  Servicios"
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/Servicios"
+            android:layout_alignStart="@+id/Servicios" />
+
+        <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -127,17 +139,6 @@
             android:layout_below="@+id/Disponibilidad"
             android:layout_alignStart="@+id/imagenlugar" />
 
-        <TextView
-            android:id="@+id/Tipo"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:textSize="20dp"
-            android:textColor="#CBF0FE"
-            android:layout_marginLeft="10dp"
-            android:text="  Servicios"
-            android:textStyle="bold"
-            android:layout_alignTop="@+id/Servicios"
-            android:layout_alignStart="@+id/Servicios" />
 
         <ListView
             android:id="@+id/ListServicios"

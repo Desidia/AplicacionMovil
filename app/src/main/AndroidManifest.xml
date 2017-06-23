@@ -33,7 +33,7 @@
         <activity android:name=".CrearPropiedad" />
         <activity android:name=".DetalleItinerario" />
         <activity android:name=".CrearItinerario" />
-        <activity android:name=".ModificarDetalle"></activity>
+        <activity android:name=".ModificarDetalle" />
     </application>
 
 </manifest>
