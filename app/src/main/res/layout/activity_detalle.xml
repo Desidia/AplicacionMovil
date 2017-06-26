@@ -8,94 +8,88 @@
 
     <RelativeLayout
         android:id="@+id/RL"
-        android:layout_width="380dp"
-        android:layout_height="900dp"
-        android:layout_marginRight="-4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
         android:nestedScrollingEnabled="true"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         app:layout_constraintRight_toRightOf="parent"
+        android:background="#246EB9"
         tools:layout_editor_absoluteY="3dp">
 
         <EditText
             android:id="@+id/Titulo"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:editable="false"
-            android:ems="10"
-            android:hint="Nombre"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="#AFCAE5"
+            android:text="Nombre de lugar"
+            android:layout_below="@+id/ivBasicImage"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/Comuna"
-            android:layout_width="90dp"
-            android:layout_height="36dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/Titulo"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="13dp"
-            android:ems="10"
-            android:hint="Comuna"
-            android:inputType="textPersonName"
-            android:textSize="14dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:text="Comuna"
+            android:textStyle="bold"
+            android:layout_below="@+id/Tipo"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/Direccion"
-            android:layout_width="140dp"
-            android:layout_height="36dp"
-            android:layout_above="@+id/Telefono"
-            android:layout_alignStart="@+id/Disponibilidad"
-            android:ems="10"
-            android:hint="Direccion"
-            android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:textStyle="bold"
+            android:text="Direccion"
+            android:layout_below="@+id/Comuna"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/Telefono"
-            android:layout_width="110dp"
-            android:layout_height="36dp"
-            android:layout_alignStart="@+id/Comuna"
-            android:layout_below="@+id/Comuna"
-            android:layout_marginTop="14dp"
-            android:editable="true"
-            android:ems="10"
-            android:hint="Telefono"
-            android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:text="Contacto"
+            android:textStyle="bold"
+            android:layout_below="@+id/Direccion"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/Disponibilidad"
-            android:layout_width="160dp"
-            android:layout_height="36dp"
-            android:layout_above="@+id/ivBasicImage"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/ivBasicImage"
-            android:ems="10"
-            android:hint="Disponibilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:textStyle="bold"
+            android:text="Disponibilidad"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:layout_below="@id/Telefono"
+            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/ivBasicImage"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
-            android:layout_alignStart="@+id/Telefono"
-            android:layout_below="@+id/Telefono"
-            android:layout_marginTop="70dp"
-            app:srcCompat="@drawable/ic_launcher" />
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#AFCAE5"
+            app:srcCompat="@drawable/ic_launcher"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
 
         <EditText
             android:id="@+id/Descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/ivBasicImage"
-            android:layout_alignEnd="@+id/Disponibilidad"
-            android:layout_alignStart="@+id/Disponibilidad"
-            android:layout_alignTop="@+id/ivBasicImage"
-            android:text="TextView" />
+            android:text="Descripción del lugar"
+            android:textColor="#AFCAE5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/Disponibilidad"
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:id="@+id/Guardar"
@@ -107,64 +101,113 @@
 
         <EditText
             android:id="@+id/Tipo"
-            android:layout_width="135dp"
-            android:layout_height="36dp"
-            android:layout_above="@+id/Descripcion"
-            android:layout_alignStart="@+id/ivBasicImage"
-            android:layout_marginBottom="14dp"
-            android:hint="Tipo"
-            android:textSize="14sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:text="Tipo"
+            android:textStyle="bold"
+            android:layout_below="@+id/NotaGeneral"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/Comentar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:backgroundTint="#AFCAE5"
+            android:textColor="#246EB9"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/Telefono"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Comentario_Agregar"
             android:text="Comentar" />
 
         <RatingBar
             android:id="@+id/NotaGeneral"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/Tipo"
-            android:layout_alignStart="@+id/Comentar"
             android:numStars="5"
             android:scaleX="0.7"
-            android:scaleY="0.7" />
+            android:scaleY="0.7"
+            android:layout_below="@+id/Titulo"
+            android:layout_centerHorizontal="true" />
 
         <ListView
             android:id="@+id/ListNotas"
             android:layout_width="335dp"
-            android:layout_height="70dp"
-            android:layout_alignStart="@+id/ivBasicImage"
-            android:layout_below="@+id/ivBasicImage"
-            android:layout_marginTop="20dp" />
+            android:layout_height="150dp"
+            android:background="#AFCAE5"
+            android:divider="@android:drawable/divider_horizontal_textfield"
+            android:layout_below="@+id/Texto2"
+            android:layout_alignStart="@+id/Texto3"
+            android:layout_alignEnd="@+id/Texto3" />
 
         <ListView
             android:id="@+id/ListComentarios"
+            android:background="#AFCAE5"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginTop="19dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/Texto3"
+            android:divider="@android:drawable/divider_horizontal_textfield"
+            android:layout_alignStart="@+id/Texto3"
+            android:layout_alignEnd="@+id/ListNotas" />
+
+        <TextView
+            android:id="@+id/Texto1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="#AFCAE5"
+            android:text="Evalúa los servicios del lugar"
+            android:layout_below="@+id/ListComentarios"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/Texto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:text="Evaluación del lugar"
+            android:textColor="#AFCAE5"
+            android:layout_below="@+id/Descripcion"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/Texto3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="#AFCAE5"
+            android:text="Comentarios de los usuarios"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/ListNotas"
-            android:layout_alignParentStart="true" />
+            android:layout_alignEnd="@+id/Texto1" />
 
         <ListView
             android:id="@+id/ListEvaluar"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/ListComentarios"
-            android:layout_marginTop="35dp" />
+            android:layout_height="150dp"
+            android:layout_below="@+id/Texto1"
+            android:background="#AFCAE5"
+            android:divider="@android:drawable/divider_horizontal_textfield"
+            android:layout_alignStart="@+id/ListComentarios"
+            android:layout_alignEnd="@+id/ListComentarios" />
 
         <EditText
             android:id="@+id/Comentario_Agregar"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"
+            android:text="Deja tu comentario..."
+            android:textColor="#246EB9"
+            android:background="#AFCAE5"
             android:layout_below="@+id/ListEvaluar"
-            android:layout_marginTop="5dp"
-            android:text="TextView" />
+            android:layout_alignStart="@+id/ListEvaluar"
+            android:layout_alignEnd="@+id/ListEvaluar" />
 
     </RelativeLayout>
 </ScrollView>

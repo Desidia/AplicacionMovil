@@ -167,10 +167,10 @@
             android:layout_marginLeft="10dp"
             android:text="Categoría lugar"
             android:textSize="20dp"
-            android:textColor="#CBF0FE"
             android:layout_alignTop="@id/TipoActivida"
             android:layout_below="@+id/Nombre"
             android:textStyle="bold"
+            android:textColor="#CBF0FE"
             android:layout_alignStart="@+id/TipoActivida"
             />
 

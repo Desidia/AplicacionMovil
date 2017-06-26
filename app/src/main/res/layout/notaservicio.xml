@@ -10,18 +10,16 @@
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:numStars="5"
-        android:layout_marginStart="22dp"
-        android:layout_centerVertical="true"
+        android:layout_marginStart="19dp"
+        android:layout_alignBottom="@+id/Servicio"
         android:layout_toEndOf="@+id/Servicio" />
 
     <TextView
         android:id="@+id/Servicio"
         android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="18dp"
-        android:hint="Servicio"
+        android:layout_height="wrap_content"
+        android:textColor="#246EB9"
+        android:text="Servicio"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="16sp" />
