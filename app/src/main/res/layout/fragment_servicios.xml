@@ -70,17 +70,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp">
+        android:layout_height="222dp">
 
         <ListView
             android:id="@+id/ListaLugares"
-            android:background="#246EB9"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:background="#246EB9" />
     </RelativeLayout>
 
 </LinearLayout>

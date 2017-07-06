@@ -34,6 +34,7 @@
         <activity android:name=".DetalleItinerario" />
         <activity android:name=".CrearItinerario" />
         <activity android:name=".ModificarDetalle" />
+        <activity android:name=".Filtros"></activity>
     </application>
 
 </manifest>
