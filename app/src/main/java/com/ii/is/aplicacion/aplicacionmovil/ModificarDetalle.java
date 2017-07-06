@@ -1,6 +1,7 @@
 package com.ii.is.aplicacion.aplicacionmovil;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +21,8 @@ public class ModificarDetalle extends AppCompatActivity implements View.OnClickL
     private ControlBase CB;
     private int mod;
     private String tipo,nombre,usuario;
-    private EditText Titulo,Comuna,Direccion,Telefono,Disponibilidad,original,Tipo,NuevoComentario;
-    private TextView Detalle;
+    private EditText Titulo,Comuna,Direccion,Telefono,Disponibilidad,original,NuevoComentario;
+    private TextView Detalle, Tipo;
     private Button Guardar,Comentar;
     private String Rut;
     private RatingBar RB;
@@ -35,15 +36,22 @@ public class ModificarDetalle extends AppCompatActivity implements View.OnClickL
         nombre = (String) bundle.get("nombre");
         mod = (int)bundle.get("editable");
         Titulo = (EditText) findViewById(R.id.Titulo);
+        Titulo.setTextColor(Color.parseColor("#CBF0FE"));
         Comuna = (EditText)findViewById(R.id.Comuna);
+        Comuna.setTextColor(Color.parseColor("#CBF0FE"));
         Direccion = (EditText)findViewById(R.id.Direccion);
+        Direccion.setTextColor(Color.parseColor("#CBF0FE"));
         Telefono = (EditText)findViewById(R.id.Telefono);
+        Telefono.setTextColor(Color.parseColor("#CBF0FE"));
         Disponibilidad = (EditText) findViewById(R.id.Disponibilidad);
+        Disponibilidad.setTextColor(Color.parseColor("#CBF0FE"));
         Detalle = (TextView)findViewById(R.id.Descripcion);
+        Detalle.setTextColor(Color.parseColor("#CBF0FE"));
         NuevoComentario = (EditText) findViewById(R.id.Comentario_Agregar);
         Guardar = (Button)findViewById(R.id.Guardar);
         RB = (RatingBar)findViewById(R.id.NotaGeneral);
-        Tipo = (EditText)findViewById(R.id.Tipo);
+        Tipo = (TextView)findViewById(R.id.Tipo);
+        Tipo.setTextColor(Color.parseColor("#CBF0FE"));
         Comentar = (Button) findViewById(R.id.Comentar);
         Guardar.setOnClickListener(this);
         Titulo.setText(nombre);
@@ -55,7 +63,6 @@ public class ModificarDetalle extends AppCompatActivity implements View.OnClickL
             Telefono.setKeyListener(null);
             Disponibilidad.setKeyListener(null);
             Detalle.setKeyListener(null);
-            Tipo.setKeyListener(null);
             Guardar.setVisibility(Button.INVISIBLE);
         }
         CB.setTipo(23);

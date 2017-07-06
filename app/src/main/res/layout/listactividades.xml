@@ -6,32 +6,36 @@
 
     <TextView
         android:id="@+id/NombreActividad"
-        android:layout_width="155dp"
-        android:layout_height="35dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        android:layout_marginTop="5dp"
+        android:text="Actividad"
         android:layout_alignParentTop="true"
-        android:text="Actividad" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/Lugar"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
         android:text="Lugar de actividad"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/NombreActividad" />
+        android:layout_below="@+id/NombreActividad"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/ComunaActividad"
-        android:layout_width="95dp"
-        android:layout_height="35dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/Lugar"
-        android:text="Comuna" />
+        android:textColor="#FFFFFF"
+        android:text="Comuna"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/Lugar"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

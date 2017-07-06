@@ -46,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="  Temporada activa del lugar"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:layout_below="@+id/Contacto"
             android:layout_alignStart="@+id/Contacto" />
@@ -66,10 +67,11 @@
             android:layout_height="wrap_content"
             android:hint="  Direccion del lugar"
             android:textStyle="bold"
+            android:textSize="20dp"
             android:layout_below="@+id/TipoActivida"
             android:layout_alignStart="@+id/TipoActivida" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/Tipo"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -80,8 +82,9 @@
             android:textStyle="bold"
             android:layout_alignTop="@+id/Servicios"
             android:layout_alignStart="@+id/Servicios" />
+        -->
 
-        <TextView
+        <!--<TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -94,7 +97,7 @@
             android:layout_alignTop="@+id/Comuna"
             android:text="Comuna"
             />
-
+        -->
 
 
         <Spinner
@@ -159,6 +162,7 @@
             android:layout_below="@+id/Servicios"
             android:layout_centerHorizontal="true" />
 
+        <!--
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
@@ -173,6 +177,7 @@
             android:textColor="#CBF0FE"
             android:layout_alignStart="@+id/TipoActivida"
             />
+        -->
 
         <Spinner
             android:id="@+id/TipoActivida"

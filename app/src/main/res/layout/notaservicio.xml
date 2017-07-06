@@ -8,11 +8,11 @@
         android:id="@+id/Nota"
         style="@style/CustomRatingBar"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
         android:numStars="5"
-        android:layout_marginStart="19dp"
         android:layout_alignBottom="@+id/Servicio"
-        android:layout_toEndOf="@+id/Servicio" />
+        android:layout_toEndOf="@+id/Servicio"
+        android:layout_marginStart="73dp" />
 
     <TextView
         android:id="@+id/Servicio"
