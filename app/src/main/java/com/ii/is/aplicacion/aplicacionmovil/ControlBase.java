@@ -596,7 +596,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         Log.e("redirect",comuna);
                         Log.e("redirect",tipo_actividad);
                         Log.e("redirect",temporada);
-                        query = "SELECT  * " +
+                        query = "SELECT  DISTINCT l1.nombre, l1.contacto, l1.ubicacion, l1.disponibilidad, l1.tipo, l1.rutpropietario, l1.comuna, l1.promedio_lugar, l1.comentario,l1.imagen_frontal,l1.imagen_extra,l1.imagen_interior  " +
                                 "FROM gratificante2.lugar as l1 , gratificante2.servicio as s1 " +
                                 "WHERE l1.tipo Like('"+categoria+"') and l1.nombre Like('"+nombrecito+"') and l1.comuna Like('"+comuna+"')  and l1.disponibilidad Like('"+temporada+"')" +
                                 "and s1.lugar = l1.nombre and  s1.tipo Like('"+tipo_actividad+"')";

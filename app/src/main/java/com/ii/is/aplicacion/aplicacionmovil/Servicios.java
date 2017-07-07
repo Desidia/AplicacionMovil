@@ -172,7 +172,19 @@ public class Servicios extends Fragment implements View.OnClickListener {
         super.onDetach();
         mListener = null;
     }
-
+    public void buscar(){
+        services.clear();
+        CB = new ControlBase(this);
+        if(buscar.compareTo("Seleccione tipo de lugar") == 0) buscar = "%%";
+        CB.setCategoria(buscar);
+        CB.setNombrecito(lugar);
+        CB.setComuna(comuna);
+        CB.setTemporada(temporada);
+        CB.setNota(Integer.parseInt(nota));
+        CB.setTipo_actividad(servicio);
+        CB.setTipo(4);
+        CB.ejecutar();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -202,15 +214,10 @@ public class Servicios extends Fragment implements View.OnClickListener {
                 final Spinner servicios = (Spinner)vist.findViewById(R.id.Disponibilidad);
                 notitas.add("Seleccione nota minima de lugar");
                 notitas.add("0");
-                notitas.add("0.5");
                 notitas.add("1");
-                notitas.add("1.5");
                 notitas.add("2");
-                notitas.add("2.5");
                 notitas.add("3");
-                notitas.add("3.5");
                 notitas.add("4");
-                notitas.add("4.5");
                 notitas.add("5");
                 ArrayAdapter arrayAdapter1 = new ArrayAdapter(vist.getContext(),android.R.layout.simple_dropdown_item_1line,notitas);
                 arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -286,7 +293,7 @@ public class Servicios extends Fragment implements View.OnClickListener {
                         servicio = "%%";
                     }
                 });
-                builder.setMessage("Opciones de filtro").setView(vist).setPositiveButton("Filtros",new DialogInterface.OnClickListener(){
+                builder.setMessage("Opciones de filtro").setView(vist).setPositiveButton("Buscar",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         lugar = Nlugar.getText().toString();
@@ -296,6 +303,7 @@ public class Servicios extends Fragment implements View.OnClickListener {
                         Log.e("redirect",temporada);
                         Log.e("redirect",comuna);
                         Log.e("redirect", nota);
+                        buscar();
 
                     }
                 }).setNegativeButton("Cancel",null);
