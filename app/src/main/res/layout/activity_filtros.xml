@@ -3,50 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="350dp"
+    android:layout_height="400dp"
     tools:context="com.ii.is.aplicacion.aplicacionmovil.Filtros"
     android:orientation="vertical">
 
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/basura1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="TextView" />
+        android:text="Nombre" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <EditText
+        android:id="@+id/Nombre"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:hint="Nombre lugar a buscar" />
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/basura5"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="TextView" />
-
+        android:text="Comuna" />
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/Comuna"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
+
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/basura2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="TextView" />
-
+        android:text="Nota" />
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/Nota"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
+
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/basura3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="TextView" />
-
+        android:text="Servicio" />
     <Spinner
-        android:id="@+id/spinner4"
+        android:id="@+id/Servicio"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
 
+    <TextView
+        android:id="@+id/basura4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Disponibilidad" />
+
+    <Spinner
+        android:id="@+id/Disponibilidad"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 </LinearLayout>

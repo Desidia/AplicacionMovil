@@ -13,7 +13,7 @@ import java.util.Vector;
 public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Connection c;
     private Statement stmt;
-    private String  lugar,nombre,direccion,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
+    private String  nombrecito,lugar,nombre,direccion,contraseña,query,rut,nombrelugar,contacto,ubicacion,disponibilidad,actividad,comuna,comentario,Nombre_Itinerario,Nombre_Actividad,temporada,id,poseedor,nombre_actividad,tipo_actividad,lugar_actividad,ubicacion_actividad,comuna_actividad,itinerario;
     private Login login;
     private int tipo,posicion,nota;
     private int estado;
@@ -34,6 +34,62 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Servicios servicio;
     private Itinerarios itinerariosFragment;
     private ServiciosFragment Sf;
+
+    public String getNombrecito() {
+        return nombrecito;
+    }
+
+    public void setNombrecito(String nombrecito) {
+        this.nombrecito = nombrecito;
+    }
+
+    public ModificarDetalle getModificardetalle() {
+        return modificardetalle;
+    }
+
+    public void setModificardetalle(ModificarDetalle modificardetalle) {
+        this.modificardetalle = modificardetalle;
+    }
+
+    public Vector<String> getTipos() {
+        return tipos;
+    }
+
+    public void setTipos(Vector<String> tipos) {
+        this.tipos = tipos;
+    }
+
+    public Vector getNotitas() {
+        return notitas;
+    }
+
+    public void setNotitas(Vector notitas) {
+        this.notitas = notitas;
+    }
+
+    public Servicios getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicios servicio) {
+        this.servicio = servicio;
+    }
+
+    public Itinerarios getItinerariosFragment() {
+        return itinerariosFragment;
+    }
+
+    public void setItinerariosFragment(Itinerarios itinerariosFragment) {
+        this.itinerariosFragment = itinerariosFragment;
+    }
+
+    public ServiciosFragment getSf() {
+        return Sf;
+    }
+
+    public void setSf(ServiciosFragment sf) {
+        Sf = sf;
+    }
 
     public ControlBase(ServiciosFragment detalle){
         c = null;
@@ -536,10 +592,15 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 4:
-                        //Log.e("redirect",categoria);
-                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.imagen_frontal as imagen_frontal, U.imagen_interior as imagen_interior, U.imagen_extra as imagen_extra"
-                            + "  FROM gratificante2.lugar as U"
-                            + " WHERE U.tipo = '" +categoria  +"';" ;
+                        Log.e("redirect",nombrecito);
+                        Log.e("redirect",comuna);
+                        Log.e("redirect",tipo_actividad);
+                        Log.e("redirect",temporada);
+                        query = "SELECT  * " +
+                                "FROM gratificante2.lugar as l1 , gratificante2.servicio as s1 " +
+                                "WHERE l1.tipo Like('"+categoria+"') and l1.nombre Like('"+nombrecito+"') and l1.comuna Like('"+comuna+"')  and l1.disponibilidad Like('"+temporada+"')" +
+                                "and s1.lugar = l1.nombre and  s1.tipo Like('"+tipo_actividad+"')";
+                        if(nota > 0) query += " AND l1.promedio_lugar >= "+ nota;
                         c = DriverManager
                                 .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
                                         "UbdIc", "udb2016c");
@@ -547,6 +608,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         System.out.println("Opened database successfully");
                         stmt = c.createStatement();
                         rs = stmt.executeQuery(query);
+                        Log.e("redirect",query);
                         while (rs.next()) {
                             Log.e("redirect","entre 1");
                             Lugar agregar = new Lugar();
@@ -1049,6 +1111,24 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         stmt = c.createStatement();
                         stmt.executeUpdate(query);
                         stmt.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 28:
+                        Log.e("redirect", "Entre caso 28");
+                        query = "SELECT DISTINCT U.tipo as tipo  FROM gratificante2.servicio as U;";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            servicio.AgregarSet2(rs.getString("tipo"));
+                        }
+                        stmt.close();
+                        rs.close();
                         c.commit();
                         c.close();
                         break;
