@@ -18,7 +18,7 @@
         android:background="#246EB9"
         tools:layout_editor_absoluteY="3dp">
 
-        <EditText
+        <TextView
             android:id="@+id/Titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,23 +49,26 @@
             android:layout_below="@+id/Comuna"
             android:layout_centerHorizontal="true" />
 
-        <EditText
+        <TextView
             android:id="@+id/Telefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#AFCAE5"
+            android:textSize="18dp"
             android:text="Contacto"
             android:textStyle="bold"
             android:layout_below="@+id/Direccion"
             android:layout_centerHorizontal="true" />
 
-        <EditText
+        <TextView
             android:id="@+id/Disponibilidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#AFCAE5"
             android:textStyle="bold"
+            android:layout_marginTop="10dp"
             android:text="Disponibilidad"
+            android:textSize="18dp"
             android:inputType="textPersonName"
             android:layout_below="@id/Telefono"
             android:layout_centerHorizontal="true" />
@@ -80,12 +83,14 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true" />
 
-        <EditText
+        <TextView
             android:id="@+id/Descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descripción del lugar"
             android:textColor="#AFCAE5"
+            android:textSize="18dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@+id/Disponibilidad"
@@ -99,12 +104,13 @@
             android:layout_alignParentBottom="true"
             android:layout_alignEnd="@+id/Comuna" />
 
-        <EditText
+        <TextView
             android:id="@+id/Tipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#AFCAE5"
             android:text="Tipo"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:layout_below="@+id/NotaGeneral"
             android:layout_centerHorizontal="true" />
@@ -173,6 +179,7 @@
             android:textStyle="bold"
             android:text="Evaluación del lugar"
             android:textColor="#AFCAE5"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/Descripcion"
             android:layout_centerHorizontal="true" />
 
@@ -202,9 +209,11 @@
             android:id="@+id/Comentario_Agregar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deja tu comentario..."
+            android:hint="Deja tu comentario..."
+            android:textColorHint="#246EB9"
             android:textColor="#246EB9"
             android:background="#AFCAE5"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/ListEvaluar"
             android:layout_alignStart="@+id/ListEvaluar"
             android:layout_alignEnd="@+id/ListEvaluar" />

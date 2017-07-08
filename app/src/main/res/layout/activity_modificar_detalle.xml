@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:textColor="#AFCAE5"
+            android:textColor="#1e5d74"
             android:hint="Nombre"
             android:inputType="textPersonName"
             android:layout_below="@+id/NotaGeneral"
@@ -38,6 +38,7 @@
             android:hint="Com"
             android:inputType="textPersonName"
             android:textStyle="bold"
+            android:textColor="#1e5d74"
             android:layout_below="@+id/Tipo"
             android:layout_centerHorizontal="true" />
 
@@ -47,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textColor="#1e5d74"
             android:hint="Direccion"
             android:inputType="textPersonName"
             android:layout_below="@+id/Titulo"
@@ -61,6 +63,7 @@
             android:hint="Contacto"
             android:inputType="textPersonName"
             android:textStyle="bold"
+            android:textColor="#1e5d74"
             android:layout_below="@+id/Disponibilidad"
             android:layout_centerHorizontal="true" />
 
@@ -72,6 +75,7 @@
             android:hint="Disponibilidad"
             android:inputType="textPersonName"
             android:textStyle="bold"
+            android:textColor="#1e5d74"
             android:layout_below="@+id/Comuna"
             android:layout_centerHorizontal="true" />
 
@@ -88,7 +92,7 @@
             android:id="@+id/Descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción de lugar"
+            android:hint="Descripción de lugar"
             android:textStyle="bold"
             android:textColor="#1e5d74"
             android:layout_below="@+id/Telefono"
@@ -115,7 +119,7 @@
             android:hint="Tipo"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:textColor="#111111"
+            android:textColor="#1e5d74"
             android:layout_below="@+id/Direccion"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"

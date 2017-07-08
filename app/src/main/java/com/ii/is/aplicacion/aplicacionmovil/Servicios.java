@@ -304,6 +304,11 @@ public class Servicios extends Fragment implements View.OnClickListener {
                         Log.e("redirect",comuna);
                         Log.e("redirect", nota);
                         buscar();
+                        lugar = "%%";
+                        servicio = "%%";
+                        temporada = "%%";
+                        comuna = "%%";
+                        nota = "0";
 
                     }
                 }).setNegativeButton("Cancel",null);
