@@ -107,7 +107,7 @@
             android:layout_below="@+id/radioGroup"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@color/BlueButtonLogin"
+            android:backgroundTint="@color/BlueButtonLogin"
             android:contextClickable="true"
             android:cursorVisible="true"
             android:text="Entrar"

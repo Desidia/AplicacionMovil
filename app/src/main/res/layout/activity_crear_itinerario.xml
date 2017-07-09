@@ -13,7 +13,12 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-
+        <TextView
+            android:id="@+id/separadorspinner"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView11"
+            android:layout_centerHorizontal="true"/>
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -47,7 +52,8 @@
             android:textColor="#fff"
             android:inputType="textPersonName"
             android:layout_below="@+id/textView2"
-            android:layout_alignStart="@+id/disponibilidadactividad" />
+            android:layout_alignStart="@+id/disponibilidadactividad"
+            android:layout_alignEnd="@+id/disponibilidadactividad" />
 
         <EditText
             android:id="@+id/disponibilidadactividad"
@@ -68,9 +74,9 @@
             android:textStyle="bold"
             android:textColor="#fff"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="45dp"
+            android:layout_alignStart="@id/disponibilidadactividad"
             android:layout_below="@+id/disponibilidadactividad"
-            android:layout_alignParentStart="true" />
+             />
 
         <TextView
             android:id="@+id/textView8"
@@ -79,7 +85,6 @@
             android:textStyle="bold"
             android:textColor="#fff"
             android:text="Lugar de actividad"
-            android:layout_marginLeft="15dp"
             android:layout_above="@+id/lugaractividad"
             android:layout_alignStart="@+id/lugaractividad" />
 
@@ -100,21 +105,25 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView4"
-            android:layout_alignStart="@+id/disponibilidadactividad" />
+            android:backgroundTint="#fff"
+            android:popupBackground="#555"
+            android:layout_alignStart="@+id/disponibilidadactividad"
+            android:layout_toStartOf="@+id/separadorspinner" />
 
         <Spinner
             android:id="@+id/lugaractividad"
             android:layout_width="150dp"
-            android:layout_marginLeft="50dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="#fff"
             android:layout_above="@+id/AgregarActividad"
-            android:layout_alignEnd="@+id/disponibilidadactividad" />
+            android:layout_alignEnd="@+id/disponibilidadactividad"
+            android:layout_toEndOf="@+id/separadorspinner" />
 
         <Button
             android:id="@+id/AgregarActividad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:backgroundTint="#fff"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="14dp"
             android:textStyle="bold"
@@ -130,7 +139,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="Agregar nuevo itinerario"
-            android:background="#fff"
+            android:backgroundTint="#fff"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             />

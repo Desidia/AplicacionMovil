@@ -59,10 +59,10 @@
             android:id="@+id/buscarlugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/DarkBlueLugar"
+            android:backgroundTint="@color/DarkBlueLugar"
             android:text="Buscar Lugar"
             android:textColor="#AFCAE5"
-            android:textSize="24dp"
+            android:textSize="25sp"
             android:layout_below="@+id/Categorias"
             android:layout_alignStart="@+id/Categorias"
             android:layout_alignEnd="@+id/Categorias" />
@@ -78,24 +78,24 @@
         <ListView
             android:id="@+id/ListaLugares"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="280dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:background="@color/backGroundApp"
+            android:backgroundTint="@color/backGroundApp"
             android:divider="@drawable/divider" />
 
         <Button
             android:id="@+id/filtrado"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/ListaLugares"
-            android:background="@color/DarkBlueLugar"
+            android:backgroundTint="@color/DarkBlueLugar"
             android:text="Busqueda avanzada"
+            android:layout_centerHorizontal="true"
             android:textColor="#AFCAE5"
             android:textSize="24dp" />
     </RelativeLayout>

@@ -7,6 +7,7 @@
     android:layout_centerVertical="true"
     android:textAlignment="center"
     android:background="#fff"
+    android:backgroundTint="#fff"
     android:textColor="@color/colorPrimary"
     android:textSize="20dp"
     android:textStyle="bold"
