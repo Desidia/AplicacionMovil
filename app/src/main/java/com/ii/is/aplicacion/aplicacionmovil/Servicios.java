@@ -129,8 +129,8 @@ public class Servicios extends Fragment implements View.OnClickListener {
         services.add(s);
     }
     public void actualizar(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(vista.getContext(),android.R.layout.simple_dropdown_item_1line,busqueda);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(vista.getContext(),R.layout.spinner_buscar_lugar,busqueda);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_buscar_lugar);
         categorias.setAdapter(arrayAdapter);
 
         categorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -219,8 +219,8 @@ public class Servicios extends Fragment implements View.OnClickListener {
                 notitas.add("3");
                 notitas.add("4");
                 notitas.add("5");
-                ArrayAdapter arrayAdapter1 = new ArrayAdapter(vist.getContext(),android.R.layout.simple_dropdown_item_1line,notitas);
-                arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter arrayAdapter1 = new ArrayAdapter(vist.getContext(),R.layout.spinner_buscar_lugar,notitas);
+                arrayAdapter1.setDropDownViewResource(R.layout.spinner_buscar_lugar);
                 notas.setAdapter(arrayAdapter1);
                 notas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -242,8 +242,8 @@ public class Servicios extends Fragment implements View.OnClickListener {
                 comunitas.add("LEBU");
                 comunitas.add("LOS ALAMOS");
                 comunitas.add("TIRUA");
-                ArrayAdapter arrayAdapter2 = new ArrayAdapter(vist.getContext(),android.R.layout.simple_dropdown_item_1line,comunitas);
-                arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter arrayAdapter2 = new ArrayAdapter(vist.getContext(),R.layout.spinner_buscar_lugar,comunitas);
+                arrayAdapter2.setDropDownViewResource(R.layout.spinner_buscar_lugar);
                 comunas.setAdapter(arrayAdapter2);
                 comunas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -263,8 +263,8 @@ public class Servicios extends Fragment implements View.OnClickListener {
                 Disp.add("Verano");
                 Disp.add("Verano-Otoño");
                 Disp.add("Primavera-Otroño");
-                ArrayAdapter arrayAdapter3 = new ArrayAdapter(vist.getContext(),android.R.layout.simple_dropdown_item_1line,Disp);
-                arrayAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter arrayAdapter3 = new ArrayAdapter(vist.getContext(),R.layout.spinner_buscar_lugar,Disp);
+                arrayAdapter3.setDropDownViewResource(R.layout.spinner_buscar_lugar);
                 temporadas.setAdapter(arrayAdapter3);
                 temporadas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -278,8 +278,8 @@ public class Servicios extends Fragment implements View.OnClickListener {
                         temporada = "%%";
                     }
                 });
-                ArrayAdapter arrayAdapter4 = new ArrayAdapter(vist.getContext(),android.R.layout.simple_dropdown_item_1line,Serv);
-                arrayAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter arrayAdapter4 = new ArrayAdapter(vist.getContext(),R.layout.spinner_buscar_lugar,Serv);
+                arrayAdapter4.setDropDownViewResource(R.layout.spinner_buscar_lugar);
                 servicios.setAdapter(arrayAdapter4);
                 servicios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -293,7 +293,7 @@ public class Servicios extends Fragment implements View.OnClickListener {
                         servicio = "%%";
                     }
                 });
-                builder.setMessage("Opciones de filtro").setView(vist).setPositiveButton("Buscar",new DialogInterface.OnClickListener(){
+                builder.setMessage("").setView(vist).setPositiveButton("Buscar",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         lugar = Nlugar.getText().toString();

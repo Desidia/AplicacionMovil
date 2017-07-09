@@ -1,6 +1,7 @@
 package com.ii.is.aplicacion.aplicacionmovil;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -43,10 +44,15 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         tipo = (Spinner)findViewById(R.id.TipoActivida);
         comuna = (Spinner)findViewById(R.id.Comuna);
         Nombre = (EditText)findViewById(R.id.Nombre);
+        Nombre.setTextColor(Color.parseColor("#CBF0FE"));
         Contacto = (EditText)findViewById(R.id.Contacto);
+        Contacto.setTextColor(Color.parseColor("#CBF0FE"));
         Direccion = (EditText)findViewById(R.id.Direccion);
+        Direccion.setTextColor(Color.parseColor("#CBF0FE"));
         Disponibilidad = (EditText)findViewById(R.id.Disponibilidad);
+        Disponibilidad.setTextColor(Color.parseColor("#CBF0FE"));
         comentario = (EditText)findViewById(R.id.Comentario);
+        comentario.setTextColor(Color.parseColor("#CBF0FE"));
         servicios = (ListView)findViewById(R.id.ListServicios);
         services = (Spinner)findViewById(R.id.Servicios);
         elements = new Vector<String>();
@@ -92,8 +98,8 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         ciudad.add(agregar);
     }
     public  void actualizarS(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,Serv);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_lugar,Serv);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_lugar);
         services.setAdapter(arrayAdapter);
         services.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -108,8 +114,8 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         });
     }
     public void actualizar(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,busqueda);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_lugar,busqueda);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_lugar);
         tipo.setAdapter(arrayAdapter);
         tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -124,8 +130,8 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         });
     }
     public void actualizarC(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,ciudad);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_lugar,ciudad);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_lugar);
         comuna.setAdapter(arrayAdapter);
 
         comuna.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

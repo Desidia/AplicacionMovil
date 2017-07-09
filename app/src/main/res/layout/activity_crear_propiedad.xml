@@ -35,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Nombre de lugar"
+            android:textColorHint="#CBF0FE"
             android:textSize="24dp"
             android:textStyle="bold"
             android:textColor="#AFCAE5"
@@ -49,6 +50,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_below="@+id/Contacto"
+            android:textColorHint="#CBF0FE"
             android:layout_alignStart="@+id/Contacto" />
 
         <Spinner
@@ -68,6 +70,7 @@
             android:hint="  Direccion del lugar"
             android:textStyle="bold"
             android:textSize="20dp"
+            android:textColorHint="#CBF0FE"
             android:layout_below="@+id/TipoActivida"
             android:layout_alignStart="@+id/TipoActivida" />
 
@@ -115,6 +118,7 @@
             android:hint="  Contacto empresario"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColorHint="#CBF0FE"
             android:layout_below="@+id/Comuna"
             android:layout_alignStart="@+id/Comuna" />
 
@@ -139,7 +143,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Agregua una breve descripción de tu lugar"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_below="@+id/Disponibilidad"
+            android:textColorHint="#CBF0FE"
             android:layout_alignStart="@+id/imagenlugar" />
 
 
@@ -149,7 +156,8 @@
             android:layout_height="130dp"
             android:layout_marginTop="23dp"
             android:layout_below="@+id/Añade"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignStart="@+id/Comentario"
+            android:layout_alignEnd="@+id/Comentario" />
 
         <Button
             android:id="@+id/Añade"

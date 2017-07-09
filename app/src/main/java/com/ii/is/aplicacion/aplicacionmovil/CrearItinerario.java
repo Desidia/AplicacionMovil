@@ -82,8 +82,8 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         lugares.add(agregar);
     }
     public void actualizar1(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,actividades);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_itinerario,actividades);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_itinerario);
         actividad.setAdapter(arrayAdapter);
 
         actividad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -100,8 +100,8 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         });
     }
     public void actualizar2(){
-        ArrayAdapter arrayAdapter2 = new ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line,lugares);
-        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayAdapter2 = new ArrayAdapter(this,R.layout.spinner_crear_itinerario,lugares);
+        arrayAdapter2.setDropDownViewResource(R.layout.spinner_crear_itinerario);
         lugar.setAdapter(arrayAdapter2);
         lugar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

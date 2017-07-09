@@ -1,62 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="400dp"
-    tools:context="com.ii.is.aplicacion.aplicacionmovil.Filtros"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="@color/DarkBlueLugar"
+    android:orientation="vertical"
+    tools:context="com.ii.is.aplicacion.aplicacionmovil.Filtros">
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OPCIONES DE FILTRADO"
+        android:textColor="@color/LightBlueLugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/basura1"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Nombre" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="NOMBRE"
+        android:textColor="@color/LightBlueLugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp" />
 
     <EditText
         android:id="@+id/Nombre"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:hint="Nombre lugar a buscar" />
+        android:background="@android:color/white"
+        android:hint="Nombre lugar a buscar"
+        android:textStyle="bold"
+        android:layout_below="@+id/basura1"
+        android:layout_alignStart="@+id/basura1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"/>
+
     <TextView
         android:id="@+id/basura5"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Comuna" />
+        android:paddingTop="16dp"
+        android:text="COMUNA"
+        android:textColor="@color/LightBlueLugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/Nombre"
+        android:layout_alignStart="@+id/Nombre" />
+
     <Spinner
         android:id="@+id/Comuna"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:layout_below="@id/basura5"
+        android:layout_alignStart="@+id/basura5"
+        android:layout_alignEnd="@+id/Nombre" />
 
     <TextView
         android:id="@+id/basura2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Nota" />
+        android:paddingTop="16dp"
+        android:text="NOTA"
+        android:textColor="@color/LightBlueLugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/Comuna"
+        android:layout_alignStart="@+id/Comuna" />
+
     <Spinner
         android:id="@+id/Nota"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:layout_below="@+id/basura2"
+        android:layout_alignStart="@+id/basura2"
+        android:layout_alignEnd="@+id/Comuna" />
 
     <TextView
         android:id="@+id/basura3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Servicio" />
+        android:paddingTop="16dp"
+        android:text="DISPONIBILIDAD"
+        android:textColor="@color/LightBlueLugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/Nota"
+        android:layout_alignStart="@+id/Nota" />
+
     <Spinner
         android:id="@+id/Servicio"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:layout_below="@+id/basura3"
+        android:layout_alignStart="@+id/basura3"
+        android:layout_alignEnd="@+id/Nota" />
 
     <TextView
         android:id="@+id/basura4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Disponibilidad" />
+        android:paddingTop="16dp"
+        android:text="SERVICIO"
+        android:textColor="@color/LightBlueLugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/Servicio"
+        android:layout_alignStart="@+id/Servicio" />
 
     <Spinner
         android:id="@+id/Disponibilidad"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
-</LinearLayout>
+        android:layout_height="40dp"
+        android:layout_below="@id/basura4"
+        android:layout_alignStart="@+id/basura4"
+        android:layout_alignEnd="@+id/Servicio" />
+</RelativeLayout>
