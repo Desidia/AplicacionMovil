@@ -8,8 +8,25 @@ public class Lugar {
 
     private String nombre,contacto,ubicacion,disponibilidad,tipo,rutpropietario,comuna,Detalle,Imagen1,Imagen2,Imagen3;
     private int promedio_lugar;
+    private double lat,lng;
     public Lugar(){
 
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
     public String getComuna() {
