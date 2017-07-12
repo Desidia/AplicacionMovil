@@ -34,7 +34,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Servicios servicio;
     private Itinerarios itinerariosFragment;
     private ServiciosFragment Sf;
-
+    private MapaComuna mapaComuna;
     public String getNombrecito() {
         return nombrecito;
     }
@@ -98,7 +98,13 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         estado = -1;
         ejemplo = "";
     }
-
+    public ControlBase(MapaComuna detalle){
+        c = null;
+        stmt = null;
+        mapaComuna  = detalle;
+        estado = -1;
+        ejemplo = "";
+    }
     public ControlBase(Itinerarios detalle){
         c = null;
         stmt = null;
@@ -1132,6 +1138,28 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 29:
+                        Log.e("redirect","ejecutare query 29");
+                        query = "SELECT DISTINCT u.nombre as nombre,u.latitud as latitud, u.longitud as longitud, u.comuna as comuna  FROM gratificante2.lugar as U WHERE U.comuna = '"+comuna+ "';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            Lugar lugar = new Lugar();
+                            lugar.setNombre(rs.getString("nombre"));
+                            lugar.setLat(rs.getDouble("latitud"));
+                            lugar.setLng(rs.getDouble("longitud"));
+                            mapaComuna.add(lugar);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -1230,6 +1258,9 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 27:
             CrearPro.confirmar();
+            break;
+        case 29:
+            mapaComuna.agregarpuntos();
             break;
         default:
             break;

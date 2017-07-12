@@ -25,7 +25,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private int mod;
     private String tipo,nombre,usuario;
     private EditText Comuna,Direccion,original,NuevoComentario;
-    private TextView Detalle, Titulo, Tipo,Telefono ,Disponibilidad;
+    private TextView Detalle,Titulo,Telefono,Disponibilidad,Tipo;
     private Button Guardar,Comentar;
     private String Rut,Imagen1,Imagen2,Imagen3;
     private RatingBar RB;
@@ -70,12 +70,13 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         NuevoComentario = (EditText) findViewById(R.id.Comentario_Agregar);
         Guardar = (Button)findViewById(R.id.Guardar);
         RB = (RatingBar)findViewById(R.id.NotaGeneral);
-        Tipo = (TextView)findViewById(R.id.Tipo);
+        Tipo = (TextView) findViewById(R.id.Tipo);
         Comentar = (Button) findViewById(R.id.Comentar);
         Comentar.setOnClickListener(this);
         Guardar.setOnClickListener(this);
         Titulo.setText(nombre);
         Tipo.setText(tipo);
+        Direccion.setOnClickListener(this);
         Comentarios.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -303,6 +304,11 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
                     creeunaOp = true;
                     crearOpinion();
                 }
+                break;
+            case R.id.Direccion:
+                Intent intent = new Intent(DetalleActivity.this,MapaComuna.class);
+                intent.putExtra("Comuna",Comuna.getText().toString());
+                startActivity(intent);
                 break;
             default:
                 break;
