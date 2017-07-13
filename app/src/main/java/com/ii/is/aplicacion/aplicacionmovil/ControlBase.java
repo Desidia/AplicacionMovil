@@ -1292,6 +1292,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 8:
             CrearPro.actualizarC();
+            CrearPro.actualizarT();
             break;
         case 11:
             itinerariosFragment.desplegar2();
@@ -1301,6 +1302,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 13:
             crearItinerario.actualizar1();
+
             break;
         case 14:
             Log.e("redirect","termine 14");
@@ -1346,7 +1348,6 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 26:
             CrearPro.actualizarS();
-            CrearPro.actualizarT();
             break;
         case 27:
             CrearPro.confirmar();
