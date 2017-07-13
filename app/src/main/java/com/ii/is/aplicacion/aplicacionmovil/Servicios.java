@@ -49,6 +49,7 @@ public class Servicios extends Fragment implements View.OnClickListener {
     private Vector<Lugar> services;
     private Button Busca;
     private Button filtro;
+    private boolean mutex = false;
     public Servicios() {
         // Required empty public constructor
     }
@@ -124,6 +125,7 @@ public class Servicios extends Fragment implements View.OnClickListener {
         }
         LugaresAdapter adapter = new LugaresAdapter(vista.getContext(),R.layout.list,lista_lugares);
         lista.setAdapter(adapter);
+        mutex = false;
     }
     public void agregarServicio(Lugar s){
         services.add(s);
@@ -189,17 +191,20 @@ public class Servicios extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buscarlugar:
-                services.clear();
-                CB = new ControlBase(this);
-                if(buscar.compareTo("Seleccione tipo de lugar") == 0) buscar = "%%";
-                CB.setCategoria(buscar);
-                CB.setNombrecito(lugar);
-                CB.setComuna(comuna);
-                CB.setTemporada(temporada);
-                CB.setNota(Integer.parseInt(nota));
-                CB.setTipo_actividad(servicio);
-                CB.setTipo(4);
-                CB.ejecutar();
+                if(!mutex) {
+                    mutex=true;
+                    services.clear();
+                    CB = new ControlBase(this);
+                    if (buscar.compareTo("Seleccione tipo de lugar") == 0) buscar = "%%";
+                    CB.setCategoria(buscar);
+                    CB.setNombrecito(lugar);
+                    CB.setComuna(comuna);
+                    CB.setTemporada(temporada);
+                    CB.setNota(Integer.parseInt(nota));
+                    CB.setTipo_actividad(servicio);
+                    CB.setTipo(4);
+                    CB.ejecutar();
+                }
                 break;
             case R.id.filtrado:
                 notitas.clear();

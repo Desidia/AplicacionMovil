@@ -61,7 +61,11 @@
             android:label="@string/title_activity_mapa_comuna" />
         <activity
             android:name=".MapaItinerarios"
-            android:label="@string/title_activity_mapa_itinerarios"></activity>
+            android:label="@string/title_activity_mapa_itinerarios" />
+        <activity
+            android:name=".Eliminar"
+            android:label="@string/title_activity_eliminar"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

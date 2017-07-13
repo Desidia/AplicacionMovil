@@ -29,7 +29,7 @@ import java.util.Vector;
 public class ServiciosFragment extends Fragment implements View.OnClickListener{
 
     private OnFragmentInteractionListener mListener;
-    private Button Propiedades,Crear;
+    private Button Crear;
     private ControlBase CB;
     private List busqueda = new ArrayList();
     private ListView lista;
@@ -47,9 +47,7 @@ public class ServiciosFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_servicios2, container, false);
-        Propiedades = (Button)vista.findViewById(R.id.Lugares);
         Crear = (Button)vista.findViewById(R.id.Crear);
-        Propiedades.setOnClickListener(this);
         Crear.setOnClickListener(this);
         user =  getArguments().getString("USER");
         buscar = getArguments().getString("TIPO");
