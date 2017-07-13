@@ -19,6 +19,7 @@ public class Lista {
         this.comuna_actividad = comuna_actividad;
         this.ubicacion_actividad = ubicacion_actividad;
         this.pos = pos;
+
     }
 
     public String getItinerario() {

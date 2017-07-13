@@ -2,6 +2,7 @@ package com.ii.is.aplicacion.aplicacionmovil;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class ItinerarioAdapter extends ArrayAdapter<Itinerario>{
             holder = new ItinerarioAdapter.ItinerHolder();
             //  holder.RT = (RatingBar) row.findViewById(R.id.RBAct);
             holder.Descripcion = (TextView)row.findViewById(R.id.NombreAct);
+            holder.nota=(TextView)row.findViewById(R.id.likes_itinerario);
             row.setTag(holder);
         }
         else {
@@ -39,12 +41,15 @@ public class ItinerarioAdapter extends ArrayAdapter<Itinerario>{
         }
         Itinerario iter = itinerarios[posicion];
         holder.Descripcion.setText(iter.getNombre());
+        Log.e("redirect",""+iter.getNota());
+        holder.nota.setText(""+iter.getNota());
         //holder.RT.setRating((float)(iter.getNota()));
         return row;
     }
 
     static class ItinerHolder{
         TextView Descripcion;
+        TextView nota;
         //  RatingBar RT;
     }
 }

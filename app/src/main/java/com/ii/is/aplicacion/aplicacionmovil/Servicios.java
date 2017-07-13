@@ -121,7 +121,7 @@ public class Servicios extends Fragment implements View.OnClickListener {
     public void desplegar(){
         lista_lugares = new Lugares[services.size()];
         for(int i = 0; i < services.size();i++){
-            lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad(),services.elementAt(i).getImagen1());
+            lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad(),services.elementAt(i).getImagen1(),services.elementAt(i).getpromediolugar());
         }
         LugaresAdapter adapter = new LugaresAdapter(vista.getContext(),R.layout.list,lista_lugares);
         lista.setAdapter(adapter);

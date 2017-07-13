@@ -43,11 +43,14 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private Servicio_NotaAdapter2 adapter2;
     private OpinionAdapter adapter3;
     private Boolean creeunaOp = false,romper = false;
-    private ImageView imagen;
+    private ImageView ivBasicImage;
+    private Vector <String> rotar = new Vector<String>();
+    private int contadorImagen = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
         Evaluaciones = new Vector<evaluacion>();
+        ivBasicImage = (ImageView) findViewById(R.id.ivBasicImage);
         Opiniones = new Vector<Opinion>();
         CB = new ControlBase(this);
         Intent intent = getIntent();
@@ -82,6 +85,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         tipo1.setText(tipo);
         Direccion.setOnClickListener(this);
         Comuna.setOnClickListener(this);
+        ivBasicImage.setOnClickListener(this);
         Comentarios.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -175,11 +179,10 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         Imagen1 = i1;
         Imagen2 = i2;
         Imagen3 = i3;
-        if(i1 == ""){
-
-        }
-        String imageUri = Imagen1;
-        ImageView ivBasicImage = (ImageView) findViewById(R.id.ivBasicImage);
+        rotar.add(i1);
+        rotar.add(i2);
+        rotar.add(i3);
+        String imageUri = Imagen2;
         Picasso.with(this).load(imageUri).resize(145, 145).
                 centerCrop().into(ivBasicImage);
         iniciarComentarios();
@@ -321,6 +324,12 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
                 intent2.putExtra("Comuna",Comuna.getText().toString());
                 intent2.putExtra("Usuario",usuario);
                 startActivity(intent2);
+                break;
+            case R.id.ivBasicImage:
+                contadorImagen++;
+                String imageUri = rotar.elementAt(contadorImagen%3);
+                Picasso.with(this).load(imageUri).resize(145, 145).
+                        centerCrop().into(ivBasicImage);
                 break;
             default:
                 break;

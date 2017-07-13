@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -39,6 +40,9 @@ public class LugaresAdapter extends ArrayAdapter<Lugares> {
             holder.Titulo = (TextView)row.findViewById(R.id.Titulo);
             holder.Direccion = (TextView)row.findViewById(R.id.Direccion);
             holder.Descripcion = (TextView)row.findViewById(R.id.Descripcion);
+            holder.nota = (RatingBar)row.findViewById(R.id.ratingBar4);
+            holder.nota.setIsIndicator(true);
+         //   holder.nota.setSelected(false);
             row.setTag(holder);
         }
         else {
@@ -48,7 +52,9 @@ public class LugaresAdapter extends ArrayAdapter<Lugares> {
         holder.Titulo.setText(lugares.title);
         holder.Direccion.setText(lugares.direccion);
         holder.Descripcion.setText(lugares.descripcion);
-
+        holder.nota.setRating(lugares.nota);
+        holder.nota.setIsIndicator(true);
+     //   holder.nota.setSelected(false);
         String imageUri = lugares.imagen;
         Log.e("redirect","imprimire imagen nombre");
         Log.e("redirect",lugares.imagen);
@@ -61,5 +67,6 @@ public class LugaresAdapter extends ArrayAdapter<Lugares> {
         TextView Titulo;
         TextView Direccion;
         TextView Descripcion;
+        RatingBar nota;
     }
 }
