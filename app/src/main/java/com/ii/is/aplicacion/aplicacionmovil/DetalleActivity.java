@@ -25,7 +25,10 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private int mod;
     private String tipo,nombre,usuario;
     private EditText Comuna,Direccion,original,NuevoComentario;
-    private TextView Detalle,Titulo,Telefono,Disponibilidad,Tipo;
+    private TextView Detalle;
+    private TextView Titulo;
+    private TextView Telefono;
+    private TextView Disponibilidad;
     private Button Guardar,Comentar;
     private String Rut,Imagen1,Imagen2,Imagen3;
     private RatingBar RB;
@@ -70,13 +73,14 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         NuevoComentario = (EditText) findViewById(R.id.Comentario_Agregar);
         Guardar = (Button)findViewById(R.id.Guardar);
         RB = (RatingBar)findViewById(R.id.NotaGeneral);
-        Tipo = (TextView) findViewById(R.id.Tipo);
+        TextView tipo1 = (TextView) findViewById(R.id.Tipo);
         Comentar = (Button) findViewById(R.id.Comentar);
         Comentar.setOnClickListener(this);
         Guardar.setOnClickListener(this);
         Titulo.setText(nombre);
-        Tipo.setText(tipo);
+        tipo1.setText(tipo);
         Direccion.setOnClickListener(this);
+        Comuna.setOnClickListener(this);
         Comentarios.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -142,7 +146,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             Telefono.setKeyListener(null);
             Disponibilidad.setKeyListener(null);
             Detalle.setKeyListener(null);
-            Tipo.setKeyListener(null);
+            tipo1.setKeyListener(null);
             Guardar.setVisibility(Button.INVISIBLE);
         }
         CB.setTipo(5);
@@ -306,9 +310,14 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
             case R.id.Direccion:
-                Intent intent = new Intent(DetalleActivity.this,MapaComuna.class);
-                intent.putExtra("Comuna",Comuna.getText().toString());
+                Intent intent = new Intent(DetalleActivity.this,Mapa.class);
+                intent.putExtra("Nombre",Titulo.getText().toString());
                 startActivity(intent);
+                break;
+            case R.id.Comuna:
+                Intent intent2 = new Intent(DetalleActivity.this,MapaComuna.class);
+                intent2.putExtra("Comuna",Comuna.getText().toString());
+                startActivity(intent2);
                 break;
             default:
                 break;

@@ -50,11 +50,10 @@ import android.widget.Toast;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-/*
-SOLO FALTA PASARLE EL NOMBRE CORRECTO
- */
+import java.util.Vector;
 
-public class Mapa extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener,GoogleMap.OnMyLocationButtonClickListener,ActivityCompat.OnRequestPermissionsResultCallback,LocationListener,GoogleApiClient.ConnectionCallbacks,
+
+public class MapaItinerarios extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener,GoogleMap.OnMyLocationButtonClickListener,ActivityCompat.OnRequestPermissionsResultCallback,LocationListener,GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
@@ -63,16 +62,21 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
     private EditText etDestination;
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
+    private List<Route> rutas = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
     private Marker marcador;
+    private String nombre;
     private boolean entrar = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private static final int LocalPermission = 1;
-    private  ControlBase CB;
-    private  String nombre;
-    private double lat,lng;
-    private Location location;
+    private int horas = 0;
+    private int kilometros = 0;
+    private Vector latitud = new Vector();
+    private Vector lng = new Vector();
+    private Vector <String> nombres = new Vector <String>();
+    private ControlBase CB;
+    private int contador = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,25 +85,39 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         nombre = (String)bundle.get("Nombre");
-     //   nombre = "ALMA RESTOBAR";
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+//        progressDialog.dismiss();
+        polylinePaths = new ArrayList<>();
+        originMarkers = new ArrayList<>();
+        destinationMarkers = new ArrayList<>();
+        CB= new ControlBase(this);
+        CB.setTipo(31);
+        CB.setComuna(nombre);
+        CB.ejecutar();
     }
-
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void agregarLatitud(double f){
+        latitud.add(f);
     }
-
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void agregarLng(double f){
+        lng.add(f);
     }
+    public void agregarNombre(String f){
+        nombres.add(f);
+    }
+    private void sendRequest(String origin,String destination) {
+  /*      if (origin.isEmpty()) {
+            Toast.makeText(this, "Please enter origin address!", Toast.LENGTH_SHORT).show();
+            return;1
+        }
+        if (destination.isEmpty()) {
+            Toast.makeText(this, "Please enter destination address!", Toast.LENGTH_SHORT).show();
+            return;
+        }*/
 
-    private void sendRequest() {
-        String origin = marcador.getPosition().latitude + ","+marcador.getPosition().longitude;
-        String destination = lat + ","+lng;
         try {
-            Log.e("redirect","Entre al try");
+            Log.e("redirect","origen = "+ origin);
             new DirectionFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -111,11 +129,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
         mMap = googleMap;
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
-        location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-     //   Log.e("redirect","mi locacion = "+location.getLongitude());
-     //   Log.e("redirect","mi locacion = "+location.getLatitude());
-        Log.e("redirect", "Latitud "+lat);
-        Log.e("redirect", "longitud "+ lng);
+
        /* ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                 LOCATION_PERMISSION_REQUEST_CODE);
@@ -130,13 +144,13 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
             return;
         }
-      //  LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-       // Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-      //  agregarMarcador(location.getLatitude(),location.getLongitude());
+        //  LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        // Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        //  agregarMarcador(location.getLatitude(),location.getLongitude());
         //LatLng hcmus = new LatLng(10.762963, 106.682394);
-       // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 18));
-       // originMarkers.add(mMap.addMarker(new MarkerOptions()
-         //       .title("Đại học Khoa học tự nhiên")
+        // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 18));
+        // originMarkers.add(mMap.addMarker(new MarkerOptions()
+        //       .title("Đại học Khoa học tự nhiên")
 //                .position(hcmus)));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -149,6 +163,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
             return;
         }
         mMap.setMyLocationEnabled(true);
+      //  sendRequest("-37.982305,-73.244355","-37.244582,-73.321285");
     }
     @Override
     public void onDirectionFinderStart() {
@@ -173,37 +188,62 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
             }
         }
     }
-
+    public void comenzar(){
+        agregarMarcador((double)latitud.elementAt(contador),(double)lng.elementAt(contador),nombres.elementAt(contador));
+        sendRequest(""+latitud.elementAt(contador)+","+lng.elementAt(contador),""+latitud.elementAt(contador+1)+","+lng.elementAt(contador+1));
+    }
     @Override
     public void onDirectionFinderSuccess(List<Route> routes) {
+        if(contador == latitud.size()-2){
+            agregarMarcador((double)latitud.elementAt(contador+1),(double)lng.elementAt(contador+1),nombres.elementAt(contador+1));
+            entrar = true;
+        }
+        for (int i = 0; i < routes.size();i++){
+            //horas+=routes.get(i).duration.value;
+            rutas.add(routes.get(i));
+        }
         progressDialog.dismiss();
-        polylinePaths = new ArrayList<>();
-        originMarkers = new ArrayList<>();
-        destinationMarkers = new ArrayList<>();
-        Log.e("redirect","Marcare el camino");
-        for (Route route : routes) {
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
-            ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
-            ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
 
-            originMarkers.add(mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.start_blue))
-                    .title("Mi ubicacion")
-                    .position(route.startLocation)));
-            destinationMarkers.add(mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.end_green))
-                    .title(nombre)
-                    .position(route.endLocation)));
+        if(entrar) {
+            Log.e("redirect","Marcare los caminitos");
+            Log.e("redirect","Contador = "+ contador);
+            for (Route route : rutas) {
+                horas+=route.duration.value;
+                kilometros+=route.distance.value;
+                String duracion = horas/3600+" hora y " + (horas%3600)/60 + " minutos";
+                String distancia = kilometros/1000 +"."+(kilometros%1000)/100+" km";
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
+                ((TextView) findViewById(R.id.tvDuration)).setText(duracion);
+                ((TextView) findViewById(R.id.tvDistance)).setText(distancia);
+                Log.e("redirect",route.distance.text);
+                Log.e("redirect","valor =" +route.distance.value);
 
-            PolylineOptions polylineOptions = new PolylineOptions().
-                    geodesic(true).
-                    color(Color.BLUE).
-                    width(10);
+             /*   originMarkers.add(mMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.start_blue))
+                        .title(route.startAddress)
+                        .position(route.startLocation)));
+                destinationMarkers.add(mMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.end_green))
+                        .title(route.endAddress)
+                        .position(route.endLocation)));
+*/
+                PolylineOptions polylineOptions = new PolylineOptions().
+                        geodesic(true).
+                        color(Color.BLUE).
+                        width(10);
 
-            for (int i = 0; i < route.points.size(); i++)
-                polylineOptions.add(route.points.get(i));
+                for (int i = 0; i < route.points.size(); i++)
+                    polylineOptions.add(route.points.get(i));
 
-            polylinePaths.add(mMap.addPolyline(polylineOptions));
+                polylinePaths.add(mMap.addPolyline(polylineOptions));
+            }
+        }
+        if(!entrar){
+            contador++;
+            agregarMarcador((double)latitud.elementAt(contador),(double)lng.elementAt(contador),nombres.elementAt(contador));
+           // entrar = true;
+            //agregarMarcador(-37.244582,-73.321285);
+            sendRequest(""+latitud.elementAt(contador)+","+lng.elementAt(contador),""+latitud.elementAt(contador+1)+","+lng.elementAt(contador+1));
         }
     }
 
@@ -211,27 +251,23 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
     public boolean onMyLocationButtonClick() {
         return false;
     }
-    private void agregarMarcador(double lat, double lng){
+    private void agregarMarcador(double lat, double lng,String s){
         LatLng coordenadas = new LatLng(lat,lng);
-        marcador = mMap.addMarker(new MarkerOptions().position(coordenadas).title("Mi posicion actual"));
+        marcador = mMap.addMarker(new MarkerOptions().position(coordenadas).title(s));
         CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas,16);
     }
 
     @Override
     public void onLocationChanged(Location location) {
         if(!entrar) {
-            agregarMarcador(location.getLatitude(), location.getLongitude());
-            CB = new ControlBase(this);
-            CB.setTipo(30);
-            CB.setComuna(nombre);
-            CB.ejecutar();
-            entrar = true;
+            //Log.e("redirect", String.valueOf(location.getLatitude()));
+            //Log.e("redirect", String.valueOf(location.getLongitude()));
+            //agregarMarcador(location.getLatitude(), location.getLongitude());
+        //    entrar = true;
+            //sendRequest("-37.982305,-73.244355","-37.244582,-73.321285");
         }
     }
-    public void ejecutar(){
-        Log.e("redirect", "consultare camino");
-        sendRequest();
-    }
+
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 

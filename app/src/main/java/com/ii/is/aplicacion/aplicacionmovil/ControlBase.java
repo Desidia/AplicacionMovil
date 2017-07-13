@@ -35,6 +35,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private Itinerarios itinerariosFragment;
     private ServiciosFragment Sf;
     private MapaComuna mapaComuna;
+    private MapaItinerarios mapaItinerarios;
+    private Mapa mapa;
     public String getNombrecito() {
         return nombrecito;
     }
@@ -81,6 +83,30 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
 
     public void setItinerariosFragment(Itinerarios itinerariosFragment) {
         this.itinerariosFragment = itinerariosFragment;
+    }
+
+    public MapaComuna getMapaComuna() {
+        return mapaComuna;
+    }
+
+    public void setMapaComuna(MapaComuna mapaComuna) {
+        this.mapaComuna = mapaComuna;
+    }
+
+    public MapaItinerarios getMapaItinerarios() {
+        return mapaItinerarios;
+    }
+
+    public void setMapaItinerarios(MapaItinerarios mapaItinerarios) {
+        this.mapaItinerarios = mapaItinerarios;
+    }
+
+    public Mapa getMapa() {
+        return mapa;
+    }
+
+    public void setMapa(Mapa mapa) {
+        this.mapa = mapa;
     }
 
     public ServiciosFragment getSf() {
@@ -158,6 +184,20 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         c = null;
         stmt = null;
         this.login  = log;
+        estado = -1;
+        ejemplo = "";
+    }
+    public ControlBase(Mapa log){
+        c = null;
+        stmt = null;
+        this.mapa  = log;
+        estado = -1;
+        ejemplo = "";
+    }
+    public ControlBase(MapaItinerarios log){
+        c = null;
+        stmt = null;
+        this.mapaItinerarios  = log;
         estado = -1;
         ejemplo = "";
     }
@@ -1160,6 +1200,55 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 30:
+                        Log.e("redirect","ejecutare query 30");
+                        query = "SELECT DISTINCT u.nombre as nombre,u.latitud as latitud, u.longitud as longitud, u.comuna as comuna  FROM gratificante2.lugar as U WHERE U.nombre = '"+comuna+ "';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            Log.e("redirect","Pille el  lugar");
+                            Log.e("redirect","Su latitud : "+rs.getDouble("latitud"));
+                            mapa.setLat(rs.getDouble("latitud"));
+                            mapa.setLng(rs.getDouble("longitud"));
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 31:
+                        Log.e("redirect","ejecutare query 31");
+                        Log.e("redirect",comuna);
+                        query = "Select id_itinerario, nombre, latitud, longitud, posicion " +
+                                "from gratificante2.lugar, gratificante2.lista, gratificante2.itinerario " +
+                                "where lista.itinerario = id_itinerario and id_itinerario Like('%"+comuna+"%') and lugar_actividad = lugar.nombre " +
+                                "order by id_itinerario, posicion";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            mapaItinerarios.agregarLatitud(rs.getDouble("latitud"));
+                            mapaItinerarios.agregarLng(rs.getDouble("longitud"));
+                            mapaItinerarios.agregarNombre(rs.getString("nombre"));
+                   //         Log.e("redirect",rs.getString("nombre"));
+             //               Log.e("redirect","Su latitud : "+rs.getDouble("latitud"));
+               //             mapa.setLat(rs.getDouble("latitud"));
+                 //           mapa.setLng(rs.getDouble("longitud"));
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -1261,6 +1350,12 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 29:
             mapaComuna.agregarpuntos();
+            break;
+        case 30:
+            mapa.ejecutar();
+            break;
+        case 31:
+            mapaItinerarios.comenzar();
             break;
         default:
             break;
