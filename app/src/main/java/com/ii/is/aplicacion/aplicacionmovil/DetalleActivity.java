@@ -61,7 +61,8 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         AgregarNota = (ListView)findViewById(R.id.ListEvaluar);
         tipo = (String) bundle.get("TIPO");
         nombre = (String) bundle.get("nombre");
-        mod = (int)bundle.get("editable");
+        mod = 1;
+        //mod = (int)bundle.get("editable");
         usuario = (String)bundle.get("USUARIO");
         Log.e("redirect",usuario);
         Titulo = (TextView) findViewById(R.id.Titulo);
@@ -312,11 +313,13 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.Direccion:
                 Intent intent = new Intent(DetalleActivity.this,Mapa.class);
                 intent.putExtra("Nombre",Titulo.getText().toString());
+                intent.putExtra("Usuario",usuario);
                 startActivity(intent);
                 break;
             case R.id.Comuna:
                 Intent intent2 = new Intent(DetalleActivity.this,MapaComuna.class);
                 intent2.putExtra("Comuna",Comuna.getText().toString());
+                intent2.putExtra("Usuario",usuario);
                 startActivity(intent2);
                 break;
             default:

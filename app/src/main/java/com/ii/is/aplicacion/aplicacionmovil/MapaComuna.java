@@ -3,6 +3,7 @@ package com.ii.is.aplicacion.aplicacionmovil;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -19,25 +20,31 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Vector;
 
 public class MapaComuna extends FragmentActivity implements OnMapReadyCallback {
-/*
+    /*
 
-ESTA CLASE SE SUPONE QUE ME ARROJA UN MAPA CON TODOS LOS LUGARES EN ELLA
-USA LA CONSULTA 29
+    ESTA CLASE SE SUPONE QUE ME ARROJA UN MAPA CON TODOS LOS LUGARES EN ELLA
+    USA LA CONSULTA 29
 
 
- */
+     */
     private GoogleMap mMap;
     private Vector<Lugar> lugares;
     private String comuna;
     private ControlBase CB;
     private Marker marcador;
+    private String comparar = "";
+    private Lugar lugar = new Lugar();
+    private MapaComuna mapaComuna;
+    private String usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_comuna);
         Intent intent = getIntent();
+        mapaComuna = this;
         Bundle bundle = intent.getExtras();
         comuna = (String)bundle.get("Comuna");
+        usuario = (String)bundle.get("Usuario");
         lugares = new Vector<Lugar>();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
@@ -75,8 +82,36 @@ USA LA CONSULTA 29
             marcador = mMap.addMarker(new MarkerOptions().position(coordenadas).title(lugares.elementAt(i).getNombre()));
         }
     }
+    public void igualar(Lugar l){
+        lugar = l;
+    }
+    public void iniciar(){
+        Intent button_uno = new Intent (MapaComuna.this, DetalleActivity.class);
+        button_uno.putExtra("TIPO",lugar.getTipo());
+        button_uno.putExtra("nombre",lugar.getNombre());
+        button_uno.putExtra("USUARIO",usuario);
+        startActivity(button_uno);
+    }
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if(comparar.compareTo(marker.getTitle()) == 0){
+                    try {
+                        CB = new ControlBase(mapaComuna);
+                        CB.setTipo(35);
+                        CB.setComuna(marker.getTitle());
+                        CB.ejecutar();
+                    } catch (Throwable throwable) {
+                    }
+                }
+                else {
+                    comparar = marker.getTitle();
+                }
+                return false;
+            }
+        });
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
         // Add a marker in Sydney and move the camera

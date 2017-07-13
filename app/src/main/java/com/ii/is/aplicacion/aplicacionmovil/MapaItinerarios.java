@@ -77,14 +77,20 @@ public class MapaItinerarios extends FragmentActivity implements OnMapReadyCallb
     private Vector <String> nombres = new Vector <String>();
     private ControlBase CB;
     private int contador = 0;
+    private String comparar = "";
+    private Lugar lugar = new Lugar();
+    private MapaItinerarios mapaItinerarios;
+    private String usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        mapaItinerarios = this;
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         nombre = (String)bundle.get("Nombre");
+        usuario = (String)bundle.get("Usuario");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -123,10 +129,39 @@ public class MapaItinerarios extends FragmentActivity implements OnMapReadyCallb
             e.printStackTrace();
         }
     }
-
+    public void igualar(Lugar l){
+        lugar = l;
+    }
+    public void iniciar(){
+        Intent button_uno = new Intent (MapaItinerarios.this, DetalleActivity.class);
+        button_uno.putExtra("TIPO",lugar.getTipo());
+        button_uno.putExtra("nombre",lugar.getNombre());
+        button_uno.putExtra("USUARIO",usuario);
+        startActivity(button_uno);
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if(comparar.compareTo(marker.getTitle()) == 0){
+                    try {
+                        CB = new ControlBase(mapaItinerarios);
+                        CB.setTipo(36);
+                        CB.setComuna(marker.getTitle());
+                        CB.ejecutar();
+                    } catch (Throwable throwable) {
+                    }
+                }
+                else {
+                    comparar = marker.getTitle();
+                }
+                return false;
+            }
+        });
+
+
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
 

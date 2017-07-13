@@ -681,7 +681,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 5:
-                        Log.e("redirect","consultare?????");
+                        Log.e("redirect","Caso 5");
                         query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.comentario as comentario,U.imagen_frontal as imagen_frontal, U.imagen_interior as imagen_interior, U.imagen_extra as imagen_extra"
                                 + "  FROM gratificante2.lugar as U"
                                 + " WHERE U.nombre = '"+ titulo+"';";
@@ -692,7 +692,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         System.out.println("Opened database successfully");
                         stmt = c.createStatement();
                         rs = stmt.executeQuery(query);
-                        Log.e("redirect","entrare?????");
+                        Log.e("redirect",titulo);
                         while (rs.next()) {
                             Log.e("redirect","entreeeeeeeeeeeeeeeeee");
                             agregar = new Lugar();
@@ -1299,6 +1299,88 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 35 :
+                        Log.e("redirect","case 35");
+                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.comentario as comentario,U.imagen_frontal as imagen_frontal, U.imagen_interior as imagen_interior, U.imagen_extra as imagen_extra"
+                                + "  FROM gratificante2.lugar as U"
+                                + " WHERE U.nombre = '"+ comuna+"';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        Log.e("redirect","entrare?????");
+                        while (rs.next()) {
+                            Log.e("redirect","entreeeeeeeeeeeeeeeeee");
+                            agregar = new Lugar();
+                            agregar.setNombre(rs.getString("nombre"));
+                            agregar.setContacto(rs.getString("contacto"));
+                            if(comentario != null)Log.e("redirect",rs.getString("comentario"));
+                            else comentario = "";
+                            agregar.setUbicacion(rs.getString("ubicacion"));
+                            agregar.setDisponibilidad(rs.getString("disponibilidad"));
+                            agregar.setTipo(rs.getString("tipo"));
+                            agregar.setrutpropietario(rs.getString("rutpropietario"));
+                            agregar.setcomuna(rs.getString("comuna"));
+                            agregar.setpromediolugar(rs.getInt("promedio_lugar"));
+                            agregar.setDetalle(rs.getString("comentario"));
+                            agregar.setImagen1(rs.getString("imagen_frontal"));
+                            if(rs.wasNull()) agregar.setImagen1("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            agregar.setImagen2(rs.getString("imagen_interior"));
+                            if(rs.wasNull()) agregar.setImagen2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            agregar.setImagen3(rs.getString("imagen_extra"));
+                            if(rs.wasNull()) agregar.setImagen3("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            mapaComuna.igualar(agregar);
+                        }
+                        Log.e("redirect","termine");
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 36:
+                        Log.e("redirect","case 35");
+                        query = "SELECT U.tipo as tipo,U.nombre as nombre, U.ubicacion as ubicacion, U.contacto as contacto,U.comuna as comuna,U.disponibilidad as disponibilidad,U.rutpropietario as rutpropietario,U.promedio_lugar as promedio_lugar,U.comentario as comentario,U.imagen_frontal as imagen_frontal, U.imagen_interior as imagen_interior, U.imagen_extra as imagen_extra"
+                                + "  FROM gratificante2.lugar as U"
+                                + " WHERE U.nombre = '"+ comuna+"';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        Log.e("redirect","entrare?????");
+                        while (rs.next()) {
+                            Log.e("redirect","entreeeeeeeeeeeeeeeeee");
+                            agregar = new Lugar();
+                            agregar.setNombre(rs.getString("nombre"));
+                            agregar.setContacto(rs.getString("contacto"));
+                            if(comentario != null)Log.e("redirect",rs.getString("comentario"));
+                            else comentario = "";
+                            agregar.setUbicacion(rs.getString("ubicacion"));
+                            agregar.setDisponibilidad(rs.getString("disponibilidad"));
+                            agregar.setTipo(rs.getString("tipo"));
+                            agregar.setrutpropietario(rs.getString("rutpropietario"));
+                            agregar.setcomuna(rs.getString("comuna"));
+                            agregar.setpromediolugar(rs.getInt("promedio_lugar"));
+                            agregar.setDetalle(rs.getString("comentario"));
+                            agregar.setImagen1(rs.getString("imagen_frontal"));
+                            if(rs.wasNull()) agregar.setImagen1("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            agregar.setImagen2(rs.getString("imagen_interior"));
+                            if(rs.wasNull()) agregar.setImagen2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            agregar.setImagen3(rs.getString("imagen_extra"));
+                            if(rs.wasNull()) agregar.setImagen3("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2sxSYX-IIg2IIh3Ag4_W72fg4c9LHy612d5GqRvH6zqMpu84bYQ");
+                            mapaItinerarios.igualar(agregar);
+                        }
+                        Log.e("redirect","termine");
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -1415,6 +1497,12 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         case 32:
             if(marcar)detalleItinerario.setliked();
             else detalleItinerario.segundaconsulta();
+            break;
+        case 35:
+            mapaComuna.iniciar();
+            break;
+        case 36:
+            mapaItinerarios.iniciar();
             break;
         default:
             break;

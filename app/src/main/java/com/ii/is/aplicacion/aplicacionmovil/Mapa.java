@@ -73,14 +73,19 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
     private  String nombre;
     private double lat,lng;
     private Location location;
+    private Lugar lugar = new Lugar();
+    private Mapa mapa;
+    private String usuario,comparar = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mapa = this;
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         nombre = (String)bundle.get("Nombre");
+        usuario = (String)bundle.get("Usuario");
      //   nombre = "ALMA RESTOBAR";
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -105,10 +110,40 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
             e.printStackTrace();
         }
     }
-
+    public void igualar(Lugar l){
+        lugar = l;
+    }
+    public void iniciar(){
+        Intent button_uno = new Intent (Mapa.this, DetalleActivity.class);
+        button_uno.putExtra("TIPO",lugar.getTipo());
+        button_uno.putExtra("nombre",lugar.getNombre());
+        button_uno.putExtra("USUARIO",usuario);
+        startActivity(button_uno);
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+    /*    mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if(comparar.compareTo(marker.getTitle()) == 0){
+                    try {
+                        CB = new ControlBase(mapa);
+                        CB.setTipo(35);
+                        CB.setComuna(marker.getTitle());
+                        CB.ejecutar();
+                    } catch (Throwable throwable) {
+                    }
+                }
+                else {
+                    comparar = marker.getTitle();
+                }
+                return false;
+            }
+        });
+
+*/
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
         location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);

@@ -77,6 +77,7 @@ public class DetalleItinerario extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent button_uno = new Intent (DetalleItinerario.this, MapaItinerarios.class);
                 button_uno.putExtra("Nombre",nombre);
+                button_uno.putExtra("Usuario",usuario);
                 startActivity(button_uno);
             }
         });
