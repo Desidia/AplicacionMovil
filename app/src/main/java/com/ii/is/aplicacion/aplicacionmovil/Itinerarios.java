@@ -75,6 +75,20 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
     }
 
     public void desplegar2(){
+
+
+        Itinerario auxiliar;
+        for(int i = 0; i < vector_itiner.size();i++){
+            for(int j = i+1; j < vector_itiner.size();j++){
+                if(vector_itiner.elementAt(i).getNota() < vector_itiner.elementAt(j).getNota()){
+                    auxiliar = vector_itiner.elementAt(j);
+                    vector_itiner.set(j,vector_itiner.elementAt(i));
+                    vector_itiner.set(i,auxiliar);
+                }
+            }
+        }
+
+
         lista_itinerarios = new Itinerario[vector_itiner.size()];
         for(int i = 0; i < vector_itiner.size();i++){
             lista_itinerarios[i] = vector_itiner.elementAt(i);
