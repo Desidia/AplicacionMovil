@@ -53,13 +53,13 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
             prueba.add("Mis Propiedades");
         }
         items.add(new DrawerItemPrincipal("A",R.drawable.lugares));
-        items.add(new DrawerItemPrincipal("B",R.drawable.servicios));
+
         items.add(new DrawerItemPrincipal("C",R.drawable.itinerarios));
-        items.add(new DrawerItemPrincipal("D",R.drawable.marcadores));
+
         prueba.add("Lugares");
-        prueba.add("Servicios");
+
         prueba.add("Itinerarios");
-        prueba.add("Marcadores");
+
         lateral.setAdapter(new DrawerItemPrincipalAdapter(this, items));
         lateral.setOnItemClickListener(this);
         entro = false;

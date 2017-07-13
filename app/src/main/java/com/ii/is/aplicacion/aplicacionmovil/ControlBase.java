@@ -1335,6 +1335,8 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 23:
             modificardetalle.setDatos(agregar.getDisponibilidad(),agregar.getcomuna(),agregar.getUbicacion(),agregar.getContacto(),agregar.getDetalle(),agregar.getpromediolugar());
+            modificardetalle.actualizarT();
+            modificardetalle.actualizarC();
             break;
         case 24:
             modificardetalle.confirmar();
@@ -1344,6 +1346,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 26:
             CrearPro.actualizarS();
+            CrearPro.actualizarT();
             break;
         case 27:
             CrearPro.confirmar();

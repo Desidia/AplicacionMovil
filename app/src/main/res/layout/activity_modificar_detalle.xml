@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="-4dp"
+
         android:nestedScrollingEnabled="true"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:scrollbarAlwaysDrawVerticalTrack="true"
@@ -30,12 +31,11 @@
             android:layout_below="@+id/NotaGeneral"
             android:layout_centerHorizontal="true" />
 
-        <EditText
+        <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/Comuna"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="30dp"
             android:textSize="18dp"
-            android:hint="Com"
             android:inputType="textPersonName"
             android:textStyle="bold"
             android:textColor="#1e5d74"
@@ -67,12 +67,13 @@
             android:layout_below="@+id/Disponibilidad"
             android:layout_centerHorizontal="true" />
 
-        <EditText
+        <Spinner
             android:id="@+id/Disponibilidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="30dp"
             android:textSize="18dp"
             android:hint="Disponibilidad"
+            android:layout_marginTop="10dp"
             android:inputType="textPersonName"
             android:textStyle="bold"
             android:textColor="#1e5d74"

@@ -31,6 +31,8 @@
             android:layout_height="wrap_content"
             android:text="Titulo"
             android:textSize="20dp"
+
+            android:layout_marginStart="5dp"
             android:textStyle="bold"
             android:textColor="#CBF0FE"
 

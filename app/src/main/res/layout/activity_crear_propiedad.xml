@@ -42,13 +42,12 @@
             android:layout_below="@+id/imagenlugar"
             android:layout_alignStart="@+id/Crea" />
 
-        <EditText
+        <Spinner
             android:id="@+id/Disponibilidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="30dp"
             android:hint="  Temporada activa del lugar"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:backgroundTint="#CBF0FE"
             android:layout_below="@+id/Contacto"
             android:textColorHint="#CBF0FE"
             android:layout_alignStart="@+id/Contacto" />

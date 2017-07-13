@@ -17,6 +17,48 @@
         tools:layout_editor_absoluteY="8dp"
         >
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                app:srcCompat="@drawable/araucaria"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="60dp"
+                app:srcCompat="@drawable/finger"
+                android:layout_below="@+id/imageView6"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView7"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="Deslice el menú"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView18"
+                android:layout_centerHorizontal="true"
+                android:text="hacia la derecha"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
     </FrameLayout>
 
     <ListView android:id="@+id/left_drawer"

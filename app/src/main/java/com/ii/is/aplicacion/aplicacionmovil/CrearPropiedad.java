@@ -20,13 +20,14 @@ import java.util.Vector;
 
 public class CrearPropiedad extends AppCompatActivity implements View.OnClickListener {
 
-    private String Rut,Tipo,Comuna,nombre,Ser;
+    private String Rut,Tipo,Comuna,nombre,Ser, temp;
     private Button Crear,añadir;
-    private Spinner tipo,comuna,services;
-    private EditText Nombre,Contacto,Disponibilidad,comentario,Direccion;
+    private Spinner tipo,comuna,services, temporada;
+    private EditText Nombre,Contacto,comentario,Direccion;
     private List busqueda = new ArrayList();
     private List ciudad = new ArrayList();
     private List Serv = new ArrayList();
+    private List Disponibilidad = new ArrayList();
     private ListView servicios;
     private ControlBase CB;
     private String[] elementos;
@@ -49,12 +50,11 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         Contacto.setTextColor(Color.parseColor("#CBF0FE"));
         Direccion = (EditText)findViewById(R.id.Direccion);
         Direccion.setTextColor(Color.parseColor("#CBF0FE"));
-        Disponibilidad = (EditText)findViewById(R.id.Disponibilidad);
-        Disponibilidad.setTextColor(Color.parseColor("#CBF0FE"));
         comentario = (EditText)findViewById(R.id.Comentario);
         comentario.setTextColor(Color.parseColor("#CBF0FE"));
         servicios = (ListView)findViewById(R.id.ListServicios);
         services = (Spinner)findViewById(R.id.Servicios);
+        temporada= (Spinner)findViewById(R.id.Disponibilidad);
         elements = new Vector<String>();
         CB = new ControlBase(this);
         busqueda.clear();
@@ -89,7 +89,10 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
         });
     }
     public void agregarS(String agregar){
-    Serv.add(agregar);
+        Serv.add(agregar);
+    }
+    public void agregarT(String agregar){
+        Disponibilidad.add(agregar);
     }
     public void AgregarSet(String agregar){
         busqueda.add(agregar);
@@ -113,6 +116,30 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
+
+    public  void actualizarT(){
+        Disponibilidad.add("Seleccione temporada activa");
+        Disponibilidad.add("Todo el año");
+        Disponibilidad.add("Invierno");
+        Disponibilidad.add("Verano");
+        Disponibilidad.add("Verano-Otoño");
+        Disponibilidad.add("Primavera-Otroño");
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_lugar,Disponibilidad);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_lugar);
+        temporada.setAdapter(arrayAdapter);
+        temporada.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                temp =  temporada.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     public void actualizar(){
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_lugar,busqueda);
         arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_lugar);
@@ -151,7 +178,7 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
             elements.add(Ser);
             elementos = new String[elements.size()];
             for(int i = 0; i < elements.size();i++)elementos[i] = elements.elementAt(i);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,elementos);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.layout_servicio_agregado,elementos);
             servicios.setAdapter(adapter);
         }
     }
@@ -162,17 +189,17 @@ public class CrearPropiedad extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.Crea:
-                    CB = new ControlBase(this);
-                    CB.setTipo(9);
-                    CB.setRut(Rut);
-                    CB.setNombrelugar(Nombre.getText().toString());
-                    CB.setActividad(Tipo);
-                    CB.setComentario(comentario.getText().toString());
-                    CB.setComuna(comuna.getSelectedItem().toString());
-                    CB.setContacto(Contacto.getText().toString());
-                    CB.setDisponibilidad(Disponibilidad.getText().toString());
-                    CB.setUbicacion(Direccion.getText().toString());
-                    CB.ejecutar();
+                CB = new ControlBase(this);
+                CB.setTipo(9);
+                CB.setRut(Rut);
+                CB.setNombrelugar(Nombre.getText().toString());
+                CB.setActividad(Tipo);
+                CB.setComentario(comentario.getText().toString());
+                CB.setComuna(comuna.getSelectedItem().toString());
+                CB.setContacto(Contacto.getText().toString());
+                CB.setDisponibilidad(temporada.getSelectedItem().toString());
+                CB.setUbicacion(Direccion.getText().toString());
+                CB.ejecutar();
                 for(int i = 0; i < elements.size(); i++) {
                     CB = new ControlBase(this);
                     CB.setTipo(27);
