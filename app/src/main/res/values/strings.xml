@@ -13,4 +13,5 @@
     <string name="title_activity_mapa">Map</string>
     <string name="title_activity_mapa_comuna">Map</string>
     <string name="title_activity_mapa_itinerarios">Map</string>
+    <string name="title_activity_eliminar">Eliminar</string>
 </resources>

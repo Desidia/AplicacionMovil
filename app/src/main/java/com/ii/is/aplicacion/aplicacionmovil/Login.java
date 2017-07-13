@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private ControlBase CB;
     private RadioGroup Group;
     private int turista = 1;
-    private boolean conectado = false;
+    private boolean conectado = false,envio = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -76,13 +76,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         CB = new ControlBase(this);
         switch (v.getId()){
             case R.id.Entrar:
-                if(turista == 1){
-                    CB.setTipo(1);
-                    CB.ejecutar();
-                }
-                else if (turista == 2) {
-                    CB.setTipo(2);
-                    CB.ejecutar();
+                if(!envio) {
+                    envio = true;
+                    if (turista == 1) {
+                        CB.setTipo(1);
+                        CB.ejecutar();
+                    } else if (turista == 2) {
+                        CB.setTipo(2);
+                        CB.ejecutar();
+                    }
                 }
                 break;
         }
@@ -93,11 +95,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             button_uno.putExtra("TIPO",turista);
             button_uno.putExtra("USER",User.getrut());
             button_uno.putExtra("NOMBRE",User.getnombre());
+            envio = false;
             startActivity(button_uno);
             Toast.makeText(getApplicationContext(),"Conecte de manera correcta", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(getApplicationContext(),"Error en usuario o contraseña", Toast.LENGTH_LONG).show();
+            envio = false;
         }
     }
 }

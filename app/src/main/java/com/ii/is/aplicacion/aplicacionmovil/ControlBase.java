@@ -37,6 +37,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     private MapaComuna mapaComuna;
     private MapaItinerarios mapaItinerarios;
     private Mapa mapa;
+    private boolean marcar;
     public String getNombrecito() {
         return nombrecito;
     }
@@ -1249,6 +1250,55 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 32:
+                        Log.e("redirect","ejecutare query 32");
+                        query = "Select usuario, itinerario " +
+                                "from gratificante2.liked " +
+                                "where usuario = '"+ comuna+"' and itinerario = '"+nombrecito+"';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        marcar = false;
+                        while (rs.next()) {
+                            Log.e("redirect","ENTREEEEE");
+                          marcar = true;
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 33:
+                        Log.e("redirect","ejecutare query 33");
+                        query = "insert into gratificante2.liked(usuario,itinerario) values('"+comuna+ "','"+nombrecito+"');";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 34:
+                        query = "delete from gratificante2.liked where usuario = '"+comuna+"' and itinerario = '"+nombrecito+"';";
+                        c = DriverManager
+                                .getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc",
+                                        "UbdIc", "udb2016c");
+                        c.setAutoCommit(false);
+                        System.out.println("Opened database successfully");
+                        stmt = c.createStatement();
+                        stmt.executeUpdate(query);
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         Log.e("redirect","llegue al default");
                         c.setAutoCommit(false);
@@ -1360,6 +1410,10 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
             break;
         case 31:
             mapaItinerarios.comenzar();
+            break;
+        case 32:
+            if(marcar)detalleItinerario.setliked();
+            else detalleItinerario.segundaconsulta();
             break;
         default:
             break;
