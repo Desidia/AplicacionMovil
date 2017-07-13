@@ -3,6 +3,8 @@ package com.ii.is.aplicacion.aplicacionmovil;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,14 @@ public class DetalleItinerario extends AppCompatActivity {
         Creador.setText((String) bundle.get("CREADOR"));
         Disponibilidad.setText((String) bundle.get("TEMPORADA"));
         vector_lista = new Vector<Lista>();
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent button_uno = new Intent (DetalleItinerario.this, MapaItinerarios.class);
+                button_uno.putExtra("Nombre",nombre);
+                startActivity(button_uno);
+            }
+        });
         CB = new ControlBase(this);
         CB.setTipo(12);
         CB.setNombre_Itinerario(nombre);

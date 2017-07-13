@@ -7,8 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.READ_LOGS"/>
+
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -57,7 +58,10 @@
             android:label="@string/title_activity_mapa" />
         <activity
             android:name=".MapaComuna"
-            android:label="@string/title_activity_mapa_comuna"></activity>
+            android:label="@string/title_activity_mapa_comuna" />
+        <activity
+            android:name=".MapaItinerarios"
+            android:label="@string/title_activity_mapa_itinerarios"></activity>
     </application>
 
 </manifest>
