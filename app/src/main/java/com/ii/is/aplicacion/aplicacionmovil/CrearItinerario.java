@@ -19,11 +19,12 @@ import java.util.Vector;
 
 public class CrearItinerario extends AppCompatActivity implements View.OnClickListener {
 
-    private String nombre_user;
-    private EditText Nombre,Disponibilidad;
-    private Spinner actividad,lugar;
+    private String nombre_user,temp;
+    private EditText Nombre;
+    private Spinner actividad,lugar,temporada;
     private Button agregar,Crear;
     private ListView visualiza;
+    private List Disponibilidad = new ArrayList();
     private List actividades = new ArrayList();
     private List lugares = new ArrayList();
     private ControlBase CB;
@@ -43,7 +44,7 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         Log.e("redirect",nombre_user);
         Crear = (Button)findViewById(R.id.Agregar);
         Nombre = (EditText)findViewById(R.id.NombreActividad);
-        Disponibilidad = (EditText)findViewById(R.id.disponibilidadactividad);
+        temporada= (Spinner)findViewById(R.id.disponibilidadactividad);
         actividad = (Spinner)findViewById(R.id.actividad);
         lugar = (Spinner)findViewById(R.id.lugaractividad);
         agregar = (Button)findViewById(R.id.AgregarActividad);
@@ -80,6 +81,29 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
     }
     public void AgregarSet2(String agregar){
         lugares.add(agregar);
+    }
+    public  void actualizarT(){
+        Disponibilidad.clear();
+        Disponibilidad.add("Seleccione temporada activa");
+        Disponibilidad.add("Todo el año");
+        Disponibilidad.add("Invierno");
+        Disponibilidad.add("Verano");
+        Disponibilidad.add("Verano-Otoño");
+        Disponibilidad.add("Primavera-Otroño");
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_itinerario,Disponibilidad);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_crear_itinerario);
+        temporada.setAdapter(arrayAdapter);
+        temporada.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                temp =  temporada.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
     public void actualizar1(){
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.spinner_crear_itinerario,actividades);
@@ -159,7 +183,7 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
             case R.id.Agregar:
                 CB = new ControlBase(this);
                 CB.setTipo(17);
-                CB.setTemporada(Disponibilidad.getText().toString());
+                CB.setDisponibilidad(temporada.getSelectedItem().toString());
                 CB.setId(Nombre.getText().toString());
                 CB.setPoseedor(nombre_user);
                 Log.e("redirect",nombre_user);

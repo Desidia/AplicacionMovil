@@ -55,14 +55,14 @@
             android:layout_alignStart="@+id/disponibilidadactividad"
             android:layout_alignEnd="@+id/disponibilidadactividad" />
 
-        <EditText
+        <Spinner
             android:id="@+id/disponibilidadactividad"
             android:layout_width="320dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:textColor="#fff"
-            android:hint="Cuando está activo el itinerario"
+            android:backgroundTint="#fff"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/textView3" />
 
@@ -83,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+
             android:textColor="#fff"
             android:text="Lugar de actividad"
             android:layout_above="@+id/lugaractividad"

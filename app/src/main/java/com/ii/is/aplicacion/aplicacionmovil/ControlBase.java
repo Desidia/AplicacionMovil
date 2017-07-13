@@ -1357,6 +1357,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
         case 14:
             Log.e("redirect","termine 14");
             crearItinerario.actualizar2();
+            crearItinerario.actualizarT();
             break;
         case 15:
             crearItinerario.actualiza();
