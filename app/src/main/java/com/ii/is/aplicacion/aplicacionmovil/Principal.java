@@ -39,11 +39,7 @@ public class Principal extends AppCompatActivity implements OnClickListener, Ada
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        ActionBar ac =getSupportActionBar();
-        ac.setIcon(R.drawable.ic_drawer);
-        ac.setDisplayHomeAsUpEnabled(true);
-        ac.setDisplayShowCustomEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         user = (String) bundle.get("USER");
