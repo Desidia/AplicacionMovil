@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -35,6 +36,7 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
     private Vector<Itinerario> vector_itiner;
     private String nombre;
     private Button crear;
+    private boolean noentro = false;
     public Itinerarios() {
         // Required empty public constructor
     }
@@ -69,9 +71,27 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
         });
         return vista;
     }
+    @Override
+    public void onResume() {
 
+            vector_itiner.clear();
+            super.onResume();
+            CB = new ControlBase(this);
+            CB.setTipo(11);
+            CB.ejecutar();
+            Log.e("redirect", "RESUMIIIIIIIIIIII");
+
+       // Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+    }
     public void agregarItinerario(Itinerario s){
-        vector_itiner.add(s);
+        boolean agregar = true;
+        for(int i = 0; i < vector_itiner.size();i++){
+            if(vector_itiner.elementAt(i).getNombre().compareTo(s.getNombre()) == 0){
+                agregar = false;
+                break;
+            }
+        }
+        if(agregar)vector_itiner.add(s);
     }
 
     public void desplegar2(){
