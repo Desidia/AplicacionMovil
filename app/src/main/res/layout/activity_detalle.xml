@@ -21,13 +21,36 @@
         <TextView
             android:id="@+id/Titulo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
+            android:layout_height="35dp"
+            android:textSize="30dp"
             android:textStyle="bold"
             android:textColor="#AFCAE5"
             android:text="Nombre de lugar"
             android:layout_below="@+id/ivBasicImage"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textViewcomuna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:text="Comuna :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/Tipo"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/textViewdireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AFCAE5"
+            android:text="Direccion :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="-7dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Comuna"/>
 
         <EditText
             android:id="@+id/Comuna"
@@ -35,8 +58,10 @@
             android:layout_height="wrap_content"
             android:textColor="#AFCAE5"
             android:text="Comuna"
+
+            android:layout_marginTop="-10dp"
             android:textStyle="bold"
-            android:layout_below="@+id/Tipo"
+            android:layout_below="@+id/textViewcomuna"
             android:layout_centerHorizontal="true" />
 
         <EditText
@@ -45,8 +70,9 @@
             android:layout_height="wrap_content"
             android:textColor="#AFCAE5"
             android:textStyle="bold"
+            android:layout_marginTop="-10dp"
             android:text="Direccion"
-            android:layout_below="@+id/Comuna"
+            android:layout_below="@+id/textViewdireccion"
             android:layout_centerHorizontal="true" />
 
         <TextView
@@ -56,6 +82,7 @@
             android:textColor="#AFCAE5"
             android:textSize="18dp"
             android:text="Contacto"
+            android:layout_marginTop="-7dp"
             android:textStyle="bold"
             android:layout_below="@+id/Direccion"
             android:layout_centerHorizontal="true" />
@@ -66,6 +93,7 @@
             android:layout_height="wrap_content"
             android:textColor="#AFCAE5"
             android:textStyle="bold"
+
             android:layout_marginTop="10dp"
             android:text="Disponibilidad"
             android:textSize="18dp"

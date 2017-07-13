@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:background="#246EB9"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <ImageView
         android:id="@+id/imagen"
@@ -29,14 +30,13 @@
         <TextView
             android:id="@+id/Titulo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_height="50dp"
             android:text="Titulo"
             android:textSize="20dp"
-            android:layout_alignParentTop="true"
             android:textStyle="bold"
             android:textColor="#AFCAE5"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/Direccion" />
 
         <TextView
             android:id="@+id/Direccion"
