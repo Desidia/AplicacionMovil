@@ -21,13 +21,15 @@
         <TextView
             android:id="@+id/Titulo"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:textSize="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="26dp"
             android:textStyle="bold"
             android:textColor="#AFCAE5"
+            android:textAlignment="center"
             android:text="Nombre de lugar"
             android:layout_below="@+id/ivBasicImage"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignStart="@+id/ListNotas"
+            android:layout_alignEnd="@+id/ListNotas" />
 
         <TextView
             android:id="@+id/textViewcomuna"
@@ -180,7 +182,7 @@
             android:id="@+id/ListComentarios"
             android:background="#AFCAE5"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/Texto3"
             android:divider="@android:drawable/divider_horizontal_textfield"
             android:layout_alignStart="@+id/Texto3"
@@ -245,6 +247,14 @@
             android:layout_below="@+id/ListEvaluar"
             android:layout_alignStart="@+id/ListEvaluar"
             android:layout_alignEnd="@+id/ListEvaluar" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/Texto2"
+            app:srcCompat="@drawable/finger_click" />
 
     </RelativeLayout>
 </ScrollView>

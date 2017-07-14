@@ -28,12 +28,13 @@
 
         <TextView
             android:id="@+id/Titulo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxHeight="50dp"
             android:text="Titulo"
             android:textSize="20dp"
-
+            android:layout_marginLeft="10dp"
+            android:textAlignment="center"
             android:textStyle="bold"
             android:textColor="#CBF0FE"
 
@@ -55,6 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Direccion"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
             android:textColor="#CBF0FE"
             android:layout_above="@+id/Descripcion"
             android:layout_alignParentStart="true" />
@@ -64,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripcion"
+            android:layout_marginLeft="10dp"
             android:textColor="#CBF0FE"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true" />

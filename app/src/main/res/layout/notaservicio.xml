@@ -13,7 +13,7 @@
         android:numStars="5"
         android:layout_alignBottom="@+id/Servicio"
         android:layout_toEndOf="@+id/Servicio"
-        android:layout_marginStart="73dp" />
+        android:layout_marginStart="60dp" />
 
     <TextView
         android:id="@+id/Servicio"
