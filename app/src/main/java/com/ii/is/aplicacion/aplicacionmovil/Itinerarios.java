@@ -48,8 +48,6 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragmen
         vista = inflater.inflate(R.layout.fragment_itinerarios, container, false);
         nombre = getArguments().getString("Nombre");
-        Log.e("redirect","Imprimire el nombre que le pase aqui en itinerarios");
-        Log.e("redirect",nombre);
         listaItiner = (ListView)vista.findViewById(R.id.ListaDeItinierario);
         crear = (Button)vista.findViewById(R.id.CrearItiner);
         crear.setOnClickListener(this);
@@ -59,7 +57,6 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
         CB.ejecutar();
         listaItiner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("redirect","detecte el MALDITO CLICK");
                 TextView v = (TextView)view.findViewById(R.id.NombreAct);
                 Intent button_uno = new Intent (vista.getContext(), DetalleItinerario.class);
                 button_uno.putExtra("NOMBRE",v.getText());
@@ -79,9 +76,6 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
             CB = new ControlBase(this);
             CB.setTipo(11);
             CB.ejecutar();
-            Log.e("redirect", "RESUMIIIIIIIIIIII");
-
-       // Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
     }
     public void agregarItinerario(Itinerario s){
         boolean agregar = true;
@@ -114,8 +108,6 @@ public class Itinerarios extends Fragment implements View.OnClickListener {
             lista_itinerarios[i] = vector_itiner.elementAt(i);
         }
         ItinerarioAdapter adapter = new ItinerarioAdapter(vista.getContext(),R.layout.listaitinerarios,lista_itinerarios);
-        // View header = (View)getLayoutInflater().inflate(R.layout.header_list,null);
-        // if(!entro)lista.addHeaderView(header);
         listaItiner.setAdapter(adapter);
         //     entro = true;
     }

@@ -303,11 +303,6 @@ public class Servicios extends Fragment implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int which) {
                         lugar = Nlugar.getText().toString();
                         if(Nlugar.getText().toString().compareTo("") == 0)lugar = "%%";
-                        Log.e("redirect",lugar);
-                        Log.e("redirect",servicio);
-                        Log.e("redirect",temporada);
-                        Log.e("redirect",comuna);
-                        Log.e("redirect", nota);
                         buscar();
                         lugar = "%%";
                         servicio = "%%";

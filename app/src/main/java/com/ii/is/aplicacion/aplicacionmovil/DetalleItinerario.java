@@ -40,7 +40,6 @@ public class DetalleItinerario extends AppCompatActivity {
 
             public void onClick(View v) {
                 if(!liked) {
-                    Log.e("redirect","entre a agregar");
                     CB = new ControlBase(pasar);
                     CB.setTipo(33);
                     CB.setComuna(usuario);
@@ -106,7 +105,6 @@ public class DetalleItinerario extends AppCompatActivity {
     }
     public void desplegar(){
         actividades = new Lista[vector_lista.size()];
-        Toast.makeText(getApplicationContext(),"tamaño: " + vector_lista.size(), Toast.LENGTH_SHORT).show();
         for(int i = 0; i < vector_lista.size();i++){
             actividades[i] = vector_lista.elementAt(i);
         }
@@ -115,6 +113,5 @@ public class DetalleItinerario extends AppCompatActivity {
         // if(!entro)lista.addHeaderView(header);
         lista.setAdapter(adapter);
         //     entro = true;
-        Log.e("redirect","TERMINEEEEEEEEEEEE");
     }
 }

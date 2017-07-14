@@ -123,7 +123,6 @@ public class MapaItinerarios extends FragmentActivity implements OnMapReadyCallb
         }*/
 
         try {
-            Log.e("redirect","origen = "+ origin);
             new DirectionFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -240,8 +239,6 @@ public class MapaItinerarios extends FragmentActivity implements OnMapReadyCallb
         progressDialog.dismiss();
 
         if(entrar) {
-            Log.e("redirect","Marcare los caminitos");
-            Log.e("redirect","Contador = "+ contador);
             for (Route route : rutas) {
                 horas+=route.duration.value;
                 kilometros+=route.distance.value;

@@ -52,11 +52,9 @@ public class ServiciosFragment extends Fragment implements View.OnClickListener{
         user =  getArguments().getString("USER");
         buscar = getArguments().getString("TIPO");
         nombre = getArguments().getString("NOMBRE");
-        Log.e("redirect",user);
         lista = (ListView) vista.findViewById(R.id.Lista);
         entro = false;
         services = new Vector<Lugar>();
-        Log.e("redirect","cree4");
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewById(R.id.Titulo);
@@ -71,7 +69,6 @@ public class ServiciosFragment extends Fragment implements View.OnClickListener{
         CB = new ControlBase(this);
         CB.setUsuario(user);
         CB.setTipo(6);
-        Log.e("redirect","entrare base");
         CB.ejecutar();
         return vista;
     }
@@ -127,14 +124,12 @@ public class ServiciosFragment extends Fragment implements View.OnClickListener{
     }
     @Override
     public void onClick(View v) {
-        Log.e("redirect","toque boton?");
         switch (v.getId()) {
             case R.id.Lugares:
                 services.clear();
                 CB = new ControlBase(this);
                 CB.setUsuario(user);
                 CB.setTipo(6);
-                Log.e("redirect","entrare base");
                 CB.ejecutar();
                 break;
             case R.id.Crear:

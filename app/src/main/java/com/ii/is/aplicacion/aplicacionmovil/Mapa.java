@@ -104,7 +104,6 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
         String origin = marcador.getPosition().latitude + ","+marcador.getPosition().longitude;
         String destination = lat + ","+lng;
         try {
-            Log.e("redirect","Entre al try");
             new DirectionFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -123,34 +122,9 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-    /*    mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                if(comparar.compareTo(marker.getTitle()) == 0){
-                    try {
-                        CB = new ControlBase(mapa);
-                        CB.setTipo(35);
-                        CB.setComuna(marker.getTitle());
-                        CB.ejecutar();
-                    } catch (Throwable throwable) {
-                    }
-                }
-                else {
-                    comparar = marker.getTitle();
-                }
-                return false;
-            }
-        });
-
-*/
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
         location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-     //   Log.e("redirect","mi locacion = "+location.getLongitude());
-     //   Log.e("redirect","mi locacion = "+location.getLatitude());
-        Log.e("redirect", "Latitud "+lat);
-        Log.e("redirect", "longitud "+ lng);
        /* ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                 LOCATION_PERMISSION_REQUEST_CODE);
@@ -215,7 +189,6 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
         polylinePaths = new ArrayList<>();
         originMarkers = new ArrayList<>();
         destinationMarkers = new ArrayList<>();
-        Log.e("redirect","Marcare el camino");
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
             ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
@@ -249,7 +222,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
     private void agregarMarcador(double lat, double lng){
         LatLng coordenadas = new LatLng(lat,lng);
         marcador = mMap.addMarker(new MarkerOptions().position(coordenadas).title("Mi posicion actual"));
-        CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas,16);
+    //    CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas,16);
     }
 
     @Override
@@ -264,7 +237,6 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Direct
         }
     }
     public void ejecutar(){
-        Log.e("redirect", "consultare camino");
         sendRequest();
     }
     @Override

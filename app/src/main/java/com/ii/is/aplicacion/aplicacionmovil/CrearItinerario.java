@@ -41,7 +41,6 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         nombre_user = (String) bundle.get("NOBMRE");
-        Log.e("redirect",nombre_user);
         Crear = (Button)findViewById(R.id.Agregar);
         Nombre = (EditText)findViewById(R.id.NombreActividad);
         temporada= (Spinner)findViewById(R.id.disponibilidadactividad);
@@ -139,7 +138,6 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         });
     }
     public void ejecutarllenado(){
-        Log.e("redirect","Ejecute funcion ejecutarllenado");
         CB = new ControlBase(this);
         CB.setTipo(15);
         CB.setNombre_Actividad(NombreAgregar);
@@ -149,7 +147,6 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
     }
     public void actualiza(){
         actividade = new Lista[vector_lista.size()];
-        Toast.makeText(getApplicationContext(),"tamaño: " + vector_lista.size(), Toast.LENGTH_SHORT).show();
         for(int i = 0; i < vector_lista.size();i++){
             actividade[i] = vector_lista.elementAt(i);
         }
@@ -163,7 +160,6 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
         CB = new ControlBase(this);
         CB.setTipo(18);
         CB.setMylista(vector_lista);
-        Log.e("redirect","Rellenare con actividades");
         CB.ejecutar();
     }
     public void confirmar(){
@@ -176,8 +172,6 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
                 CB.setTipo(16);
                 CB.setNombre_Actividad(NombreAgregar);
                 CB.setUbicacion(LugarAgregar);
-                Log.e("redirect",NombreAgregar);
-                Log.e("redirect",LugarAgregar);
                 CB.ejecutar();
             break;
             case R.id.Agregar:
@@ -186,8 +180,6 @@ public class CrearItinerario extends AppCompatActivity implements View.OnClickLi
                 CB.setDisponibilidad(temporada.getSelectedItem().toString());
                 CB.setId(Nombre.getText().toString());
                 CB.setPoseedor(nombre_user);
-                Log.e("redirect",nombre_user);
-                Log.e("redirect","Creare el itinerario");
                 CB.ejecutar();
                 break;
             default:

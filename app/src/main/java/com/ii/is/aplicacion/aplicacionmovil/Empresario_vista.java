@@ -25,7 +25,6 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
     private String user,buscar,nombre;
     private Boolean entro;
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e("redirect","cree");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empresario_vista);
         Propiedades = (Button)findViewById(R.id.Lugares);
@@ -40,7 +39,6 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
         lista = (ListView) findViewById(R.id.Lista);
         entro = false;
         services = new Vector<Lugar>();
-        Log.e("redirect","cree4");
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewById(R.id.Titulo);
@@ -70,7 +68,6 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
     }
     public void desplegar(){
         lista_lugares = new Lugares[services.size()];
-        Toast.makeText(getApplicationContext(),"tamaño: " + services.size(), Toast.LENGTH_SHORT).show();
         for(int i = 0; i < services.size();i++){
             lista_lugares[i] = new Lugares(R.drawable.ic_launcher,services.elementAt(i).getNombre(),services.elementAt(i).getcomuna(),services.elementAt(i).getDisponibilidad(),services.elementAt(i).getImagen1(),services.elementAt(i).getpromediolugar());
         }
@@ -82,14 +79,12 @@ public class Empresario_vista extends AppCompatActivity  implements View.OnClick
     }
     @Override
     public void onClick(View v) {
-        Log.e("redirect","toque boton?");
         switch (v.getId()) {
             case R.id.Lugares:
                 services.clear();
                 CB = new ControlBase(this);
                 CB.setUsuario(user);
                 CB.setTipo(6);
-                Log.e("redirect","entrare base");
                 CB.ejecutar();
                 break;
             case R.id.Crear:

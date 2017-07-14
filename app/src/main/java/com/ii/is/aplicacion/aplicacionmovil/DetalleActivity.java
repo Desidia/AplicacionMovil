@@ -67,7 +67,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         mod = 1;
         //mod = (int)bundle.get("editable");
         usuario = (String)bundle.get("USUARIO");
-        Log.e("redirect",usuario);
         Titulo = (TextView) findViewById(R.id.Titulo);
         Comuna = (EditText)findViewById(R.id.Comuna);
         Direccion = (EditText)findViewById(R.id.Direccion);
@@ -191,7 +190,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         CB = new ControlBase(this);
         CB.setTipo(19);
         CB.setNombre(nombre);
-        Log.e("redirect",nombre);
         CB.ejecutar();
     }
     public void evaluaciones(){
@@ -229,8 +227,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             int sum = 0;
             int cant = 0;
             for (int i = 0; i < Evaluaciones.size(); i++) {
-                Log.e("redirect",Evaluaciones.elementAt(i).getLugar().toString());
-                Log.e("redirect",Servicios.elementAt(j).toString());
                 if(Evaluaciones.elementAt(i).getTipo_servicio().toString().equalsIgnoreCase(Servicios.elementAt(j).toString())){
                     sum+=Evaluaciones.elementAt(i).getNota();
                     cant++;
@@ -241,7 +237,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             if(cant != 0)SerNota[j].setNota(sum/cant);
             SerNota[j].setServicio(Servicios.elementAt(j));
             SerNota2[j].setServicio(Servicios.elementAt(j));
-            Toast.makeText(getApplicationContext(), "Nota servicio : " + Servicios.elementAt(j) + "  : "+ sum, Toast.LENGTH_SHORT).show();
         }
 
          adapter = new Servicio_NotaAdapter(this,R.layout.notaservicio,SerNota);
@@ -254,7 +249,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     public void crearEvaluacion(){
         if(!romper) {
             CB = new ControlBase(this);
-            Log.e("redirect", usuario);
             CB.setUsuario(usuario);
             CB.setComentario(NuevoComentario.getText().toString());
             CB.setLugar_actividad(Titulo.getText().toString());
@@ -273,7 +267,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     public  void crearOpinion(){
         if(!romper) {
             CB = new ControlBase(this);
-            Log.e("redirect", usuario);
             CB.setUsuario(usuario);
             CB.setComentario(NuevoComentario.getText().toString());
             CB.setLugar_actividad(Titulo.getText().toString());
@@ -290,7 +283,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
             CB.ejecutar();
         }
         else{
-                Toast.makeText(getApplicationContext(),"Comentario agregado con exito", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Gracias por comentar", Toast.LENGTH_LONG).show();
         }
     }
     @Override
