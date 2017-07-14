@@ -29,7 +29,8 @@
         <TextView
             android:id="@+id/Titulo"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:maxHeight="50dp"
             android:text="Titulo"
             android:textSize="20dp"
 
@@ -38,34 +39,36 @@
 
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/Direccion" />
-
+        <RatingBar
+            android:id="@+id/ratingBar4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:layout_marginTop="-6dp"
+            android:numStars="6"
+            android:layout_marginLeft="-35dp"
+            android:layout_below="@+id/Titulo"
+            android:layout_alignParentStart="true" />
         <TextView
             android:id="@+id/Direccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Direccion"
-            android:layout_marginStart="5dp"
             android:textColor="#CBF0FE"
-            android:layout_below="@+id/Titulo"
-            />
+            android:layout_above="@+id/Descripcion"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/Descripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripcion"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
             android:textColor="#CBF0FE"
-            android:layout_below="@+id/Direccion"
-            />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-    <RatingBar
-        android:id="@+id/ratingBar4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/relativeLayout2"
-        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

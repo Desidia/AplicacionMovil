@@ -1,18 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/backGroundApp"
     tools:context="com.ii.is.aplicacion.aplicacionmovil.Servicios"
-    android:weightSum="1">
+   >
 
     <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
+        android:id="@+id/primerrelative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.36"
         android:background="#F3F3F3"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -67,13 +68,23 @@
             android:layout_alignStart="@+id/Categorias"
             android:layout_alignEnd="@+id/Categorias" />
 
-    </RelativeLayout>
 
+
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        app:srcCompat="@drawable/finger_busqueda"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
     <RelativeLayout
         android:id="@+id/layoutlistas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/backGroundApp">
+        android:background="@color/backGroundApp"
+        android:layout_below="@id/primerrelative">
 
         <ListView
             android:id="@+id/ListaLugares"
@@ -103,4 +114,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>
