@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="380dp"
+    android:layout_height="70dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:id="@+id/Funcion"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="TextView"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/Nivel"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/Funcion"
+            android:layout_alignBottom="@+id/Funcion"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/Funcion"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Asignatura"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/Nivel"
+            android:layout_alignBottom="@+id/Nivel"
+            android:layout_marginStart="258dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Cantidad"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/Asignatura"
+            android:layout_alignBottom="@+id/Asignatura"
+            android:layout_marginStart="333dp"
+            android:text="TextView" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="380dp"
+    android:layout_height="70dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:id="@+id/Nivel"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="11dp"
+            android:text="TextView"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/Rut"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/Nivel"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/Nivel"
+            android:text="TextView"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/Asignatura"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignBottom="@+id/Rut"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/Rut"
+            android:text="TextView"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/Calificacion"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/Asignatura"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/Asignatura"
+            android:text="TextView"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/Nota"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignBaseline="@+id/Calificacion"
+            android:layout_alignBottom="@+id/Calificacion"
+            android:layout_marginStart="338dp"
+            android:text="TextView"
+            android:textSize="13sp" />
+    </RelativeLayout>
+</LinearLayout>

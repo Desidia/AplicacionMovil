@@ -165,6 +165,7 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
                             Double lng3 = Double.parseDouble(lng2);
                             Double lat3 = Double.parseDouble(lat2);
                             if(lng3 != 0.0 && lng3 < 10.0)lng3*=10.0;
+                            if(lat3 == 0);
                             aux.setLng(lng3);
                             aux.setLat(lat3);
                             mapaEstablecimientos.add(aux);

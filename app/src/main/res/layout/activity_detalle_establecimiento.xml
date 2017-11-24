@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ii.is.aplicacion.aplicacionmovil.DetalleEstablecimiento">
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="38dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/RBD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/Titulo"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="26dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Estado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/RBD"
+            android:layout_alignBottom="@+id/RBD"
+            android:layout_marginStart="37dp"
+            android:layout_toEndOf="@+id/Titulo"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Promedio_Cursos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/RBD"
+            android:layout_below="@+id/RBD"
+            android:layout_marginTop="57dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Cantidad_Prof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/Promedio_Cursos"
+            android:layout_below="@+id/Promedio_Cursos"
+            android:layout_marginTop="16dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Intergracion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/Intergracion_b"
+            android:layout_alignBottom="@+id/Intergracion_b"
+            android:layout_alignStart="@+id/Cantidad_Prof"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/Curso"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:layout_alignBaseline="@+id/Promedio_Cursos"
+            android:layout_alignBottom="@+id/Promedio_Cursos"
+            android:layout_toEndOf="@+id/Titulo"
+            android:text="Detalle Cursos"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/Profesores"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:layout_alignStart="@+id/Curso"
+            android:layout_below="@+id/Curso"
+            android:text="Detalle Profesores"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/Intergracion_b"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:layout_alignStart="@+id/Profesores"
+            android:layout_below="@+id/Profesores"
+            android:text="Intergracion"
+            android:textSize="12sp" />
+
+        <ListView
+            android:id="@+id/Listado"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/Intergracion_b"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
