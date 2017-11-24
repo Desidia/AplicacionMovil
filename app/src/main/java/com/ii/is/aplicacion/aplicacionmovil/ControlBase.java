@@ -558,7 +558,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     public void ConectarBaseDeDatos() {
         try {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc","UbdIc", "udb2016c");
+            c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017","grupo4_2017", "grupo4_17");
             c.setAutoCommit(false);
             conectado = true;
             c.close();
@@ -585,7 +585,7 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                 Log.e("redirect","llegue al switch");
                 switch (tipo) {
                     case 1:
-                         nombre = login.getNombreUser(); contraseña = login.getContrasenaUser();
+               //          nombre = login.getNombreUser(); contraseña = login.getContrasenaUser();
                          query = "SELECT U.usuario as usuario,U.contraseña as contraseña FROM gratificante2.turista as U"
                                 + " WHERE U.usuario  = '" + nombre + "' AND U.contraseña = '" + contraseña + "';";
                         c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc", "UbdIc", "udb2016c");
@@ -602,17 +602,17 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
                         c.close();
                         break;
                     case 2:
-                        nombre =login.getNombreUser() ;contraseña = login.getContrasenaUser();rut = login.getturismorut();
+                   //     nombre =login.getNombreUser() ;contraseña = login.getContrasenaUser();rut = login.getturismorut();
                         query = "SELECT U.nombre as nombre,U.contraseña as contraseña,U.rut as rut FROM gratificante2.empresario as U"
                                 + " WHERE U.rut  = '" + nombre  +"' AND U.contraseña = '" + contraseña + "';";
                         c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/BDIc", "UbdIc", "udb2016c");
                         c.setAutoCommit(false);
                         stmt = c.createStatement();
                         rs = stmt.executeQuery(query);
-                        login.setturista();
+                    //    login.setturista();
                         entro = false;
                         while (rs.next()){
-                            login.setturista(rs.getString("nombre"), rs.getString("contraseña"),rs.getString("rut"));
+                //            login.setturista(rs.getString("nombre"), rs.getString("contraseña"),rs.getString("rut"));
                             entro = true;
                         }
                         stmt.close();
@@ -1397,12 +1397,12 @@ public class ControlBase extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void result) {
     switch (tipo){
         case 1:
-            login.setConectado(entro);
-            login.comprobarConexion();
+        //    login.setConectado(entro);
+         //   login.comprobarConexion();
             break;
         case 2:
-            login.setConectado(entro);
-            login.comprobarConexion();
+         //   login.setConectado(entro);
+         //   login.comprobarConexion();
             break;
         case 3:
             servicio.actualizar();
