@@ -19,7 +19,7 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
     private Statement stmt;
     private boolean conectado;
     private int tipo,rbd;
-    private String query,universidad,carrera;
+    private String query,universidad,carrera,PsuMat,PsuLen,PsuHis,PsuCie;
     private MapaEstablecimientos mapaEstablecimientos;
     private DetalleEstablecimiento DetalleEs;
     private DetalleCursos DetalleCu;
@@ -30,6 +30,7 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
     private DetalleCarrera DetalleCa;
     private DetallePostulacion DetallePos;
     private  ResultSet rs;
+    private int total,total2;
     public Controlador(Login inicio){
         c = null;
         stmt = null;
@@ -356,6 +357,114 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 12:
+                        Log.e("redirect", "Entre caso 12");
+                        query = "SELECT U.cantidad as cantidad " +
+                                "FROM respuestas.docentes_por_establecimiento as U " +
+                                "WHERE U.rbd = '" + rbd +"';";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        total = 0;
+                        while (rs.next()) {
+                            total +=rs.getInt("cantidad");
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 13:
+                        Log.e("redirect", "Entre caso 13");
+                        query = "SELECT U.cantidad as cantidad " +
+                                "FROM respuestas.asistentes_por_establecimiento as U " +
+                                "WHERE U.rbd = '" + rbd +"';";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        total2 = 0;
+                        while (rs.next()) {
+                            total2 +=rs.getInt("cantidad");
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 14:
+                        Log.e("redirect", "Entre caso 14");
+                        query = "SELECT U.promedio as promedio " +
+                                "FROM respuestas.promedios_psu_proceso_actual as U " +
+                                "WHERE U.prueba = 'Matemática' AND U.nombre_establecimiento = '" + carrera +"';";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            PsuMat=String.valueOf(rs.getDouble("promedio"));
+                            Log.e("redirect", PsuMat);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 15:
+                        Log.e("redirect", "Entre caso 15");
+                        query = "SELECT U.promedio as promedio " +
+                                "FROM respuestas.promedios_psu_proceso_actual as U " +
+                                "WHERE U.prueba = 'Lenguaje' AND U.nombre_establecimiento = '" + carrera +"';";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            PsuLen = (String.valueOf(rs.getDouble("promedio")));
+                            Log.e("redirect", PsuLen);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 16:
+                        Log.e("redirect", "Entre caso 16");
+                        query = "SELECT U.promedio as promedio " +
+                                "FROM respuestas.promedios_psu_proceso_actual as U " +
+                                "WHERE U.prueba = 'Historia y geografía' AND U.nombre_establecimiento = '" + carrera +"';";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            PsuHis = (String.valueOf(rs.getDouble("promedio")));
+                            Log.e("redirect", PsuHis);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
+                    case 17:
+                        Log.e("redirect", "Entre caso 17");
+                        query = "SELECT U.promedio as promedio " +
+                                "FROM respuestas.promedios_psu_proceso_actual as U " +
+                                "WHERE U.prueba = 'Ciencias' AND U.nombre_establecimiento = '" + carrera +"';";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            PsuCie = (String.valueOf(rs.getDouble("promedio")));
+                            Log.e("redirect", PsuCie);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         break;
                 }
@@ -401,6 +510,28 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
                 break;
             case 11:
                 DetallePos.actualizar();
+                break;
+            case 12:
+                DetallePro.setProfes(String.valueOf(total));
+                DetallePro.ejecutaAsis();
+                break;
+            case 13:
+                DetallePro.setAsistentes(String.valueOf(total2));
+                break;
+            case 14:
+                DetallePos.setPsuMate(PsuMat);
+                DetallePos.leng();
+                break;
+            case 15:
+                DetallePos.setPsuLeng(PsuLen);
+                DetallePos.hist();
+                break;
+            case 16:
+                DetallePos.setPsuHist(PsuHis);
+                DetallePos.cien();
+                break;
+            case 17:
+                DetallePos.setPsuCien(PsuCie);
                 break;
             default:
                 break;

@@ -9,15 +9,63 @@
     <RelativeLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <ListView
             android:id="@+id/Alumnos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="183dp" />
+            android:layout_marginTop="230dp" />
+
+        <TextView
+            android:id="@+id/Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/PsuMat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="31dp"
+            android:text="TextView"
+            android:layout_below="@+id/Nombre"
+            android:layout_alignStart="@+id/Nombre" />
+
+        <TextView
+            android:id="@+id/PsuLeng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/PsuMat"
+            android:layout_below="@+id/PsuMat"
+            android:layout_marginTop="24dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/PsuCien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/PsuLeng"
+            android:layout_below="@+id/PsuLeng"
+            android:layout_marginTop="14dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/PsuHist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/PsuCien"
+            android:layout_below="@+id/PsuCien"
+            android:layout_marginTop="11dp"
+            android:text="TextView" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

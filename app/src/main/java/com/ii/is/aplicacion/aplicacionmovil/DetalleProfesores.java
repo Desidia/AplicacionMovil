@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.Vector;
 
@@ -19,11 +20,13 @@ public class DetalleProfesores extends AppCompatActivity {
     private int RBD;
     private DocenteAreaAdapter adapter1;
     private EvaluacionDocenteAdapter adapter2;
+    private TextView Profes,asistentes;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_profesore);
         Area = (ListView)findViewById(R.id.Area);
         Evaluacion = (ListView)findViewById(R.id.Evaluacion);
+        asistentes = (TextView)findViewById(R.id.asistentes);
         CB = new Controlador(this);
         docentes = new Vector<DocentesArea>();
         evaluacion = new Vector<EvaluacionDocentes>();
@@ -68,5 +71,25 @@ public class DetalleProfesores extends AppCompatActivity {
         }
         adapter2 = new EvaluacionDocenteAdapter(this,R.layout.layoutevaluacion,EvaDocent);
         Evaluacion.setAdapter(adapter2);
+        CB = new Controlador(this);
+        CB.setRbd(RBD);
+        CB.setTipo(12);
+        CB.ejecutar();
+    }
+    public void setProfes(String p){
+        this.cambiaprofe(p);
+    }
+    public void cambiaprofe(String s){
+        Profes = (TextView)findViewById(R.id.profes);
+        Profes.setText(s);
+    }
+    public void setAsistentes(String p){
+        asistentes.setText(p);
+    }
+    public void ejecutaAsis(){
+        CB = new Controlador(this);
+        CB.setRbd(RBD);
+        CB.setTipo(13);
+        CB.ejecutar();
     }
 }

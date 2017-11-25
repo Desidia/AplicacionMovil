@@ -65,7 +65,7 @@ public class MapaEstablecimientos extends FragmentActivity implements OnMapReady
     }
     public void agregarpuntos(){
         for(int i = 0; i < establecimientos.size();i++){
-     //       if(establecimientos.elementAt(i).getRbd() != 4531)continue;
+           // if(establecimientos.elementAt(i).getRbd() != 17750)continue;
             LatLng coordenadas = new LatLng(establecimientos.elementAt(i).getLat(),establecimientos.elementAt(i).getLng());
             mMap.addMarker(new MarkerOptions().position(coordenadas).title(establecimientos.elementAt(i).getNombre()));
             CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas,12);

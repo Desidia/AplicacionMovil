@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.Vector;
@@ -18,6 +19,7 @@ public class DetalleCarrera extends AppCompatActivity {
     private Vector<Carrera> lcursos;
     private String Nombre,Carrera;
     private CarreraAdapter adapter;
+    private TextView NombreU,NombreCarrera;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_carrera);
@@ -26,6 +28,10 @@ public class DetalleCarrera extends AppCompatActivity {
         Nombre = bundle.getString("Nombre");
         Carrera = bundle.getString("Carrera");
         ListaCursos = (ListView)findViewById(R.id.DetalleC);
+        NombreU = (TextView)findViewById(R.id.NombreU);
+        NombreCarrera = (TextView)findViewById(R.id.NombreCarrera);
+        NombreU.setText(Nombre);
+        NombreCarrera.setText(Carrera);
         lcursos = new Vector<Carrera>();
         CB = new Controlador(this);
         CB.setTipo(10);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ListaCarrera extends AppCompatActivity {
 
@@ -14,6 +15,7 @@ public class ListaCarrera extends AppCompatActivity {
     private ListView lista;
     private ArrayAdapter<String> adapter;
     private String Nombre;
+    private TextView NombreU;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_carrera);
@@ -22,6 +24,7 @@ public class ListaCarrera extends AppCompatActivity {
         Nombre = bundle.getString("Nombre");
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1);
         lista = (ListView)findViewById(R.id.ListaCarrera);
+        NombreU = (TextView) findViewById(R.id.NombreU);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -32,6 +35,7 @@ public class ListaCarrera extends AppCompatActivity {
                 startActivity(button_uno);
             }
         });
+        NombreU.setText(Nombre);
         CB = new Controlador(this);
         CB.setTipo(9);
         CB.setUniversidad(Nombre);

@@ -19,5 +19,23 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="118dp" />
+
+        <TextView
+            android:id="@+id/NombreU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="TextView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/NombreCarrera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/NombreU"
+            android:layout_below="@+id/NombreU"
+            android:layout_marginTop="24dp"
+            android:text="TextView" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
