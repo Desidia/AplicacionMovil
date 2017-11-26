@@ -6,49 +6,38 @@
     tools:context="com.ii.is.aplicacion.aplicacionmovil.Mapa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"  >
+    android:orientation="vertical">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_distance"/>
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 km"
-            android:id="@+id/tvDistance" />
-
-        <ImageView
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_clock"/>
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 min"
-            android:id="@+id/tvDuration" />
+        android:layout_height="40dp">
 
         <Button
             android:id="@+id/universidades"
-            android:layout_width="20dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Universidades" />
-    </LinearLayout>
+            android:text="Universidades"
+            android:textSize="13sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <Spinner
+            android:id="@+id/Regiones"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/Buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/universidades"
+            android:text="Buscar" />
+    </RelativeLayout>
 
 
     <fragment

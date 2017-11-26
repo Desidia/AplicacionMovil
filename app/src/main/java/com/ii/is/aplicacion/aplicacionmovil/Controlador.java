@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static java.lang.Math.abs;
+
 /**
  * Created by diego on 22-11-2017.
  */
@@ -465,6 +467,65 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
                         c.commit();
                         c.close();
                         break;
+                    case 18:
+                        Log.e("redirect", "Entre caso 18");
+                        query = "SELECT DISTINCT U.rbd as rbd,U.nombre_establecimiento as nombre_establecimiento,U.estadoestablecimiento as estadoestablecimiento,U.latitud as latitud,U.longitud as longitud  FROM respuestas.region_coordenada_establecimiento as U " +
+                                "WHERE U.region = '"+ carrera+"';";
+                        //  query = "SELECT DISTINCT U.rbd as rbd FROM respuestas.informacion_establecimiento as U;";
+                        c = DriverManager.getConnection("jdbc:postgresql://plop.inf.udec.cl/grupo4_2017", "grupo4_2017", "grupo4_17");
+                        c.setAutoCommit(false);
+                        stmt = c.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            Establecimiento aux = new Establecimiento();
+                            aux.setRbd(rs.getInt("rbd"));
+                            aux.setEstado(rs.getString("estadoestablecimiento"));
+                            aux.setNombre(rs.getString("nombre_establecimiento"));
+                            String lng4 = rs.getString("longitud");
+                            String lat4 = rs.getString("latitud");
+                            String lat5 = "",lng5 = "";
+                            boolean encontrado = false;
+                            for(int i = 0; i < lat4.length();i++){
+                                if(lat4.charAt(i) == '.' && !encontrado){
+                                    encontrado = true;
+                                    lat5+= lat4.charAt(i);
+                                }
+                                else if (lat4.charAt(i) == '.' && encontrado){
+
+                                }
+                                else {
+                                    lat5+= lat4.charAt(i);
+                                }
+                            }
+                            encontrado = false;
+                            for(int i = 0; i < lng4.length();i++){
+                                if(lng4.charAt(i) == '.' && !encontrado){
+                                    encontrado = true;
+                                    lng5+= lng4.charAt(i);
+                                }
+                                else if (lng4.charAt(i) == '.' && encontrado){
+
+                                }
+                                else {
+                                    lng5+= lng4.charAt(i);
+                                }
+                            }
+
+                            Double lng6 = Double.parseDouble(lng5);
+                            Double lat6 = Double.parseDouble(lat5);
+                            Log.e("redirect","  "+ lng6);
+                            if(lng6 != 0.0 && abs(lng6) < abs(10.0))lng6*=10.0;
+                            if(lat6 != 0 && lat6 < 10);
+                            Log.e("redirect", "EntreEEEEEEEEEEEEE" + lat6 + "   " + lng6);
+                            aux.setLng(lng6);
+                            aux.setLat(lat6);
+                            mapaEstablecimientos.add(aux);
+                        }
+                        stmt.close();
+                        rs.close();
+                        c.commit();
+                        c.close();
+                        break;
                     default:
                         break;
                 }
@@ -532,6 +593,9 @@ public class Controlador extends AsyncTask<Void, Void, Void> {
                 break;
             case 17:
                 DetallePos.setPsuCien(PsuCie);
+                break;
+            case 18:
+                mapaEstablecimientos.agregarpuntos();
                 break;
             default:
                 break;
